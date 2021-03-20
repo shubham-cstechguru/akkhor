@@ -69,8 +69,8 @@
             </a>
             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="">Add Pages</a>
-                    <a class="nav-link" href="">View Pages</a>
+                    <a class="nav-link" href="{{ route('admin.pages.create') }}">Add Pages</a>
+                    <a class="nav-link" href="{{ route('admin.pages.index') }}">View Pages</a>
                 </nav>
             </div>
         </div>

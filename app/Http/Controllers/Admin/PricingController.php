@@ -43,7 +43,7 @@ class PricingController extends Controller
         $pricing->pricing_description = $request->pricing_description;
         $pricing->price = $request->price;
         $pricing->pricing_points = $request->pricing_points;
-        $pricing->save();  
+        $pricing->save();
 
         return redirect(route('admin.pricing.index'));
     }
@@ -67,6 +67,7 @@ class PricingController extends Controller
      */
     public function edit(Pricing $pricing)
     {
+        $pricing = $pricing->toArray();
         return view('backend.inc.pricing.pricing', compact('pricing'));
     }
 
@@ -77,9 +78,19 @@ class PricingController extends Controller
      * @param  \App\Models\Pricing  $pricing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pricing $pricing)
+    public function update(PricingRequest $request, Pricing $pricing)
     {
-        //
+        $pricing->fill([
+            'pricing_title' => $request->pricing_title,
+            'pricing_description' => $request->pricing_description,
+            'price' => $request->price,
+            'pricing_points' => $request->pricing_points,
+        ]);
+
+        $pricing->save();
+
+        return redirect(route('admin.pricing.index'));
+
     }
 
     /**
@@ -90,6 +101,7 @@ class PricingController extends Controller
      */
     public function destroy(Pricing $pricing)
     {
-        //
+        $pricing->delete();
+        return redirect(route('admin.pricing.index'));
     }
 }

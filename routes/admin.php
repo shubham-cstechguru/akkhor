@@ -28,7 +28,8 @@ Route::group(['namespace' => 'Admin'], function () {
                 'blog' => 'BlogController',
                 'blogcategory' => 'BlogCategoryController',
                 'blogtags' => 'BlogTagsController',
-                'pricing' => 'PricingController'
+                'pricing' => 'PricingController',
+                'pages' => 'PagesController'
             ]);
         });
     });
