@@ -1,22 +1,22 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Blog Category') -->
+<!-- @section('title', 'Home Blog Tags') -->
 
 @section('content')
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">View Blog Category</h1>
+        <h1 class="mt-4">View Blog Tags</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('admin.blogcategory.index') }}">Blog Category</a></li>
-            <li class="breadcrumb-item active">View Category</li>
+            <li class="breadcrumb-item active"><a href="{{ route('admin.blogtags.index') }}">Blog Tags</a></li>
+            <li class="breadcrumb-item active">View Tags</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header text-right">
-                <a type="button" name="button" class="btn btn-success" href="{{ route('admin.blogcategory.create') }}">
+                <a type="button" name="button" class="btn btn-success" href="{{ route('admin.blogtags.create') }}">
                     <i class="fas fa-plus mr-1"></i>
-                    Add Blog Category
+                    Add Blog Tags
                 </a>
             </div>
             <div class="card-body">
@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th>Number</th>
-                                <th>Blog Category Title</th>
+                                <th>Blog Tags Title</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -33,15 +33,15 @@
                             @php
                             $i = 1;
                             @endphp
-                            @foreach($blogcategory as $category)
+                            @foreach($blogtag as $tags)
                             <tr>
                                 <td>{{ $i++ }}.</td>
-                                <td>{{ $category->category_title }}</td>
+                                <td>{{ $tags->tags_title }}</td>
                                 <td>
-                                    <a type="button" name="button" class="btn btn-info" href="{{ route('admin.blogcategory.edit', $category->id) }}">
+                                    <a type="button" name="button" class="btn btn-info" href="{{ route('admin.blogtags.edit', $tags->id) }}">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $category->id }})">
+                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $tags->id }})">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -57,13 +57,13 @@
                                 @method('DELETE')
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Blog Category</h5>
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete Blog Tags</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are you sure to want to Delete This Blog Category ?
+                                        Are you sure to want to Delete This Blog Tags ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Confirm Delete</button>
@@ -84,7 +84,7 @@
 <script>
     function handleDelete(id) {
         var form = document.getElementById('deleteFormModal')
-        form.action = '/admin-control/blogcategory/' + id
+        form.action = '/admin-control/blogtags/' + id
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }

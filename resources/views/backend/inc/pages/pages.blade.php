@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="pagesseocategoryDescription">Page Description</label>
-                                    <input id="seo_description" type="hidden" name="seo_description" value="{{ isset($page) ? $page->page_seo_description : '' }}">
+                                    <input id="seo_description" type="hidden" name="page_seo_description" value="{{ isset($page) ? $page->page_seo_description : '' }}">
                                     <trix-editor input="seo_description"></trix-editor>
                                 </div>
                             </div>
