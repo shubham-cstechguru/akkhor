@@ -1,27 +1,29 @@
 @extends('frontend.layout.app')
 @section('content')
 
-@include('frontend.templates.banner')
+@include('frontend.templates.banner', ['page_title' => 'PRICING', 'page_description' => 'No credit card needed. Change plans any time.'])
 
 </div>
 <div class="main-products" style="background:#f3f3f3; min-height: auto;padding-bottom:40px;padding-top:0px;">
     <div class="wrapper-fix">
 
         <div id="main-prcing-yearly" class="main-prcing">
+            @foreach($pricing as $key => $price)
             <div class="pricing-prt">
                 <div class="main-data">
-                    <div class="prcnghdr">Bronze</div>
-                    <div class="plan-tag">Starter Package for Small Organization</div>
+                    <div class="prcnghdr">{{ $price['pricing_title']}}</div>
+                    <div class="plan-tag">{!! $price['pricing_description'] !!}</div>
                     <div class="plan-feat">&nbsp;</div>
                     <div class="price-data">
                         <sup style="font-size: 24px;">₹</sup>
-                        <div class="prcngval">79,999</div>
+                        <div class="prcngval">{{ $price['price'] }}</div>
                         <span class="month-data">/ yr.</span>
                     </div>
                     <div class="plan-features">
                         <ul class="list-unstyled">
-                            <li><span class="flat check color"></span>Support</li>
-                            <li><span class="flat check color"></span>Admin Panel Access</li>
+                            @foreach($price['pricing_points'] as $p)
+                            <li><span class="flat check color"></span>{{ $p }}</li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="btn-pro">
@@ -29,7 +31,8 @@
                     </div>
                 </div>
             </div>
-            <div class="pricing-prt">
+            @endforeach
+            <!-- <div class="pricing-prt">
                 <div class="main-data">
                     <div class="prcnghdr">Silver</div>
                     <div class="plan-tag">Great for growing business</div>
@@ -88,7 +91,7 @@
                     </div>
                     <div class="btn-pro"><a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro">GET STARTED</a></div>
                 </div>
-            </div>
+            </div> -->
             <!--Div inside for loop-->
         </div>
         <!----------------------------Test wise Pricing Cards Ends here---------------------->
