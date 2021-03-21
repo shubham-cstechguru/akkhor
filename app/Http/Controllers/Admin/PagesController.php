@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Pages;
 use App\Http\Requests\PageRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class PagesController extends Controller
 {
@@ -42,6 +44,7 @@ class PagesController extends Controller
         $img_name = $request->page_image->getClientOriginalName();
         $image = $request->page_image->storeAs('pages', $img_name);
         $page->page_title = $request->page_title;
+        $page->page_slug = Str::slug($request->page_title, '-');
         $page->page_description = $request->page_description;
         $page->page_image = $img_name;
         $page->page_seo_title = $request->page_seo_title;
@@ -83,7 +86,7 @@ class PagesController extends Controller
      */
     public function update(Request $request, Pages $page)
     {
-        //
+        
     }
 
     /**

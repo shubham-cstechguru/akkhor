@@ -26,7 +26,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Frontend', 'as' => 'home.'], function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::get('/pricing', 'PricingController@index')->name('pricing');
-    Route::get('/request-demo', 'RequestController@index')->name('request');
+    Route::get('/request-demo', 'RequestController@create')->name('request');
+    Route::post('/request-demo', 'RequestController@store')->name('request.post');
+    Route::get('/{slug}', 'PagesController@index')->name('pages');
 });
 
 
