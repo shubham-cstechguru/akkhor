@@ -1,7 +1,7 @@
 @extends('frontend.layout.app')
 @section('content')
 
-@include('frontend.templates.banner')
+@include('frontend.templates.banner', ['page_title' => 'SCHEDULE A DEMO', 'page_description' => 'Book your schedule for a demo by filling a few details.'])
 
 <div id="popup_main" class="otr_schdule">
 
