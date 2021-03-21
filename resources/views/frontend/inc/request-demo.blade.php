@@ -1,12 +1,12 @@
 @extends('frontend.layout.app')
 @section('content')
 
-@include('frontend.templates.banner')
+@include('frontend.templates.banner', ['page_title' => 'SCHEDULE A DEMO', 'page_description' => 'Book your schedule for a demo by filling a few details.'])
 
 <div id="popup_main" class="otr_schdule">
 
-    <form name="popup" method="post" action="javascript:void(0)" onsubmit="return false;">
-
+    <form name="popup" method="POST" action="{{ route('home.request.post') }}" onsubmit="return false;">
+    {!! csrf_field() !!}
         <div class="main-poupCntr" id="popup_back">
 
             <div class="schdule_form">
@@ -680,7 +680,7 @@
 
                 var designation = $("#designation").val();
 
-                var test = $("#test").val();
+                // var test = $("#test").val();
 
                 var daysToFinalize = $("#daysToFinalize").val();
 

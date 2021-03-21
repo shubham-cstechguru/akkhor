@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ isset($page) ? route('admin.pages.update', $page->id) : route('admin.pages.store') }}" enctype="multipart/form-data">
                             {!! csrf_field() !!}
-                            @if(isset($pages))
+                            @if(isset($page))
                             @method('PUT')
                             @endif
                             <div class="form-row">

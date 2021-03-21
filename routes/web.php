@@ -13,14 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.inc.index');
-});
-Route::get('/request-demo', function () {
-    return view('frontend.inc.request-demo');
-});
-Route::get('/pricing', function () {
-    return view('frontend.inc.pricing');
+// Route::get('/', function () {
+//     return view('frontend.inc.index');
+// });
+// Route::get('/request-demo', function () {
+//     return view('frontend.inc.request-demo');
+// });
+// Route::get('/pricing', function () {
+//     return view('frontend.inc.pricing');
+// });
+
+Route::group(['namespace' => 'Frontend', 'as' => 'home.'], function () {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/pricing', 'PricingController@index')->name('pricing');
+    Route::get('/request-demo', 'RequestController@create')->name('request');
+    Route::post('/request-demo', 'RequestController@store')->name('request.post');
+    Route::get('/{slug}', 'PagesController@index')->name('pages');
 });
 
 

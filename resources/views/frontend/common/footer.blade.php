@@ -7,7 +7,7 @@
             <div class="outer-part">
                 <div class="left-part-about">
                     <ul>
-                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="#">About Us</a></li>
                         <li><a href="#">advisors</a></li>
                         <li><a href="#">What's New</a></li>
                         <li><a href="#">clients</a></li>
