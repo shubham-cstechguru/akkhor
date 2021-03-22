@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogTags;
+use App\Models\BlogCategoryData;
+use App\Models\BlogTagsData;
 use App\Http\Requests\BlogRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -52,12 +54,13 @@ class BlogController extends Controller
         $blog->blog_slug = Str::slug($request->blog_title, '-');
         $blog->blog_description = $request->blog_description;
         $blog->blog_image = $img_name;
-        $blog->category_id = $request->category_id;
-        $blog->tags_id = $request->tags_id;
         $blog->blog_seo_title = $request->blog_seo_title;
         $blog->blog_seo_description = $request->blog_seo_description;
         $blog->blog_seo_keyword = $request->blog_seo_keyword;
         $blog->save();
+
+        $blog->blog_category()->sync($request->category_id);
+        $blog->blog_tags()->sync($request->tags_id);
 
         return redirect(route('admin.blog.index'));
     }

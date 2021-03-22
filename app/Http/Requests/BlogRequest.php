@@ -27,8 +27,8 @@ class BlogRequest extends FormRequest
             'blog_title' => 'required|unique:blogs',
             'blog_description' => 'required',
             'blog_image' => 'required|max:200|mimes:jpeg,jpg,png,gif',
-            'category_id' => 'required',
-            'tags_id' => 'required',
+            'category_id' => 'required|array',
+            'tags_id' => 'required|array',
             'blog_seo_title' => 'nullable',
             'blog_seo_keyword' => 'nullable',
             'blog_seo_description' => 'nullable'

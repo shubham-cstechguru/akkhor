@@ -40,8 +40,20 @@
                             <tr>
                                 <td>{{ $i++ }}.</td>
                                 <td>{{ $b->blog_title }}</td>
-                                <td>{{ $b->category_id }}</td>
-                                <td>{{ $b->tags_id }}</td>
+                                <td>
+                                    <ol>
+                                        @foreach($b->blog_category as $ct)
+                                        <li>{{ $ct->category_title }}</li>
+                                        @endforeach
+                                    </ol>
+                                </td>
+                                <td>
+                                    <ol>
+                                        @foreach($b->blog_tags as $tt)
+                                        <li>{{ $tt->tags_title }}</li>
+                                        @endforeach
+                                    </ol>
+                                </td>
                                 <td><img src="{{ asset("/storage/blog/".$b->blog_image) }}" alt="" width="100"></td>
                                 <td>
                                     <a type="button" name="button" class="btn btn-info" href="{{ route('admin.blog.edit', $b->id) }}">

@@ -9151,7 +9151,6 @@ span.txt-2 {
     top: 10px;
     right: 10px;
     z-index: 99;
-    display: none
 }
 .helping.valid-info .hlpicn:before {
     content: "\e015";

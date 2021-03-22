@@ -38,27 +38,30 @@
                             @endif
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="testimonialTitle">Page Title</label>
+                                    <label for="testimonialTitle">Testimonial Name</label>
                                     <input type="text" name="t_name" class="form-control" id="testimonialTitle" aria-describedby="testimonialTitleHelp" placeholder="Enter Testimonial Name" value="{{ isset($testimonial) ? $testimonial->t_name : '' }}">
                                 </div>
 
                                 @if(isset($testimonial))
                                 <div class="form-group col-md-3">
-                                    <label for="testimonialImage">Page Image</label>
+                                    <label for="testimonialImage">Testimonial Image</label>
                                     <input type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img src="{{ asset("/storage/testimonial/".$testimonial->t_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset("/storage/testimonial/".$testimonial->t_image) }}" alt="" width="100">
                                 </div>
                                 @else
-                                <div class="form-group col-md-6">
-                                    <label for="testimonialImage">Page Image</label>
+                                <div class="form-group col-md-3">
+                                    <label for="testimonialImage">Testimonal Image</label>
                                     <input type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <img id="blah" src="#" alt="upload image to view" width="100" />
                                 </div>
                                 @endif
 
                                 <div class="form-group col-md-12">
-                                    <label for="testimonialDescription">Page Description</label>
+                                    <label for="testimonialDescription">Testimonial</label>
                                     <input id="description" type="hidden" name="t_testimonial" value="{{ isset($testimonial) ? $testimonial->t_testimonial : '' }}">
                                     <trix-editor input="description"></trix-editor>
                                 </div>
@@ -77,4 +80,21 @@
 
 @section('scripts')
 {{ Html::script('Admin/js/trix.js') }}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#testimonialImage").change(function() {
+        readURL(this);
+    });
+</script>
 @endsection

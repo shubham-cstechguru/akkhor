@@ -73,17 +73,17 @@
                     <a class="nav-link" href="{{ route('admin.testimonial.index') }}">View Testimonial</a>
                 </nav>
             </div>
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+            <a class="nav-link" href="{{ route('admin.pages.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Pages
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                <!-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
             </a>
-            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+            {{-- <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{{ route('admin.pages.create') }}">Add Pages</a>
                     <a class="nav-link" href="{{ route('admin.pages.index') }}">View Pages</a>
                 </nav>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="sb-sidenav-footer">

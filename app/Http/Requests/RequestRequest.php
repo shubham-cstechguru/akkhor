@@ -27,12 +27,20 @@ class RequestRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|max:255',
             'company' => 'nullable',
-            'phoneno' => 'required|numeric|min:10',
+            'phoneno' => 'required|numeric',
             'designation' => 'nullable',
             'test' => 'nullable',
             'daysToFinalize' => 'nullable',
             'requestedUrl' => 'nullable',
             'message' => 'nullable'
+        ];
+    }
+    public function messages()
+    {        
+        return [
+            'name.required' => 'Please Enter Your Name',
+            'email.required' => 'Please Enter Your Email',
+            'phoneno.required' => 'Please Enter Your Contact No.',
         ];
     }
 }

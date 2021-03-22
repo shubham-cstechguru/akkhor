@@ -47,17 +47,20 @@
                                     <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img src="{{ asset("/storage/blog/".$blog->blog_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset("/storage/blog/".$blog->blog_image) }}" alt="" width="100">
                                 </div>
                                 @else
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="blogImage">Blog Image</label>
                                     <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <img id="blah" src="#" alt="upload image to view" width="100"/>
                                 </div>
                                 @endif
                                 <div class="form-group col-md-6">
                                     <label for="blogCategory">Blog Category</label>
-                                    <select class="form-control" name="category_id" id="blogCategory">
+                                    <select multiple class="form-control" name="category_id[]" id="blogCategory">
                                         @foreach($blogcategories as $category)
                                         <option value="{{ $category->id }}" @if(isset($blog)) @if($category->id == $blog->category_id)
                                             selected
@@ -69,7 +72,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="blogCategory">Blog Tags</label>
-                                    <select class="form-control" name="tags_id" id="blogTags">
+                                    <select multiple class="form-control" name="tags_id[]" id="blogTags">
                                         @foreach($blogtags as $tag)
                                         <option value="{{ $tag->id }}" @if(isset($blog)) @if($tag->id == $blog->tags_id)
                                             selected
@@ -114,4 +117,29 @@
 
 @section('scripts')
 {{ Html::script('Admin/js/trix.js') }}
+<script>
+    $('option').mousedown(function(e) {
+        e.preventDefault();
+        $(this).prop('selected', !$(this).prop('selected'));
+        return false;
+    });
+</script>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#blogImage").change(function() {
+        readURL(this);
+    });
+</script>
 @endsection

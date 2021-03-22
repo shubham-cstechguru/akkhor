@@ -48,12 +48,15 @@
                                     <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->service_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img src="{{ asset("/storage/services/".$service->service_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset("/storage/services/".$service->service_image) }}" alt="" width="100">
                                 </div>
                                 @else
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="servicesImage">Service Image</label>
                                     <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->image : '' }}">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <img id="blah" src="#" alt="upload image to view" width="100" />
                                 </div>
                                 @endif
 
@@ -71,7 +74,7 @@
                                     <input type="text" name="service_seo_keyword" class="form-control" id="servicesseocategoryKeyword" aria-describedby="servicesseocategoryKeywordHelp" placeholder="Enter Service SEO Keyword" value="{{ isset($service) ? $service->service_seo_keyword : '' }}">
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <label for="servicesseocategoryDescription">Service Description</label>
+                                    <label for="servicesseocategoryDescription">Service SEO Description</label>
                                     <input id="seo_description" type="hidden" name="service_seo_description" value="{{ isset($service) ? $service->service_seo_description : '' }}">
                                     <trix-editor input="seo_description"></trix-editor>
                                 </div>
@@ -90,4 +93,21 @@
 
 @section('scripts')
 {{ Html::script('Admin/js/trix.js') }}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#servicesImage").change(function() {
+        readURL(this);
+    });
+</script>
 @endsection

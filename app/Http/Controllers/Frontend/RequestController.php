@@ -12,18 +12,19 @@ class RequestController extends Controller
         return view('frontend.inc.request-demo');
     }
     public function store(RequestRequest $request) {
-        $request = new Request();
-        $request->name = $request->name;
-        $request->email = $request->email;
-        $request->company = $request->company;
-        $request->phoneno = $request->phoneno;
-        $request->designation = $request->designation;
-        $request->test = $request->test;
-        $request->daysToFinalize = $request->daysToFinalize;
-        $request->requestedUrl = $request->requestedUrl;
-        $request->message = $request->message;
-        $request->save();
+    
+        $req = new Request();
+        $req->name = $request->name;
+        $req->email = $request->email;
+        $req->company = $request->company;
+        $req->phoneno = $request->phoneno;
+        $req->designation = $request->designation;
+        $req->test = $request->test;
+        $req->daysToFinalize = $request->daysToFinalize;
+        $req->requestedUrl = $request->requestedUrl;
+        $req->message = $request->message;
+        $req->save();
 
-        return redirect(route('home.request'));
+        return back()->with("status", "your Message Send Sucessfully! Thank You");
     }
 }

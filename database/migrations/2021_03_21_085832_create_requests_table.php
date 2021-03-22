@@ -18,7 +18,7 @@ class CreateRequestsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('company')->nullable();
-            $table->unsignedInteger('phoneno');
+            $table->double('phoneno', 15, 0);
             $table->string('designation')->nullable();
             $table->string('test')->nullable();
             $table->string('daysToFinalize')->nullable();

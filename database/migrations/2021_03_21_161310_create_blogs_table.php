@@ -19,10 +19,6 @@ class CreateBlogsTable extends Migration
             $table->string('blog_slug');
             $table->text('blog_description');
             $table->string('blog_image');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('blog_categories');
-            $table->unsignedBigInteger('tags_id');
-            $table->foreign('tags_id')->references('id')->on('blog_tags');
             $table->string('blog_seo_title')->nullable();
             $table->string('blog_seo_keyword')->nullable();
             $table->text('blog_seo_description')->nullable();
