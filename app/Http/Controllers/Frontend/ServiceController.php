@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ServiceController extends Controller
 {
     public function index() {
         $service = Service::get();
-        $data = compact('service');
-        return view('frontend.inc.index', $data);
+        return view('frontend.inc.pages');
     }
 }

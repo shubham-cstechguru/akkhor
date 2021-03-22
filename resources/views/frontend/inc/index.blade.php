@@ -97,73 +97,18 @@
         </div>
         <div class="features-box home-page-box">
             <div class="slidesofhome" style="margin-top:0px;">
-                <!--    <a class="page activefeature" id='featurehdr1' href="javascript:void(0);" >     -->
+                @foreach($service as $key => $s)
                 <article class="fchrs_area" onclick="firstfeature();">
                     <figure class="fchrs_img fchrs_img_8 featuresprite">
-                        <img class="featurepage_icon" src='svgimages/easylearning.svg' alt="School Management Software">
-                        <img class="featurepage_icon1" src='svgimages/easylearning1.svg' alt="School Management Software">
+                        <img class="featurepage_icon" src='{{ asset("/storage/services/".$s->service_image) }}' alt="School Management Software">
+                        <img class="featurepage_icon1" src='' alt="School Management Software">
                     </figure>
                     <div>
-                        <h3 class="fchrs_hding fchrs_hdng_frst">Easy to Learn and Use</h3>
-                        <p>One-stop-destination for examination, preparation, recruitment, and more. Specially designed online examination system to solve all your preparation worries. The platform is smooth to use with a translational flow of information.</p>
+                        <h3 class="fchrs_hding fchrs_hdng_frst">{{ $s->service_title }}</h3>
+                        <p>{!! $s->service_description !!}</p>
                     </div>
                 </article>
-
-                <article class="fchrs_area">
-                    <figure class="fchrs_img fchrs_img_8 featuresprite">
-                        <img class="featurepage_icon" src='svgimages/highlyinteractivedesign.svg' alt="School Management Software">
-                        <img class="featurepage_icon1" src='svgimages/highlyinteractivedesign1.svg' alt="School Management Software">
-                    </figure>
-                    <div>
-                        <h3 class="fchrs_hding fchrs_hdng_frst">Highly Interactive Interface</h3>
-                        <p>A click to the next trick, simple registration, easy test and quiz creation, signing- in, synchronized processing, secured encoding and decoding of information and more.</p>
-                    </div>
-                </article>
-
-                <article class="fchrs_area">
-                    <figure class="fchrs_img fchrs_img_8 featuresprite">
-                        <img class="featurepage_icon" src='svgimages/advancedrporting.svg' alt="School Management Software">
-                        <img class="featurepage_icon1" src='svgimages/advancedrporting1.svg' alt="School Management Software">
-                    </figure>
-                    <div>
-                        <h3 class="fchrs_hding fchrs_hdng_frst">Advanced Reporting System</h3>
-                        <p>Instant scorecard generation, computational analysis, efficient feedback sharing to boost up your performance and precision. An ultimate combination of detailed and drilled methodologies that will eventually complement your skills and grades.</p>
-                    </div>
-                </article>
-
-                <article class="fchrs_area">
-                    <figure class="fchrs_img fchrs_img_8 featuresprite">
-                        <img class="featurepage_icon" src='svgimages/technicalsupport.svg' alt="School Management Software">
-                        <img class="featurepage_icon1" src='svgimages/technicalsupport1.svg' alt="School Management Software">
-                    </figure>
-                    <div>
-                        <h3 class="fchrs_hding fchrs_hdng_frst">Splendid Support</h3>
-                        <p>Your request and our actions to strive triggered support. A dedicated team is working round the clock to provide 24 X 7 streamlined access to our technical experts.</p>
-                    </div>
-                </article>
-
-                <article class="fchrs_area">
-                    <figure class="fchrs_img fchrs_img_8 featuresprite">
-                        <img class="featurepage_icon" src='svgimages/smartsubscription.svg' alt="School Management Software">
-                        <img class="featurepage_icon1" src='svgimages/smartsubscription1.svg' alt="School Management Software">
-                    </figure>
-                    <div>
-                        <h3 class="fchrs_hding fchrs_hdng_frst">Smart Subscriptions</h3>
-                        <p>Premium selection to the suited subscription that will match your preferences and priorities of using the online assessment platform.
-                        </p>
-                    </div>
-                </article>
-                <article class="fchrs_area">
-                    <figure class="fchrs_img fchrs_img_8 featuresprite">
-                        <img class="featurepage_icon" src='svgimages/activeaccessibility.svg' alt="School Management Software">
-                        <img class="featurepage_icon1" src='svgimages/activeaccessibility1.svg' alt="School Management Software">
-                    </figure>
-                    <div>
-                        <h3 class="fchrs_hding fchrs_hdng_frst">Active Accessibility</h3>
-                        <p>Go wherever you want to and practice whenever you want, using the next level online exam platform. Create & assign tests and quiz from anywhere at any time. Experience a lag-free synchronized performance of School Management Software on your mobile devices.</p>
-                    </div>
-                </article>
-                <!--        </a>-->
+                @endforeach
             </div>
             <div class="slidesofhome" style='display:none'>
                 <div id='feature1' class='homepagefeatures slideInRight festureslide' style='display:block'>

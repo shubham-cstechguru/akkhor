@@ -46,7 +46,7 @@ class BlogTagsController extends Controller
         $blogtag->tags_seo_description = $request->tags_seo_description;
         $blogtag->save();
 
-        return redirect(route('admin.blogtag.index'));
+        return redirect(route('admin.blogtags.index'));
     }
 
     /**

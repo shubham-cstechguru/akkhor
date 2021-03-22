@@ -51,6 +51,17 @@
                     </div>
                 </nav>
             </div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseServices" aria-expanded="false" aria-controls="collapseServices">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Services
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseServices" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ route('admin.services.create') }}">Add Services</a>
+                    <a class="nav-link" href="{{ route('admin.services.index') }}">View Services</a>
+                </nav>
+            </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePricing" aria-expanded="false" aria-controls="collapsePricing">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Pricing
