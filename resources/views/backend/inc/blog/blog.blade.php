@@ -55,18 +55,21 @@
                                     <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="#" alt="upload image to view" width="100"/>
+                                    <img id="blah" src="#" alt="upload image to view" width="100" />
                                 </div>
                                 @endif
                                 <div class="form-group col-md-6">
                                     <label for="blogCategory">Blog Category</label>
                                     <select multiple class="form-control" name="category_id[]" id="blogCategory">
                                         @foreach($blogcategories as $category)
-                                        <option value="{{ $category->id }}" @if(isset($blog)) @if($category->id == $blog->category_id)
+
+                                        <option value="{{ $category->id }}" @if(isset($blog)) @foreach($blog->blog_category as $ct) @if($category->id == $ct->id)
                                             selected
                                             @endif
+                                            @endforeach
                                             @endif
                                             >{{ $category->category_title }}</option>
+
                                         @endforeach
                                     </select>
                                 </div>
@@ -74,9 +77,12 @@
                                     <label for="blogCategory">Blog Tags</label>
                                     <select multiple class="form-control" name="tags_id[]" id="blogTags">
                                         @foreach($blogtags as $tag)
-                                        <option value="{{ $tag->id }}" @if(isset($blog)) @if($tag->id == $blog->tags_id)
+
+
+                                        <option value="{{ $tag->id }}" @if(isset($blog)) @foreach($blog->blog_tags as $tt) @if($tag->id == $tt->id)
                                             selected
                                             @endif
+                                            @endforeach
                                             @endif
                                             >{{ $tag->tags_title }}</option>
                                         @endforeach

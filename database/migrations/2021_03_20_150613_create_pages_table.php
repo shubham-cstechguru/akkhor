@@ -18,7 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('page_title');
             $table->string('page_slug');
             $table->text('page_description');
-            $table->string('page_image');
+            $table->string('page_image')->nullable();
             $table->string('page_seo_title')->nullable();
             $table->text('page_seo_description')->nullable();
             $table->string('page_seo_keyword')->nullable();

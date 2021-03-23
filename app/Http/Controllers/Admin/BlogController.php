@@ -9,6 +9,7 @@ use App\Models\BlogTags;
 use App\Models\BlogCategoryData;
 use App\Models\BlogTagsData;
 use App\Http\Requests\BlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -97,9 +98,25 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        if ($request->hasFile('blog_image')) {
+            $img_name = $request->blog_image->getClientOriginalName();
+            $image = $request->blog_image->storeAs('blog', $img_name);
+            $blog->blog_image = $img_name;
+        }
+
+        $blog->blog_title = $request->blog_title;
+        $blog->blog_description = $request->blog_description;
+        $blog->blog_seo_title = $request->blog_seo_title;
+        $blog->blog_seo_description = $request->blog_seo_description;
+        $blog->blog_seo_keyword = $request->blog_seo_keyword;
+        $blog->save();
+
+        $blog->blog_category()->sync($request->category_id);
+        $blog->blog_tags()->sync($request->tags_id);
+
+        return redirect(route('admin.blog.index'));
     }
 
     /**

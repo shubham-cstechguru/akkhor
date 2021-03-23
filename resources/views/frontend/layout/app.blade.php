@@ -46,18 +46,10 @@
     @include('frontend.common.header')
     @yield('content')
     @include('frontend.common.footer')
-    <div class="home-page-popup-wrapper">
-        <div class="home-page-popup-container">
-            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/brT1_NXFZJI?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
-            <p class="popupCancel"><span class="close thick"></span></p>
-        </div>
-    </div>
-
 
     <script src="js/menu_script.js"></script>
 
     <script type="text/javascript">
-
         $(document).ready(function() {
             $(window).scroll(function() {
                 var headheight = $('.container').height();
@@ -74,7 +66,7 @@
             });
             $('.close_icn').click(function() {
                 $("#popup_main").css("display", "none");
-            })      
+            })
         });
     </script>
     <script type="text/javascript" src="js/wow.min.js"></script>
@@ -190,7 +182,28 @@
             });
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.video-link').click(function() {
+                $('.home-page-popup-wrapper').addClass('popupActive');
+                $("#video")[0].src += "&autoplay=1";
+                ev.preventDefault();
+            });
+            $('.popupCancel').click(function() {
+                $('#video')[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+                $('.home-page-popup-wrapper').removeClass('popupActive');
+            });
+        });
+    </script>
     @yield('script')
+
+    <div class="home-page-popup-wrapper">
+        <div class="home-page-popup-container">
+            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/brT1_NXFZJI?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
+            <p class="popupCancel"><span class="close thick"></span></p>
+        </div>
+    </div>
 </body>
 
 </html>

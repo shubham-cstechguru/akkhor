@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pricing;
 use App\Http\Requests\PricingRequest;
+use App\Http\Requests\UpdatePricingRequest;
 use Illuminate\Http\Request;
 
 class PricingController extends Controller
@@ -78,15 +79,12 @@ class PricingController extends Controller
      * @param  \App\Models\Pricing  $pricing
      * @return \Illuminate\Http\Response
      */
-    public function update(PricingRequest $request, Pricing $pricing)
+    public function update(UpdatePricingRequest $request, Pricing $pricing)
     {
-        $pricing->fill([
-            'pricing_title' => $request->pricing_title,
-            'pricing_description' => $request->pricing_description,
-            'price' => $request->price,
-            'pricing_points' => $request->pricing_points,
-        ]);
-
+        $pricing->pricing_title = $request->pricing_title;
+        $pricing->pricing_description = $request->pricing_description;
+        $pricing->price = $request->price;
+        $pricing->pricing_points = $request->pricing_points;
         $pricing->save();
 
         return redirect(route('admin.pricing.index'));

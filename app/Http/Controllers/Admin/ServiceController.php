@@ -86,7 +86,20 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        if ($request->hasFile('service_image')) {
+            $img_name = $request->service_image->getClientOriginalName();
+            $image = $request->service_image->storeAs('services', $img_name);
+            $service->service_image = $img_name;
+        }
+        $service->service_title = $request->service_title;
+        $service->service_slug = Str::slug($request->service_title, '-');
+        $service->service_description = $request->service_description;
+        $service->service_seo_title = $request->service_seo_title;
+        $service->service_seo_description = $request->service_seo_description;
+        $service->service_seo_keyword = $request->service_seo_keyword;
+        $service->save();
+
+        return redirect(route('admin.services.index'));
     }
 
     /**

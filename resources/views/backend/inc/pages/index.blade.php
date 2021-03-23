@@ -13,12 +13,6 @@
             <li class="breadcrumb-item active">View Category</li>
         </ol>
         <div class="card mb-4">
-            <div class="card-header text-right">
-                <a type="button" name="button" class="btn btn-success" href="{{ route('admin.pages.create') }}">
-                    <i class="fas fa-plus mr-1"></i>
-                    Add Pages
-                </a>
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

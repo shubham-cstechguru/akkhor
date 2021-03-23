@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use App\Http\Requests\TestimonialRequest;
+use App\Http\Requests\UpdateTestimonialRequest;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
@@ -68,7 +69,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        return view('backend.inc.testimonial.testimonial', compact('testimonial')); 
+        return view('backend.inc.testimonial.testimonial', compact('testimonial'));
     }
 
     /**
@@ -78,9 +79,19 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
     {
-        //
+        if ($request->hasFile('t_image')) {
+            $img_name = $request->t_image->getClientOriginalName();
+            $image = $request->t_image->storeAs('testimonial', $img_name);
+            $testimonial->t_image = $img_name;
+        }
+
+        $testimonial->t_name = $request->t_name;
+        $testimonial->t_testimonial = $request->t_testimonial;
+        $testimonial->save();
+
+        return redirect(route('admin.testimonial.index'));
     }
 
     /**

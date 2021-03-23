@@ -48,12 +48,15 @@
                                     <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->page_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img src="{{ asset("/storage/pages/".$page->page_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset("/storage/pages/".$page->page_image) }}" alt="" width="100">
                                 </div>
                                 @else
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="pagesImage">Page Image</label>
                                     <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->image : '' }}">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <img id="blah" src="#" alt="upload image to view" width="100"/>
                                 </div>
                                 @endif
 
@@ -90,4 +93,21 @@
 
 @section('scripts')
 {{ Html::script('Admin/js/trix.js') }}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#pagesImage").change(function() {
+        readURL(this);
+    });
+</script>
 @endsection

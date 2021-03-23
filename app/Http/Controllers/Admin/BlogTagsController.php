@@ -80,7 +80,14 @@ class BlogTagsController extends Controller
      */
     public function update(BlogTagsRequest $request, BlogTags $blogtag)
     {
-        //
+        $blogtag->tags_title = $request->tags_title;
+        $blogtag->tags_description = $request->tags_description;
+        $blogtag->tags_seo_title = $request->tags_seo_title;
+        $blogtag->tags_seo_keyword = $request->tags_seo_keyword;
+        $blogtag->tags_seo_description = $request->tags_seo_description;
+        $blogtag->save();
+
+        return redirect(route('admin.blogtags.index'));
     }
 
     /**

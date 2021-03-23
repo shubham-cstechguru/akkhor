@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pages;
 use App\Http\Requests\PageRequest;
+use App\Http\Requests\UpdatePageRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -41,12 +43,14 @@ class PagesController extends Controller
     public function store(PageRequest $request)
     {
         $page = new Pages();
-        $img_name = $request->page_image->getClientOriginalName();
-        $image = $request->page_image->storeAs('pages', $img_name);
+        if ($request->page_image != '') {
+            $img_name = $request->page_image->getClientOriginalName();
+            $image = $request->page_image->storeAs('pages', $img_name);
+            $page->page_image = $img_name;
+        }
         $page->page_title = $request->page_title;
         $page->page_slug = Str::slug($request->page_title, '-');
         $page->page_description = $request->page_description;
-        $page->page_image = $img_name;
         $page->page_seo_title = $request->page_seo_title;
         $page->page_seo_description = $request->page_seo_description;
         $page->page_seo_keyword = $request->page_seo_keyword;
@@ -84,9 +88,24 @@ class PagesController extends Controller
      * @param  \App\Models\Pages  $pages
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pages $page)
+    public function update(UpdatePageRequest $request, Pages $page)
     {
-        
+        if ($request->hasFile('page_image')) {
+            if ($request->page_image != '') {
+                $img_name = $request->page_image->getClientOriginalName();
+                $image = $request->page_image->storeAs('pages', $img_name);
+                $page->page_image = $img_name;
+            }
+        }
+
+        $page->page_title = $request->page_title;
+        $page->page_description = $request->page_description;
+        $page->page_seo_title = $request->page_seo_title;
+        $page->page_seo_description = $request->page_seo_description;
+        $page->page_seo_keyword = $request->page_seo_keyword;
+        $page->save();
+
+        return redirect(route('admin.pages.index'));
     }
 
     /**

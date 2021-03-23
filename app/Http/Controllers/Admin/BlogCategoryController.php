@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Http\Requests\BlogCategoryRequest;
+use App\Http\Requests\UpdateBlogCategoryRequest;
 use Illuminate\Http\Request;
 
 class BlogCategoryController extends Controller
@@ -78,9 +79,16 @@ class BlogCategoryController extends Controller
      * @param  \App\Models\BlogCategory  $blogcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BlogCategory $blogcategory)
+    public function update(UpdateBlogCategoryRequest $request, BlogCategory $blogcategory)
     {
-        //
+        $blogcategory->category_title = $request->category_title;
+        $blogcategory->category_description = $request->category_description;
+        $blogcategory->category_seo_title = $request->category_seo_title;
+        $blogcategory->category_seo_keyword = $request->category_seo_keyword;
+        $blogcategory->category_seo_description = $request->category_seo_description;
+        $blogcategory->save();
+
+        return redirect(route('admin.blogcategory.index'));
     }
 
     /**
