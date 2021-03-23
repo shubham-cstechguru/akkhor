@@ -74,9 +74,8 @@
                                     <input type="text" name="page_seo_keyword" class="form-control" id="pagesseocategoryKeyword" aria-describedby="pagesseocategoryKeywordHelp" placeholder="Enter Page SEO Keyword" value="{{ isset($page) ? $page->page_seo_keyword : '' }}">
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <label for="pagesseocategoryDescription">Page Description</label>
-                                    <input id="seo_description" type="hidden" name="page_seo_description" value="{{ isset($page) ? $page->page_seo_description : '' }}">
-                                    <trix-editor input="seo_description"></trix-editor>
+                                    <label for="pagesseocategoryDescription">Page SEO Description</label>
+                                    <textarea name="page_seo_description" id="pagesseocategoryDescription" class="form-control" rows="3">{{ isset($page) ? $page->page_seo_description : '' }}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">{{ isset($page) ? 'Update' : 'Save' }}</button>

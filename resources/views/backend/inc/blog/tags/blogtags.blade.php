@@ -57,8 +57,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="blogtagsseocategoryDescription">Blog Category Description</label>
-                                    <input id="seo_description" type="hidden" name="tags_seo_description" value="{{ isset($blogtag) ? $blogtag->category_seo_description : '' }}">
-                                    <trix-editor input="seo_description"></trix-editor>
+                                    <textarea name="tags_seo_description" class="form-control" id="blogtagsseocategoryDescription" rows="3">{{ isset($blogtag) ? $blogtag->tags_seo_description : '' }}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">{{ isset($blogtag) ? 'Update' : 'Save' }}</button>

@@ -81,6 +81,8 @@ class PricingController extends Controller
      */
     public function update(UpdatePricingRequest $request, Pricing $pricing)
     {
+
+        // dd($request->all());
         $pricing->pricing_title = $request->pricing_title;
         $pricing->pricing_description = $request->pricing_description;
         $pricing->price = $request->price;

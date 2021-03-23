@@ -32,7 +32,7 @@
                     </ul>
                 </div>
                 <div class="btn-pro">
-                    <a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro" onclick="submitRegisterForm(1,0)">GET STARTED</a>
+                    <a href="http://acc.dossierbox.com/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro" onclick="submitRegisterForm(1,0)">GET STARTED</a>
                 </div>
             </div>
         </div>

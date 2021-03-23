@@ -19,8 +19,8 @@
             visibility: hidden;
         }
     </style>
-    <link href="css/stylesheetec92.css?v=" rel="stylesheet" type="text/css" />
-    <link href="css/images_localec92.css?v=" rel="stylesheet" type="text/css" />
+    {{ Html::style('css/stylesheetec92.css?v=') }}
+    {{ Html::style('css/images_localec92.css?v=') }}
 
     <style>
         @font-face {
@@ -34,20 +34,23 @@
             font-style: normal;
         }
     </style>
-    <link href="css/flaticonec92.css?v=" rel="stylesheet" type="text/css" />
-    <link href="css/styleec92.css?v=" rel="stylesheet" type="text/css" />
+    {{ Html::style('css/flaticonec92.css?v=') }}
+    {{ Html::style('css/styleec92.css?v=') }}
 
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    {{ Html::script('js/jquery-1.9.1.min.js') }}
 
-    <link href="css/screenec92.css?v=" rel="stylesheet" type="text/css" />
+    {{ Html::style('css/screenec92.css?v=') }}
+
 </head>
 
 <body>
     @include('frontend.common.header')
     @yield('content')
     @include('frontend.common.footer')
+    
+    {{ Html::script('js/menu_script.js') }}
 
-    <script src="js/menu_script.js"></script>
+    
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -69,11 +72,13 @@
             })
         });
     </script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
+    {{ Html::script('js/wow.min.js') }}
+
     <script>
         new WOW().init();
     </script>
-    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+    {{ Html::script('js/jquery.flexisel.js') }}
+
     <script type="text/javascript">
         $(window).load(function() {
             $("#flexiselDemo3").flexisel({
@@ -200,7 +205,7 @@
 
     <div class="home-page-popup-wrapper">
         <div class="home-page-popup-container">
-            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/brT1_NXFZJI?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
+            <iframe id="video" width="100%" height="100%" src="{{ $setting->youtube }}?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
             <p class="popupCancel"><span class="close thick"></span></p>
         </div>
     </div>

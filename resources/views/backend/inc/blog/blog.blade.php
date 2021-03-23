@@ -89,6 +89,10 @@
                                     </select>
                                 </div>
 
+                                <div class="form-group col-md-6">
+                                    <label for="blogshortdescTitle">Blog Short Description</label>
+                                    <textarea name="blog_short_description" class="form-control" id="blogshortdescTitle" rows="3">{{ isset($blog) ? $blog->blog_short_description : '' }}</textarea>
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="blogDescription">Blog Description</label>
@@ -105,8 +109,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="seoblogDescription">Blog Description</label>
-                                    <input id="description" type="hidden" name="blog_seo_description" value="{{ isset($blog) ? $blog->blog_seo_description : '' }}">
-                                    <trix-editor input="blog_seo_description"></trix-editor>
+                                    <textarea name="blog_seo_description" class="form-control" id="seoblogDescription" rows="3">{{ isset($blog) ? $blog->blog_seo_description : '' }}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">{{ isset($blog) ? 'Update' : 'Save' }}</button>

@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Setting;
 
 class ContactController extends Controller
 {
     public function create()
     {
-        return view('frontend.inc.contact');
+        $setting = Setting::first();
+        return view('frontend.inc.contact', compact('setting'));
     }
     public function store(ContactRequest $request)
     {

@@ -3,7 +3,6 @@
 <!-- @section('title', 'Home Page') -->
 
 @section('css')
-{{ Html::style('Admin/css/trix.css') }}
 @endsection
 
 @section('content')
@@ -62,8 +61,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="testimonialDescription">Testimonial</label>
-                                    <input id="description" type="hidden" name="t_testimonial" value="{{ isset($testimonial) ? $testimonial->t_testimonial : '' }}">
-                                    <trix-editor input="description"></trix-editor>
+                                    <textarea name="t_testimonial" id="testimonialDescription" class="form-control" rows="3">{{ isset($testimonial) ? $testimonial->t_testimonial : '' }}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">{{ isset($testimonial) ? 'Update' : 'Save' }}</button>
@@ -79,7 +77,6 @@
 @endsection('content')
 
 @section('scripts')
-{{ Html::script('Admin/js/trix.js') }}
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

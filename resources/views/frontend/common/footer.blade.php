@@ -40,13 +40,13 @@
                         <li><a href="{{ route('home.pages', 'help-support') }}">Help & Support</a></li>
                         <li>Follow Us
                             <div class="social-icon">
-                                <a href="" target="_blank"><img src="images/fb.png">
+                                <a href="{{ $setting->facebook }}" target="_blank"><img src="images/fb.png">
                                     <!--<span class="fbicn"></span>-->
                                 </a>
-                                <a href="" target="_blank"><img src="images/link.png">
+                                <a href="{{ $setting->linkedin }}" target="_blank"><img src="images/link.png">
                                     <!--<span class="linkedIn"></span>-->
                                 </a>
-                                <a href="" target="_blank"><img src="images/twt.png">
+                                <a href="{{ $setting->twitter }}" target="_blank"><img src="images/twt.png">
                                     <!--<span class="twticn"></span>-->
                                 </a>
                             </div>
@@ -59,17 +59,17 @@
     </div>
 </div>
 </div>
-<a href="tel: +91 7972303958" class="footer-contact-button footer-contact-popup animated"><span>+91 7972303958</span></a>
+<a href="tel:{{ $setting->mobile }}" class="footer-contact-button footer-contact-popup animated"><span>{{ $setting->mobile }}</span></a>
 </div>
 <div class="bottom-ft-main">
     <div class="wrapper-fix">
         <div class="related-website">
             <ul>
-                <li><a href="{{ route('home.pages', 'term-of-use') }}" target="_blank">Terms of use</a></li>
-                <li><a href="{{ route('home.pages', 'privacy-policy') }}" target="_blank">Privacy Policy</a></li>
+                <li><a href="{{ route('home.pages', 'term-of-use') }}">Terms of use</a></li>
+                <li><a href="{{ route('home.pages', 'privacy-policy') }}">Privacy Policy</a></li>
             </ul>
         </div>
-        <div class="ftrcntnt" style="margin: 0;"> © 2020 Suncity Techno, All rights reserved | <a class="footer-link" href="./" target="_blank">Powered by School Management Software.com</a></div>
+        <div class="ftrcntnt" style="margin: 0;"> © 2020 Suncity Techno, All rights reserved | <a class="footer-link" href="./">Powered by dossierbox.com</a></div>
     </div>
 </div>
 <div class="scroll-to-top" title="Go to top"></div>

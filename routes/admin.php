@@ -33,6 +33,16 @@ Route::group(['namespace' => 'Admin'], function () {
                 'services' => 'ServiceController',
                 'testimonial' => 'TestimonialController'
             ]);
+            Route::group(['prefix' => 'setting'], function () {
+                Route::get('/', 'SettingController@edit')->name('setting');
+                Route::post('/', 'SettingController@update')->name('setting.post');
+            });
+            Route::group(['prefix' => 'request'], function () {
+                Route::get('/', 'RequestController@index')->name('request');
+            });
+            Route::group(['prefix' => 'contact'], function () {
+                Route::get('/', 'ContactController@index')->name('contact');
+            });
         });
     });
 });

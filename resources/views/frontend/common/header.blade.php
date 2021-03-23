@@ -3,8 +3,8 @@
         <div class='wrapper-fix logowrapper'>
             <div class="top-header">
                 <a class="logo" href="{{ route('home.index') }}" title="School Management Software it's that easy as thinking">
-                    <img src="images/logo.png" title="Onine School ERP" alt="School Management Software" class='logowhite' />
-                    <img src="images/logo2.png" title="Onine School ERP" alt="School Management Software" class='logoblue' />
+                    <img src='{{ asset("/storage/logo/".$setting->logo) }}' title="Onine School ERP" alt="School Management Software" class='logowhite' />
+                    <img src='{{ asset("/storage/logo/".$setting->logo) }}' title="Onine School ERP" alt="School Management Software" class='logoblue' />
                 </a>
                 <nav class="top_nav">
                     <a class="toggleMenu" href="#">

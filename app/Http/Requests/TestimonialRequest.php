@@ -25,7 +25,7 @@ class TestimonialRequest extends FormRequest
     {
         return [
             't_name' => 'required',
-            't_testimonial' => 'required',
+            't_testimonial' => 'required|max:250',
             't_image' => 'required'
         ];
     }

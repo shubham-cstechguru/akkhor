@@ -21,7 +21,10 @@ Route::group(['namespace' => 'Frontend', 'as' => 'home.'], function () {
     Route::get('/testimonials', 'TestimonialController@index')->name('testimonials');
     Route::get('/contactus', 'ContactController@create')->name('contactus');
     Route::post('/contactus', 'ContactController@store')->name('contactus.post');
-    Route::get('/blog', 'BlogController@index')->name('blog');
+    Route::group(['prefix' => '/blog'], function () {
+        Route::get('/', 'BlogController@index')->name('blog');
+        Route::get('/{slug}', 'BlogController@single')->name('blog.single');
+    });
     Route::get('/{slug}', 'PagesController@index')->name('pages');
 });
 

@@ -45,7 +45,7 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function show(Setting $setting)
+    public function show()
     {
         //
     }
@@ -56,9 +56,17 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setting $setting)
+    public function edit(Request $request)
     {
-        //
+        $setting     = Setting::find(1);
+        $editData =  $setting->toArray();
+        // dd($editData);ss
+        $request->replace($editData);
+        //send to view
+        $request->flash();
+        $data = compact('setting');
+
+        return view('backend.inc.settings', $data);
     }
 
     /**
@@ -68,9 +76,33 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request)
     {
-        //
+        $record             = Setting::find(1);
+        $record->title         = $request->title;
+        $record->tagline     = $request->tagline;
+        $record->mobile     = $request->mobile;
+        $record->email      = $request->email;
+        $record->facebook      = $request->facebook;
+        $record->twitter      = $request->twitter;
+        $record->linkedin      = $request->linkedin;
+        $record->youtube      = $request->youtube;
+
+        if ($request->hasFile('logo')) {
+            $img_name = $request->logo->getClientOriginalName();
+            $image = $request->logo->storeAs('logo', $img_name);
+            $record->logo = $img_name;
+        }
+
+        if ($request->hasFile('favicon')) {
+            $img_name = $request->favicon->getClientOriginalName();
+            $image = $request->favicon->storeAs('favicon', $img_name);
+            $record->favicon = $img_name;
+        }
+
+        if ($record->save()) {
+            return redirect(route('admin.setting'))->with('success', 'Success! Record has been edided');
+        }
     }
 
     /**

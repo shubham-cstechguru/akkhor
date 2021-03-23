@@ -76,14 +76,15 @@
             <a class="nav-link" href="{{ route('admin.pages.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Pages
-                <!-- <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
             </a>
-            {{-- <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="{{ route('admin.pages.create') }}">Add Pages</a>
-                    <a class="nav-link" href="{{ route('admin.pages.index') }}">View Pages</a>
-                </nav>
-            </div> --}}
+            <a class="nav-link" href="{{ route('admin.request') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Demo Enquiry
+            </a>
+            <a class="nav-link" href="{{ route('admin.contact') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Contact Enquiry
+            </a>
         </div>
     </div>
     <div class="sb-sidenav-footer">

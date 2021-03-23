@@ -53,6 +53,7 @@ class BlogController extends Controller
         $image = $request->blog_image->storeAs('blog', $img_name);
         $blog->blog_title = $request->blog_title;
         $blog->blog_slug = Str::slug($request->blog_title, '-');
+        $blog->blog_short_description = $request->blog_short_description;
         $blog->blog_description = $request->blog_description;
         $blog->blog_image = $img_name;
         $blog->blog_seo_title = $request->blog_seo_title;
@@ -107,6 +108,7 @@ class BlogController extends Controller
         }
 
         $blog->blog_title = $request->blog_title;
+        $blog->blog_short_description = $request->blog_short_description;
         $blog->blog_description = $request->blog_description;
         $blog->blog_seo_title = $request->blog_seo_title;
         $blog->blog_seo_description = $request->blog_seo_description;

@@ -75,8 +75,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="servicesseocategoryDescription">Service SEO Description</label>
-                                    <input id="seo_description" type="hidden" name="service_seo_description" value="{{ isset($service) ? $service->service_seo_description : '' }}">
-                                    <trix-editor input="seo_description"></trix-editor>
+                                    <textarea name="service_seo_description" id="servicesseocategoryDescription" class="form-control" rows="3">{{ isset($service) ? $service->service_seo_description : '' }}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">{{ isset($service) ? 'Update' : 'Save' }}</button>

@@ -25,6 +25,7 @@ class BlogRequest extends FormRequest
     {
         return [
             'blog_title' => 'required|unique:blogs',
+            'blog_short_description' => 'required|max:250',
             'blog_description' => 'required',
             'blog_image' => 'required|max:200|mimes:jpeg,jpg,png,gif',
             'category_id' => 'required|array',

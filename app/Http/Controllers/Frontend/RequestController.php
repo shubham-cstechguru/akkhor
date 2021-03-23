@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RequestRequest;
 use App\Models\Request;
+use App\Models\Setting;
 
 class RequestController extends Controller
 {
     public function create() {
-        return view('frontend.inc.request-demo');
+        $setting = Setting::first();
+        return view('frontend.inc.request-demo', compact('setting'));
     }
     public function store(RequestRequest $request) {
     
