@@ -7,46 +7,46 @@
             <div class="outer-part">
                 <div class="left-part-about">
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">advisors</a></li>
-                        <li><a href="#">What's New</a></li>
-                        <li><a href="#">clients</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('home.pages', 'about-us') }}">About Us</a></li>
+                        <li><a href="{{ route('home.pages', 'advisors') }}">advisors</a></li>
+                        <li><a href="{{ route('home.pages', 'whats-new') }}">What's New</a></li>
+                        <li><a href="{{ route('home.pages', 'clients') }}">clients</a></li>
+                        <li><a href="{{ route('home.testimonials') }}">Testimonials</a></li>
+                        <li><a href="{{ route('home.contactus') }}">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="lft-pro-ul-data">
                     <ul>
                         <li class="">Business </li>
-                        <li><a href="#">Communication</a></li>
-                        <li><a href="#">Performance Management</a></li>
-                        <li><a href="#">Recruitment</a></li>
-                        <li><a href="#">Talent Management</a></li>
-                        <li><a href="#">Partner</a></li>
+                        <li><a href="{{ route('home.pages', 'communication') }}">Communication</a></li>
+                        <li><a href="{{ route('home.pages', 'performance-management') }}">Performance Management</a></li>
+                        <li><a href="{{ route('home.pages', 'recruitment') }}">Recruitment</a></li>
+                        <li><a href="{{ route('home.pages', 'talent-management') }}">Talent Management</a></li>
+                        <li><a href="{{ route('home.pages', 'partner') }}">Partner</a></li>
                     </ul>
                 </div>
                 <div class="lft-pro-ul-data">
                     <ul>
                         <li>Industry</li>
-                        <li><a href="#">Education</a></li>
-                        <li><a href="#">Corporate </a></li>
-                        <li><a href="#">Government</a></li>
+                        <li><a href="{{ route('home.pages', 'education') }}">Education</a></li>
+                        <li><a href="{{ route('home.pages', 'corporate') }}">Corporate </a></li>
+                        <li><a href="{{ route('home.pages', 'government') }}">Government</a></li>
                     </ul>
                 </div>
                 <div class="lft-pro-ul-data right-footer-links">
                     <ul>
                         <li>Resources</li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Help & Support</a></li>
+                        <li><a href="{{ route('home.blog') }}">Blog</a></li>
+                        <li><a href="{{ route('home.pages', 'help-support') }}">Help & Support</a></li>
                         <li>Follow Us
                             <div class="social-icon">
-                                <a href="#" target="_blank"><img src="images/fb.png">
+                                <a href="" target="_blank"><img src="images/fb.png">
                                     <!--<span class="fbicn"></span>-->
                                 </a>
-                                <a href="#" target="_blank"><img src="images/link.png">
+                                <a href="" target="_blank"><img src="images/link.png">
                                     <!--<span class="linkedIn"></span>-->
                                 </a>
-                                <a href="#" target="_blank"><img src="images/twt.png">
+                                <a href="" target="_blank"><img src="images/twt.png">
                                     <!--<span class="twticn"></span>-->
                                 </a>
                             </div>
@@ -65,8 +65,8 @@
     <div class="wrapper-fix">
         <div class="related-website">
             <ul>
-                <li><a href="#" target="_blank">Terms of use</a></li>
-                <li><a href="#" target="_blank">Privacy Policy</a></li>
+                <li><a href="{{ route('home.pages', 'term-of-use') }}" target="_blank">Terms of use</a></li>
+                <li><a href="{{ route('home.pages', 'privacy-policy') }}" target="_blank">Privacy Policy</a></li>
             </ul>
         </div>
         <div class="ftrcntnt" style="margin: 0;"> © 2020 Suncity Techno, All rights reserved | <a class="footer-link" href="./" target="_blank">Powered by School Management Software.com</a></div>
