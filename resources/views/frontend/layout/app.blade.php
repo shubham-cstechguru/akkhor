@@ -19,8 +19,8 @@
             visibility: hidden;
         }
     </style>
-    <link href="css/stylesheetec92.css?v=" rel="stylesheet" type="text/css" />
-    <link href="css/images_localec92.css?v=" rel="stylesheet" type="text/css" />
+    {{ Html::style('css/stylesheetec92.css?v=') }}
+    {{ Html::style('css/images_localec92.css?v=') }}
 
     <style>
         @font-face {
@@ -34,71 +34,181 @@
             font-style: normal;
         }
     </style>
-    <link href="css/flaticonec92.css?v=" rel="stylesheet" type="text/css" />
-    <link href="css/styleec92.css?v=" rel="stylesheet" type="text/css" />
-    <link href="css/owl.carousel.minec92.css?v=" rel="stylesheet" type="text/css" />
-    <link href="css/owl.theme.default.minec92.css?v=" rel="stylesheet" type="text/css" />
+    {{ Html::style('css/flaticonec92.css?v=') }}
+    {{ Html::style('css/styleec92.css?v=') }}
 
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.js"></script>
+    {{ Html::script('js/jquery-1.9.1.min.js') }}
 
-   <link href="css/screenec92.css?v=" rel="stylesheet" type="text/css" />
-    <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '../www.google-analytics.com/analytics.js', 'ga');
+    {{ Html::style('css/screenec92.css?v=') }}
 
-        ga('create', 'UA-96794520-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </head>
 
 <body>
     @include('frontend.common.header')
     @yield('content')
     @include('frontend.common.footer')
-    <div class="home-page-popup-wrapper">
-        <div class="home-page-popup-container">
-            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/brT1_NXFZJI?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
-            <p class="popupCancel"><span class="close thick"></span></p>
-        </div>
-    </div>
+    
+    {{ Html::script('js/menu_script.js') }}
 
+    
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var headheight = $('.container').height();
+                console.log(headheight);
+                if ($(window).scrollTop() > headheight) {
+                    $('#mainnav_bar').addClass('mainnavbar-fixed');
+                }
+                if ($(window).scrollTop() < headheight) {
+                    $('#mainnav_bar').removeClass('mainnavbar-fixed');
+                }
+            });
+            $('#nav-icon4').click(function() {
+                $(this).toggleClass('open');
+            });
+            $('.close_icn').click(function() {
+                $("#popup_main").css("display", "none");
+            })
+        });
+    </script>
+    {{ Html::script('js/wow.min.js') }}
 
     <script>
-        $(document).ready(function() {
+        new WOW().init();
+    </script>
+    {{ Html::script('js/jquery.flexisel.js') }}
 
-            $('#closepopup').click(function() {
-                $('#livedemo_popup').css('display', 'none');
+    <script type="text/javascript">
+        $(window).load(function() {
+            $("#flexiselDemo3").flexisel({
+                visibleItems: 4,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 5000,
+                    pauseOnHover: true
+                },
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1,
+                        itemsToScroll: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2,
+                        itemsToScroll: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3,
+                        itemsToScroll: 1
+                    }
+                }
             });
-
-
-
-            style_switcher = $('.android-ios-btnWrapper');
-            $('.android-ios-btnWrapper').mouseover(function() {
-                style_switcher.addClass('opened');
+            $("#flexiselDemo4").flexisel({
+                visibleItems: 4,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 5000,
+                    pauseOnHover: true
+                },
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1,
+                        itemsToScroll: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2,
+                        itemsToScroll: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3,
+                        itemsToScroll: 1
+                    }
+                }
             });
-            $('.android-ios-btnWrapper').mouseout(function() {
-                style_switcher.removeClass('opened');
+            $("#flexiselDemo5").flexisel({
+                visibleItems: 4,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 5000,
+                    pauseOnHover: true
+                },
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1,
+                        itemsToScroll: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2,
+                        itemsToScroll: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3,
+                        itemsToScroll: 1
+                    }
+                }
             });
-
-            style_switcher_mobile = $('.android-ios-mobileWrapper');
-            $('.android-ios-mobileWrapper').click(function() {
-                style_switcher_mobile.toggleClass('openBox');
+            $("#flexiselDemo6").flexisel({
+                visibleItems: 4,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 5000,
+                    pauseOnHover: true
+                },
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1,
+                        itemsToScroll: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2,
+                        itemsToScroll: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3,
+                        itemsToScroll: 1
+                    }
+                }
             });
-
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $('.video-link').click(function() {
+                $('.home-page-popup-wrapper').addClass('popupActive');
+                $("#video")[0].src += "&autoplay=1";
+                ev.preventDefault();
+            });
+            $('.popupCancel').click(function() {
+                $('#video')[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+                $('.home-page-popup-wrapper').removeClass('popupActive');
+            });
+        });
+    </script>
     @yield('script')
+
+    <div class="home-page-popup-wrapper">
+        <div class="home-page-popup-container">
+            <iframe id="video" width="100%" height="100%" src="{{ $setting->youtube }}?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
+            <p class="popupCancel"><span class="close thick"></span></p>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -2,9 +2,9 @@
     <div id="mainnav_bar">
         <div class='wrapper-fix logowrapper'>
             <div class="top-header">
-                <a class="logo" href="./" title="School Management Software it's that easy as thinking">
-                    <img src="images/logo.png" title="Onine School ERP" alt="School Management Software" class='logowhite' />
-                    <img src="images/logo2.png" title="Onine School ERP" alt="School Management Software" class='logoblue' />
+                <a class="logo" href="{{ route('home.index') }}" title="School Management Software it's that easy as thinking">
+                    <img src='{{ asset("/storage/logo/".$setting->logo) }}' title="Onine School ERP" alt="School Management Software" class='logowhite' />
+                    <img src='{{ asset("/storage/logo/".$setting->logo) }}' title="Onine School ERP" alt="School Management Software" class='logoblue' />
                 </a>
                 <nav class="top_nav">
                     <a class="toggleMenu" href="#">
@@ -16,7 +16,7 @@
                     </a>
                     <ul class='nav familiar_probold'>
 
-                        <li><a href="pricing.php" title="Price">Pricing</a></li>
+                        <li><a href="{{ route('home.pricing') }}" title="Price">Pricing</a></li>
 
                         <ul class='dropdownul'>
                             <li>
@@ -28,7 +28,7 @@
                         </ul>
 
 
-                        <li><a href="RequestDemo.php" title="Request Demo">Request Demo</a></li>
+                        <li><a href="{{ route('home.request') }}" title="Request Demo">Request Demo</a></li>
                         <li><a href='http://acc.suncitytechno.com/school-management/get-started' target="_blank" id="" title="Log in">log in</a></li>
                         <li><a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="signupbtn">Sign up</a></li>
                     </ul>

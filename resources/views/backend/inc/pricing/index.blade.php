@@ -65,7 +65,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Are you sure to want to Delete This Category ?
+                    Are you sure to want to Delete This Prcing ?
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-danger">Confirm Delete</button>
@@ -86,7 +86,7 @@
 <script>
   function handleDelete(id) {
     var form = document.getElementById('deleteFormModal')
-    form.action = '/admin-control/category/' + id
+    form.action = '/admin-control/pricing/' + id
     console.log('deleting', form)
     $('#deleteModal').modal('show')
   }

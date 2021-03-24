@@ -16,7 +16,7 @@ class CreatePricingsTable extends Migration
         Schema::create('pricings', function (Blueprint $table) {
             $table->id();
             $table->string('pricing_title');
-            $table->text('pricing_description');
+            $table->string('pricing_description', 250);
             $table->unsignedDouble('price');
             $table->longText('pricing_points');
             $table->timestamps();

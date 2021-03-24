@@ -1,99 +1,42 @@
 @extends('frontend.layout.app')
 @section('content')
-
-@include('frontend.templates.banner')
-
+<div class="container prcngcntnr">
+    <div class="headercopntent pagesheader pricing-box">
+        <h1 class="pagename feature-head">Pricing</h1>
+        <!-- <h2 class="hdng hd-top">Try out School ERP free for 7 days. You’ll never want to go back.</h2> -->
+        <p class="cancel-card new-p-data">Compare our plans below. Got questions? Call our sales line at <span>+91
+                7972303958</span></p>
+        <p class="no-credit-card new-p-data" style="margin-bottom: 95px;">No credit card needed. Change plans any time.
+        </p>
+    </div>
 </div>
-<div class="main-products" style="background:#f3f3f3; min-height: auto;padding-bottom:40px;padding-top:0px;">
-    <div class="wrapper-fix">
+<div class="wrapper-fix">
 
-        <div id="main-prcing-yearly" class="main-prcing">
-            <div class="pricing-prt">
-                <div class="main-data">
-                    <div class="prcnghdr">Bronze</div>
-                    <div class="plan-tag">Starter Package for Small Organization</div>
-                    <div class="plan-feat">&nbsp;</div>
-                    <div class="price-data">
-                        <sup style="font-size: 24px;">₹</sup>
-                        <div class="prcngval">79,999</div>
-                        <span class="month-data">/ yr.</span>
-                    </div>
-                    <div class="plan-features">
-                        <ul class="list-unstyled">
-                            <li><span class="flat check color"></span>Support</li>
-                            <li><span class="flat check color"></span>Admin Panel Access</li>
-                        </ul>
-                    </div>
-                    <div class="btn-pro">
-                        <a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro" onclick="submitRegisterForm(1,0)">GET STARTED</a>
-                    </div>
+    <div id="main-prcing-yearly" class="main-prcing">
+        @foreach($pricing as $key => $price)
+        <div class="pricing-prt">
+            <div class="main-data">
+                <div class="prcnghdr">{{ $price['pricing_title']}}</div>
+                <div class="plan-tag">{!! $price['pricing_description'] !!}</div>
+                <div class="plan-feat">&nbsp;</div>
+                <div class="price-data">
+                    <sup style="font-size: 24px;">₹</sup>
+                    <div class="prcngval">{{ $price['price'] }}</div>
+                    <span class="month-data">/ yr.</span>
+                </div>
+                <div class="plan-features">
+                    <ul class="list-unstyled">
+                        @foreach($price['pricing_points'] as $p)
+                        <li><span class="flat check color"></span>{{ $p }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="btn-pro">
+                    <a href="http://acc.dossierbox.com/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro" onclick="submitRegisterForm(1,0)">GET STARTED</a>
                 </div>
             </div>
-            <div class="pricing-prt">
-                <div class="main-data">
-                    <div class="prcnghdr">Silver</div>
-                    <div class="plan-tag">Great for growing business</div>
-                    <div class="plan-feat">&nbsp;</div>
-                    <div class="price-data">
-                        <sup style="font-size: 24px;">₹</sup>
-                        <div class="prcngval">99,999 </div><span class="month-data">/ yr.</span>
-                    </div>
-                    <div class="plan-features">
-                        <ul class="list-unstyled">
-                            <li><span class="flat check color"></span>Support</li>
-                            <li><span class="flat check color"></span>Admin Panel Access</li>
-                        </ul>
-                    </div>
-                    <div class="btn-pro"><a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro">GET STARTED</a></div>
-                </div>
-            </div>
-            <div class="pricing-prt box-pro">
-                <div class="main-data">
-                    <div class="plan-box-header">Most Popular</div>
-                    <div class="prcnghdr">Gold</div>
-                    <div class="plan-tag">Wonderful to meet your custom business needs</div>
-                    <div class="plan-feat">
-                        &nbsp;
-                    </div>
-                    <div class="price-data">
-                        <sup style="font-size: 24px;">₹</sup>
-                        <div class="prcngval">4,99,999 </div><span class="month-data">/ yr.</span>
-                    </div>
-                    <div class="plan-features">
-                        <ul class="list-unstyled">
-                            <li><span class="flat check color"></span>Support</li>
-                            <li><span class="flat check color"></span>Admin Panel Access</li>
-                        </ul>
-                    </div>
-                    <div class="btn-pro"><a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro" id="business_getstarted_link">GET
-                            STARTED</a></div>
-                </div>
-            </div>
-            <div class="pricing-prt">
-                <div class="main-data">
-                    <div class="prcnghdr">Platinum</div>
-                    <div class="plan-tag">Best professional solution for existing business</div>
-                    <div class="plan-feat">&nbsp;</div>
-                    <div class="price-data">
-                        <sup style="font-size: 24px;">₹</sup>
-                        <div class="prcngval">7,99,999 </div><span class="month-data">/ yr.</span>
-                    </div>
-                    <div class="plan-features">
-                        <ul class="list-unstyled">
-                            <li><span class="flat check color"></span>Support</li>
-                            <li><span class="flat check color"></span>Admin Panel Access</li>
-                            <li><span class="flat check color"></span>Online Live Classes</li>
-                            <li><span class="flat check color"></span>Online Examination</li>
-                        </ul>
-                    </div>
-                    <div class="btn-pro"><a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="prchngmainbtn btn-width hover-pro">GET STARTED</a></div>
-                </div>
-            </div>
-            <!--Div inside for loop-->
         </div>
-        <!----------------------------Test wise Pricing Cards Ends here---------------------->
-
-        <!----------------------------User wise Pricing Cards Starts here---------------------->
+        @endforeach
         <div class="wrapper-fix">
             <div id="main-prcing-monthly" class="main-prcing" style="display: none;">
                 <div class="pricing-prt">
@@ -201,27 +144,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="pricing-prt">
-                        <a href="#" href="javascript:void(0)" class="enqNow">
-                            <div class="main-data">
-                                <div class="prcnghdr">ENTERPRISE</div>
-                                <div class="plan-tag">Customized to meet your business needs</div>
-                                <div class="plan-feat">Tailored volume</div>
-                                <div class="price-data">
-                                    <div class="prcngval">Custom </div>
-                                </div>
-                                <div class="plan-features">
-                                    <ul class="list-unstyled">
-                                        <li><span class="flat check color"></span>Unlimited quizzes</li>
-                                        <li><span class="flat check color"></span>Personalized applications</li>
-                                        <li><span class="flat check color"></span>Personal account manager</li>
-                                    </ul>
-                                </div>
-                                <div class="btn-pro"><a href="javascript:void(0)" class="prchngmainbtn enquiry-btn btn-width enqiry-btn enqNow">ENQUIRE NOW</a></div>
-                            </div>
-                        </a>
-                    </div> -->
-                <!--Div inside for loop-->
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ class PricingRequest extends FormRequest
     {
         return [
             'pricing_title' => 'required|unique:pricings',
-            'pricing_description' => 'required',
+            'pricing_description' => 'required|max:250',
             'price' => 'required|numeric',
             'pricing_points' => 'required|array',
         ];

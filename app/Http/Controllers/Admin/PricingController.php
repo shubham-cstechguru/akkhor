@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pricing;
 use App\Http\Requests\PricingRequest;
+use App\Http\Requests\UpdatePricingRequest;
 use Illuminate\Http\Request;
 
 class PricingController extends Controller
@@ -43,7 +44,7 @@ class PricingController extends Controller
         $pricing->pricing_description = $request->pricing_description;
         $pricing->price = $request->price;
         $pricing->pricing_points = $request->pricing_points;
-        $pricing->save();  
+        $pricing->save();
 
         return redirect(route('admin.pricing.index'));
     }
@@ -67,6 +68,7 @@ class PricingController extends Controller
      */
     public function edit(Pricing $pricing)
     {
+        $pricing = $pricing->toArray();
         return view('backend.inc.pricing.pricing', compact('pricing'));
     }
 
@@ -77,9 +79,18 @@ class PricingController extends Controller
      * @param  \App\Models\Pricing  $pricing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pricing $pricing)
+    public function update(UpdatePricingRequest $request, Pricing $pricing)
     {
-        //
+
+        // dd($request->all());
+        $pricing->pricing_title = $request->pricing_title;
+        $pricing->pricing_description = $request->pricing_description;
+        $pricing->price = $request->price;
+        $pricing->pricing_points = $request->pricing_points;
+        $pricing->save();
+
+        return redirect(route('admin.pricing.index'));
+
     }
 
     /**
@@ -90,6 +101,7 @@ class PricingController extends Controller
      */
     public function destroy(Pricing $pricing)
     {
-        //
+        $pricing->delete();
+        return redirect(route('admin.pricing.index'));
     }
 }
