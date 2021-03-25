@@ -37,7 +37,7 @@
                                 <td>{{ $c->phoneno }}</td>
                                 <td>{{ $c->message }}</td>
                                 <td>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $c->id }})">
+                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $cid }})">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
