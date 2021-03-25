@@ -39,12 +39,12 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="pricingTitle">Pricing Title</label>
-                                    <input type="text" name="pricing_title" class="form-control" id="pricingTitle" aria-describedby="pricingTitleHelp" placeholder="Enter Pricing Name" value="{{ isset($pricing) ? $pricing['pricing_title'] : '' }}">
+                                    <input type="text" name="name" class="form-control" id="pricingTitle" aria-describedby="pricingTitleHelp" placeholder="Enter Pricing Name" value="{{ isset($pricing) ? $pricing['name'] : '' }}">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="price">Price</label>
-                                    <input type="text" name="price" class="form-control" id="price" aria-describedby="priceHelp" placeholder="Enter Price" value="{{ isset($pricing) ? $pricing['price'] : '' }}">
+                                    <label for="cost">Price</label>
+                                    <input type="text" name="cost" class="form-control" id="cost" aria-describedby="priceHelp" placeholder="Enter Price" value="{{ isset($pricing) ? $pricing['cost'] : '' }}">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="pricingDescription">Pricing Description</label>

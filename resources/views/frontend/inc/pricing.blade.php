@@ -16,12 +16,12 @@
         @foreach($pricing as $key => $price)
         <div class="pricing-prt">
             <div class="main-data">
-                <div class="prcnghdr">{{ $price['pricing_title']}}</div>
+                <div class="prcnghdr">{{ $price['name']}}</div>
                 <div class="plan-tag">{!! $price['pricing_description'] !!}</div>
                 <div class="plan-feat">&nbsp;</div>
                 <div class="price-data">
                     <sup style="font-size: 24px;">₹</sup>
-                    <div class="prcngval">{{ $price['price'] }}</div>
+                    <div class="prcngval">{{ $price['cost'] }}</div>
                     <span class="month-data">/ yr.</span>
                 </div>
                 <div class="plan-features">

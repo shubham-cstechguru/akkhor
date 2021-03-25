@@ -37,8 +37,8 @@
               @foreach($pricing as $key => $p)
               <tr>
                 <td>{{ $i++ }}.</td>
-                <td>{{ $p['pricing_title'] }}</td>
-                <td>{{ $p['price'] }}</td>
+                <td>{{ $p['name'] }}</td>
+                <td>{{ $p['cost'] }}</td>
                 <td>
                   <a type="button" name="button" class="btn btn-info" href="{{ route('admin.pricing.edit', $p['id']) }}">
                     <i class="fas fa-edit"></i>

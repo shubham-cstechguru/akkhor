@@ -40,9 +40,9 @@ class PricingController extends Controller
     public function store(PricingRequest $request)
     {
         $pricing = new Pricing();
-        $pricing->pricing_title = $request->pricing_title;
+        $pricing->name = $request->name;
         $pricing->pricing_description = $request->pricing_description;
-        $pricing->price = $request->price;
+        $pricing->cost = $request->cost;
         $pricing->pricing_points = $request->pricing_points;
         $pricing->save();
 
@@ -83,9 +83,9 @@ class PricingController extends Controller
     {
 
         // dd($request->all());
-        $pricing->pricing_title = $request->pricing_title;
+        $pricing->name = $request->name;
         $pricing->pricing_description = $request->pricing_description;
-        $pricing->price = $request->price;
+        $pricing->cost = $request->cost;
         $pricing->pricing_points = $request->pricing_points;
         $pricing->save();
 

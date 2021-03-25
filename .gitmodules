@@ -1,0 +1,4 @@
+[submodule "akkhor"]
+	path = akkhor
+	url = https://github.com/shubham-cstechguru/akkhor.git
+	branch = main
