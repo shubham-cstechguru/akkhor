@@ -9,6 +9,23 @@ class Blog extends Model
 {
     use HasFactory;
 
+    protected $appends = ['blog_cateogry', 'blog_tags'];
+
+    public function getBlogCategoryAttr() {
+        $categories = [];
+        if(!empty($this->blog_category)) {
+            foreach($this->blog_category as $key => $cat) {
+                $categories[] = $cat->name;
+            }
+        }
+
+        return $categories;
+    }
+
+    public function getBlogTagsAttr() {
+        
+    }
+
     public function blog_category() {
         return $this->belongsToMany(BlogCategory::class, 'blog_category_data');
     }

@@ -1,4 +1,11 @@
 @extends('frontend.layout.app')
+
+@section('title', $page->page_seo_title ?? $page->page_title)
+
+@section('description', $page->page_seo_description ?? $page->page_title)
+
+@section('keywords', $page->page_seo_keyword ?? $page->page_title)
+
 @section('content')
 
 @include('frontend.templates.banner', ['page_title' => $page->page_title ?? '404 Not Found'])

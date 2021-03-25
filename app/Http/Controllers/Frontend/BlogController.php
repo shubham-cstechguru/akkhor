@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index() {
-        $blog = Blog::get();
+        $blog = Blog::paginate(1);
         $setting = Setting::first();
         return view('frontend.inc.blog', compact('blog', 'setting'));
     }

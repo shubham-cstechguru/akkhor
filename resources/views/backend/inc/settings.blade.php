@@ -3,13 +3,13 @@
 <!-- @section('title', 'Home Page') -->
 
 @section('css')
-{{ Html::style('Admin/css/trix.css') }}
 @endsection
 
 @section('content')
 
 <main>
     <div class="container-fluid">
+        <h1 class="mt-4">Edit Web Settings</h1>
         <ol class="breadcrumb my-4">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item active">Edit Settings</li>
@@ -64,6 +64,14 @@
                                     <input type="text" name="email" class="form-control" id="siteemail" aria-describedby="siteemailHelp" placeholder="Enter Email Id" value="{{ $setting['email'] }}">
                                 </div>
                                 <div class="form-group col-md-6">
+                                    <label for="siteaddress">Site Address</label>
+                                    <input type="text" name="address" class="form-control" id="siteaddress" aria-describedby="siteaddressHelp" placeholder="Enter Address" value="{{ $setting['address'] }}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="sitegoogle_maps">Site Google Maps</label>
+                                    <input type="text" name="google_maps" class="form-control" id="sitegoogle_maps" aria-describedby="sitegoogle_mapsHelp" placeholder="Enter Google Maps" value="{{ $setting['google_maps'] }}">
+                                </div>
+                                <div class="form-group col-md-6">
                                     <label for="sitefacebook">Site Facebook Page</label>
                                     <input type="text" name="facebook" class="form-control" id="sitefacebook" aria-describedby="sitefacebookHelp" placeholder="Enter Mobile No." value="{{ $setting['facebook'] }}">
                                 </div>
@@ -77,6 +85,10 @@
                                 <div class="form-group col-md-6">
                                     <label for="siteyoutube">Site Youtube Video</label>
                                     <input type="text" name="youtube" class="form-control" id="siteyoutube" aria-describedby="siteyoutubelHelp" placeholder="Enter Email Id" value="{{ $setting['youtube'] }}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="sitesms_api">Site SMS Api</label>
+                                    <input type="text" name="sms_api" class="form-control" id="sitesms_api" aria-describedby="sitesms_apilHelp" placeholder="Enter Email Id" value="{{ $setting['sms_api'] }}">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Update</button>

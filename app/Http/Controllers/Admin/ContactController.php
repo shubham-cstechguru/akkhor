@@ -8,9 +8,15 @@ use App\Models\Request;
 
 class ContactController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $contact = Contact::get();
         $data = compact('contact');
         return view('backend.inc.contact', $data);
+    }
+    public function remove($id)
+    {
+        $del = Contact::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

@@ -22,6 +22,7 @@
                                 <th>Email</th>
                                 <th>Mobile No.</th>
                                 <th>Message</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,10 +36,37 @@
                                 <td>{{ $c->email }}</td>
                                 <td>{{ $c->phoneno }}</td>
                                 <td>{{ $c->message }}</td>
+                                <td>
+                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $c->id }})">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form class="" action="" method="POST" id="deleteFormModal">
+                                {!! csrf_field() !!}
+                                @method('DELETE')
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete Category</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure to want to Delete This Enquiry ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,4 +76,14 @@
 @endsection('content')
 
 @section('scripts')
+<script>
+    function handleDelete(id) {
+
+        var form = document.getElementById('deleteFormModal')
+
+        form.action = '/admin-control/contact/remove/' + id
+        console.log('deleting', form)
+        $('#deleteModal').modal('show')
+    }
+</script>
 @endsection

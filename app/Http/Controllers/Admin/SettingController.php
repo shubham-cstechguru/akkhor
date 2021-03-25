@@ -83,10 +83,13 @@ class SettingController extends Controller
         $record->tagline     = $request->tagline;
         $record->mobile     = $request->mobile;
         $record->email      = $request->email;
+        $record->address      = $request->address;
+        $record->google_maps      = $request->google_maps;
         $record->facebook      = $request->facebook;
         $record->twitter      = $request->twitter;
         $record->linkedin      = $request->linkedin;
         $record->youtube      = $request->youtube;
+        $record->sms_api      = $request->sms_api;
 
         if ($request->hasFile('logo')) {
             $img_name = $request->logo->getClientOriginalName();

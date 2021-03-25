@@ -73,6 +73,10 @@
                     <a class="nav-link" href="{{ route('admin.testimonial.index') }}">View Testimonial</a>
                 </nav>
             </div>
+            <a class="nav-link" href="{{ route('admin.home') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Home Edit
+            </a>
             <a class="nav-link" href="{{ route('admin.pages.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Pages

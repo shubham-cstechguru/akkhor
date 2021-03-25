@@ -1356,7 +1356,7 @@ p a:hover {
 }
 .cnct_right-wrapper {
     float: right;
-    width: 46%;
+    width: 100%;
     margin: 0 0 0 4%;
     padding: 20px 0 0
 }
@@ -5680,7 +5680,8 @@ h5.smallhdng-content {
     line-height: 20px
 }
 ul.contactul {
-    margin: 18px 0 0
+    margin: 18px 0 0;
+    display: flex;
 }
 .contactul li {
     display: inline-block;
@@ -8200,7 +8201,7 @@ span.descptn_txt {
 .pricing-prt {
     float: left;
 	width: calc(25% - 8px);
-    margin-right: 10px;
+    margin-right: 8px;
     box-sizing: border-box;
     background: #fff;
     border-top: 10px solid #0278cb;
@@ -10292,6 +10293,9 @@ img.offerimge {
     font-weight: 600;
     text-transform: uppercase;
     font-family: open_sansregular
+}
+.social-icon a{
+    margin: 5px 3px 0 0;
 }
 .left-part-about ul li .social-icon {
     margin-top: 10px

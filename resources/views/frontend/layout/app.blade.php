@@ -1,5 +1,5 @@
 <script>
-    const CONATCT_NO = "+91 7972303958";
+    const CONATCT_NO = "{{ $setting->mobile }}";
 </script>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,10 +7,12 @@
 <head>
 
     <meta charset="utf-8">
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="shortcut icon" href="images/favicon.png" />
+    <link rel="shortcut icon" href='{{ asset("/storage/favicon/".$setting->favicon) }}' />
     <meta name="format-detection" content="telephone=no">
-    <title>Online School Management – E-School</title>
+    <title>{{ $setting->title }} | @yield('title')</title>
 
 
 
@@ -47,10 +49,10 @@
     @include('frontend.common.header')
     @yield('content')
     @include('frontend.common.footer')
-    
+
     {{ Html::script('js/menu_script.js') }}
 
-    
+
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -205,7 +207,7 @@
 
     <div class="home-page-popup-wrapper">
         <div class="home-page-popup-container">
-            <iframe id="video" width="100%" height="100%" src="{{ $setting->youtube }}?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
+            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/{{ $setting->youtube }}?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
             <p class="popupCancel"><span class="close thick"></span></p>
         </div>
     </div>

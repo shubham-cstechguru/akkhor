@@ -12,4 +12,9 @@ class RequestController extends Controller
         $data = compact('req');
         return view('backend.inc.request', $data);
     }
+    public function remove($id)
+    {
+        $del = Request::findOrFail($id)->delete();
+        return redirect()->back();
+    }
 }

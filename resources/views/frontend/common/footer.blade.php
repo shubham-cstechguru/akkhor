@@ -2,7 +2,7 @@
     <div class="wrapper-fix outer-footer">
         <div class="main-footer-update">
             <div class="logo-data-new">
-                <img src="images/logo.png" title="Onine School ERP" alt="School Management Software" class="logowhite">
+                <img src="{{ asset('/storage/logo/'.$setting->logo) }}" title="Onine School ERP" alt="School Management Software" class="logowhite">
             </div>
             <div class="outer-part">
                 <div class="left-part-about">
@@ -40,13 +40,13 @@
                         <li><a href="{{ route('home.pages', 'help-support') }}">Help & Support</a></li>
                         <li>Follow Us
                             <div class="social-icon">
-                                <a href="{{ $setting->facebook }}" target="_blank"><img src="images/fb.png">
+                                <a href="{{ $setting->facebook }}" target="_blank"><img src="{{asset('/images/fb.png')}}">
                                     <!--<span class="fbicn"></span>-->
                                 </a>
-                                <a href="{{ $setting->linkedin }}" target="_blank"><img src="images/link.png">
+                                <a href="{{ $setting->linkedin }}" target="_blank"><img src="{{asset('/images/link.png')}}">
                                     <!--<span class="linkedIn"></span>-->
                                 </a>
-                                <a href="{{ $setting->twitter }}" target="_blank"><img src="images/twt.png">
+                                <a href="{{ $setting->twitter }}" target="_blank"><img src="{{asset('/images/twt.png')}}">
                                     <!--<span class="twticn"></span>-->
                                 </a>
                             </div>

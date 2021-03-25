@@ -37,11 +37,18 @@ Route::group(['namespace' => 'Admin'], function () {
                 Route::get('/', 'SettingController@edit')->name('setting');
                 Route::post('/', 'SettingController@update')->name('setting.post');
             });
+            Route::group(['prefix' => 'home-edit'], function () {
+                Route::get('/', 'HomeController@edit')->name('home');
+                Route::post('/', 'HomeController@update')->name('home.post');
+            });
             Route::group(['prefix' => 'request'], function () {
                 Route::get('/', 'RequestController@index')->name('request');
+                Route::delete('/remove/{id}', 'RequestController@remove')->name('request.remove');
             });
             Route::group(['prefix' => 'contact'], function () {
                 Route::get('/', 'ContactController@index')->name('contact');
+                Route::delete('/remove/{id}', 'ContactController@remove')->name('contact.remove');
+
             });
         });
     });

@@ -19,12 +19,15 @@ class CreateSettingsTable extends Migration
             $table->string('tagline',191)->nullable();
             $table->string('mobile',191)->nullable();
             $table->string('email',191)->nullable();
+            $table->string('address', 191)->nullable();
+            $table->longText('google_maps')->nullable();
             $table->string('logo',191)->nullable();
             $table->string('favicon',191)->nullable();
             $table->string('facebook')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('twitter')->nullable();
             $table->string('youtube')->nullable();
+            $table->string('sms_api')->nullable();
             $table->timestamps();
         });
     }

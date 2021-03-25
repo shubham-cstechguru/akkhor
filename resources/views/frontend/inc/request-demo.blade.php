@@ -1,4 +1,11 @@
 @extends('frontend.layout.app')
+
+@section('title', 'Schedule a Demo | Request a Demo')
+
+@section('description', 'Demo Page')
+
+@section('keywords', 'Demo Page')
+
 @section('content')
 
 <div class="container prcngcntnr">
@@ -32,10 +39,10 @@
                                 <span class="txt-lgon">Your name<span style="color:red;margin-left: 5px;">*</span></span>
                             </div>
                             <div class="admin-login">
-                                <input type="text" autocomplete="off" onfocus='hide(this.id);' oninput="this.value = this.value.replace(/[^0-9.^A-Z. ^a-z.^\s ^\s ]/g, ''); " id="name" class="login-form-text" name="name" placeholder="Enter your full name">
+                                <input required type="text" autocomplete="off" onfocus='hide(this.id);' oninput="this.value = this.value.replace(/[^0-9.^A-Z. ^a-z.^\s ^\s ]/g, ''); " id="name" class="login-form-text" name="name" placeholder="Enter your full name">
                                 @if($errors->has('name'))
                                 <div class="valid-sctn" id="name_error">
-                                    <img src="images/information.png" class="error_msgIcon" />
+                                    <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
                                     <span class="helping valid-info">
                                         <div class="hlpicn">{{ $errors->first('name') }}</div>
                                     </span>
@@ -48,10 +55,10 @@
                                 <span class="txt-lgon">Email<span style="color: red;margin-left: 5px;">*</span></span>
                             </div>
                             <div class="admin-login">
-                                <input type="email" autocomplete="off" onfocus='hide(this.id);' id="email" class="login-form-text" name="email" placeholder="Enter your  email">
+                                <input required type="email" autocomplete="off" onfocus='hide(this.id);' id="email" class="login-form-text" name="email" placeholder="Enter your  email">
                                 @if($errors->has('email'))
                                 <div class="valid-sctn" id="name_error">
-                                    <img src="images/information.png" class="error_msgIcon" />
+                                    <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
                                     <span class="helping valid-info">
                                         <div class="hlpicn">{{ $errors->first('email') }}</div>
                                     </span>
@@ -72,10 +79,10 @@
                                 <span class="txt-lgon">Contact number<span style="color: red;margin-left: 5px;">*</span></span>
                             </div>
                             <div class="admin-login">
-                                <input type="text" autocomplete="off" size="24" oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="15" id="phoneno" name="phoneno" onfocus='hide(this.id)' class="mble_input login-form-text" placeholder="Enter your contact number">
+                                <input required type="text" autocomplete="off" size="24" oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="15" id="phoneno" name="phoneno" onfocus='hide(this.id)' class="mble_input login-form-text" placeholder="Enter your contact number">
                                 @if($errors->has('phoneno'))
                                 <div class="valid-sctn" id="name_error">
-                                    <img src="images/information.png" class="error_msgIcon" />
+                                    <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
                                     <span class="helping valid-info">
                                         <div class="hlpicn">{{ $errors->first('phoneno') }}</div>
                                     </span>
@@ -149,7 +156,7 @@
     </form>
 </div>
 <div class="preloaderCBT_image" style="display:none" id="preloader_request">
-    <img src="images/PreloaderCBT.gif">
+    <img src="{{ asset('images/PreloaderCBT.gif') }}">
 </div>
 @endsection
 

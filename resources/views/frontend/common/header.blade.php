@@ -29,8 +29,8 @@
 
 
                         <li><a href="{{ route('home.request') }}" title="Request Demo">Request Demo</a></li>
-                        <li><a href='http://acc.suncitytechno.com/school-management/get-started' target="_blank" id="" title="Log in">log in</a></li>
-                        <li><a href="http://acc.suncitytechno.com/school-management/get-started" target="_blank" class="signupbtn">Sign up</a></li>
+                        <li><a href='http://acc.dossierbox.com/get-started' target="_blank" id="" title="Log in">log in</a></li>
+                        <li><a href="http://acc.dossierbox.com/get-started" target="_blank" class="signupbtn">Sign up</a></li>
                     </ul>
                 </nav>
             </div>

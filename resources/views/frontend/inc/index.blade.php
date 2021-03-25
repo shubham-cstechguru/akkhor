@@ -1,14 +1,21 @@
 @extends('frontend.layout.app')
+
+@section('title', 'Home')
+
+@section('description', 'Home Page')
+
+@section('keywords', 'Home Page')
+
 @section('content')
 
 <div class="container mainPage-wrapper" id='mainheader' style="clear:both">
     <div class="wrapper-fix">
         <div class='headercopntent'>
             <div class="headerinr1">
-                <h1>Your ultimate destination for online school management</h1>
-                <h3>Prepare students, teachers and parents to perform extraordinarily with an easy to use highly interactive platform and <br> simplify the assessment cycle.</h3>
+                <h1>{{ $home->slider_title }}</h1>
+                <h3>{{ $home->slider_description }}</h3>
                 <span class="video-link"><i><img src='images/play-button-2.svg' alt="play-button" /></i>Watch Video</span>
-                <a href='http://acc.suncitytechno.com/school-management/get-started' target="_blank" class="hdrbtn">Get Started</a>
+                <a href='http://acc.dossierbox.com/get-started' target="_blank" class="hdrbtn">Get Started</a>
             </div>
         </div>
     </div>
@@ -17,7 +24,8 @@
 <div class="main-contenior">
     <div class="wrapper-fix">
         <div class="box-main-heading">
-            <h2 class="light_font wow bounceInDown"><span>Salient Keys</span></h2>
+            <h2 class="light_font wow bounceInDown"><span>{{ $home->salient_title ?? 'Salient Keys' }}</span></h2>
+            <p>{{ $home->salient_desc ?? '' }}</p>
         </div>
 
         <div id="hwwrk" class="products-box ">
@@ -90,9 +98,10 @@
 <div class="main-features">
     <div class="">
         <div class="box-main-heading wrapper-fix">
-            <h3 class="normal_font font_hdng">A new innovation in school management</h3>
+            <h3 class="normal_font font_hdng">{{ $home->service_title ?? 'A new innovation in school management' }}</h3>
             <p class="normal_font inrsmall_hdng">
-                Smooth registration, swift creation of classes, sections and<br> synchronized user-interface for you, your teachers, your students and their parents.
+            {{ $home->service_desc ?? 'Smooth registration, swift creation of classes, sections and
+synchronized user-interface for you, your teachers, your students and their parents.' }}
             </p>
         </div>
         <div class="features-box home-page-box">
@@ -148,13 +157,19 @@
     <div class="clnt_full_wdth wrapper-fix">
 
         <div class="box-main-heading">
-            <h3 class="normal_font font_hdng client-heading">A few of the clients who trusted on us</h3>
-
+            <h3 class="normal_font font_hdng client-heading">{{ $home->client_title ?? 'A few of the clients who trusted on us' }}</h3>
+            <p class="normal_font inrsmall_hdng">
+            {{ $home->client_desc ?? '' }}
+            </p>
         </div>
 
 
 
         <ul class='company-colr-logos'>
+            @foreach($school as $key => $s)
+            <li><img alt='{{ $s->logo }}' src='{{ asset("/storage/".$s->logo) }}'></li>
+            @endforeach
+            <!-- <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
             <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
             <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
             <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
@@ -168,9 +183,7 @@
             <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
             <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
             <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
+            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li> -->
         </ul>
 
     </div>
