@@ -141,6 +141,10 @@
                                 <textarea type="text" size="24" autocomplete="off" id="message" name="message" onfocus='$("#message").parent(".admin-login").removeClass("errorinpt");' class="mble_input login-form-text" style=" resize: none; width: 100% !important; padding: 5px 0 5px 10px !important; line-height: 20px;" placeholder="Enter your specific requirements"></textarea>
                             </div>
                         </div>
+                        <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+                            @if($errors->has('recaptcha_token'))
+                            {{$errors->first('recaptcha_token')}}
+                            @endif
                         <div class="mktFormReq mktField">
                             <span class="mndtry_filds-txt">(<span style="color: red;margin-left: 5px;">*</span>Mandatory fields )</span>
                             <button type="submit" id="send" name="send" class="popup_sbmtbtn">Submit</button>
@@ -161,4 +165,15 @@
 @endsection
 
 @section('script')
+
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITEKEY') }}"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ env('RECAPTCHA_SITEKEY') }}').then(function(token) {
+            if (token) {
+                document.getElementById('recaptcha_token').value = token;
+            }
+        });
+    });
+</script>
 @endsection

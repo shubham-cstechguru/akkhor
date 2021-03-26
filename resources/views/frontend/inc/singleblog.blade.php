@@ -23,14 +23,18 @@
         <div class="blog_data">
             <div class="container_data">
                 <div class="postedBy">
-                    <span>Category: </span>
-                    @php 
-                    $cat = $blog->blog_category->category_title;
+                    <b><span>Category: </span></b>
+                    @php
+                    $cat = implode(", ", $blog->blog_categories);
                     @endphp
                     {{ $cat }}
                 </div>
                 <div class="postedBy">
-                    <span>Tags: </span>
+                    <b><span>Tags: </span></b>
+                    @php
+                    $t = implode(", ", $blog->tags);
+                    @endphp
+                    {{ $t }}
                 </div>
             </div>
             <div class="blog_social">

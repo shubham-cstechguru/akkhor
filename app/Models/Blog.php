@@ -9,21 +9,28 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $appends = ['blog_cateogry', 'blog_tags'];
+    protected $appends = ['blog_categories', 'tags'];
 
-    public function getBlogCategoryAttr() {
+    public function getBlogCategoriesAttribute() {
         $categories = [];
         if(!empty($this->blog_category)) {
             foreach($this->blog_category as $key => $cat) {
-                $categories[] = $cat->name;
+                $categories[] = $cat->category_title;
             }
         }
 
         return $categories;
     }
 
-    public function getBlogTagsAttr() {
-        
+    public function getTagsAttribute() {
+        $tags = [];
+        if(!empty($this->blog_tags)) {
+            foreach($this->blog_tags as $key => $t) {
+                $tags[] = $t->tags_title;
+            }
+        }
+
+        return $tags;
     }
 
     public function blog_category() {

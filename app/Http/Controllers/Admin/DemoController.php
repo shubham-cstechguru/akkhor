@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Request;
+use App\Models\Demo;
 
-class RequestController extends Controller
+class DemoController extends Controller
 {
     public function index() {
-        $req = Request::get();
+        $req = Demo::get();
         $data = compact('req');
         return view('backend.inc.request', $data);
     }
     public function remove($id)
     {
-        $del = Request::findOrFail($id)->delete();
+        $del = Demo::findOrFail($id)->delete();
         return redirect()->back();
     }
 }

@@ -28,6 +28,7 @@ class ContactController extends Controller
         $req->message = $request->message;
         $req->save();
 
+
         Mail::send('frontend.mail.enquiry_mail', ['req' => $req, 's' => $setting], function ($message) use ($request, $s, $setting) {
 			$message->to($request->email);
 			$message->subject($s);

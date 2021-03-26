@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RequestRequest extends FormRequest
+class DemoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +32,8 @@ class RequestRequest extends FormRequest
             'test' => 'nullable',
             'daysToFinalize' => 'nullable',
             'requestedUrl' => 'nullable',
-            'message' => 'nullable'
+            'message' => 'nullable',
+            'recaptcha_token' => 'required'
         ];
     }
     public function messages()

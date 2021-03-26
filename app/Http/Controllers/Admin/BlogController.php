@@ -6,11 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogTags;
-use App\Models\BlogCategoryData;
-use App\Models\BlogTagsData;
 use App\Http\Requests\BlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 

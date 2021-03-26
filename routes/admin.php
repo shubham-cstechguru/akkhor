@@ -42,13 +42,12 @@ Route::group(['namespace' => 'Admin'], function () {
                 Route::post('/', 'HomeController@update')->name('home.post');
             });
             Route::group(['prefix' => 'request'], function () {
-                Route::get('/', 'RequestController@index')->name('request');
-                Route::delete('/remove/{id}', 'RequestController@remove')->name('request.remove');
+                Route::get('/', 'DemoController@index')->name('request');
+                Route::delete('/remove/{id}', 'DemoController@remove')->name('request.remove');
             });
             Route::group(['prefix' => 'contact'], function () {
                 Route::get('/', 'ContactController@index')->name('contact');
                 Route::delete('/remove/{id}', 'ContactController@remove')->name('contact.remove');
-
             });
         });
     });

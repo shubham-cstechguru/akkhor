@@ -77,13 +77,13 @@
                                 @method('DELETE')
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Category</h5>
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete Demo Enquiry</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are you sure to want to Delete This Enquiry ?
+                                        Are you sure to want to Delete This Demo Enquiry ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Confirm Delete</button>
@@ -103,9 +103,9 @@
 @section('scripts')
 <script>
     function handleDelete(id) {
-        
+
         var form = document.getElementById('deleteFormModal')
-        
+
         form.action = '/admin-control/request/remove/' + id
         console.log('deleting', form)
         $('#deleteModal').modal('show')

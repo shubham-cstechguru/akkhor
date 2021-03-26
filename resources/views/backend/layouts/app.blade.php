@@ -25,12 +25,11 @@
             @yield('content')
         </div>
     </div>
+    
     {{ Html::script('Admin/js/jquery-3.5.1.slim.min.js') }}
     {{ Html::script('Admin/js/bootstrap.bundle.min.js') }}
     {{ Html::script('Admin/js/scripts.js') }}
-    {{ Html::script('Admin/js/Chart.min.js') }}
-    {{ Html::script('Admin/js/chart-area-demo.js') }}
-    {{ Html::script('Admin/js/chart-bar-demo.js') }}
+
     {{ Html::script('Admin/js/jquery.dataTables.min.js') }}
     {{ Html::script('Admin/js/dataTables.bootstrap4.min.js') }}
     {{ Html::script('Admin/js/datatables-demo.js') }}

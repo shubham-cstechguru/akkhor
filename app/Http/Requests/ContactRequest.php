@@ -27,7 +27,8 @@ class ContactRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|max:255',
             'phoneno' => 'required|numeric',
-            'message' => 'required'
+            'message' => 'required',
+            'recaptcha_token' => 'required'
         ];
     }
     public function messages()

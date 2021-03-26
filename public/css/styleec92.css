@@ -5679,9 +5679,14 @@ h5.smallhdng-content {
     color: #555;
     line-height: 20px
 }
+@media (min-width: 700px) {
+    ul.contactul {
+        margin: 18px 0 0;
+        display: flex;
+    }
+}
 ul.contactul {
     margin: 18px 0 0;
-    display: flex;
 }
 .contactul li {
     display: inline-block;
@@ -10345,8 +10350,11 @@ img.offerimge {
 .lft-pro-ul-data ul li.marn-tp {
     margin-top: 30px
 }
-.lft-pro-ul-data:last-child {
-    width: 16%
+@media (min-width: 568px) {
+    .lft-pro-ul-data:last-child {
+        width: 16%
+    }
+
 }
 .bottom-ft-main {
     width: 100%;

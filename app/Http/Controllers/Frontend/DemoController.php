@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RequestRequest;
-use App\Models\Request;
+use App\Http\Requests\DemoRequest;
+use App\Models\Demo;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 
-class RequestController extends Controller
+class DemoController extends Controller
 {
     public function create()
     {
         $setting = Setting::first();
         return view('frontend.inc.request-demo', compact('setting'));
     }
-    public function store(RequestRequest $request)
+    public function store(DemoRequest $request)
     {
         $setting = Setting::first();
         $s = "Demo Enquiry Mail from {$setting->title}";
 
-        $req = new Request();
+        $req = new Demo();
         $req->name = $request->name;
         $req->email = $request->email;
         $req->company = $request->company;

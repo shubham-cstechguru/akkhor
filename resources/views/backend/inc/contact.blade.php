@@ -37,7 +37,7 @@
                                 <td>{{ $c->phoneno }}</td>
                                 <td>{{ $c->message }}</td>
                                 <td>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $cid }})">
+                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $c->id }})">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -52,7 +52,7 @@
                                 @method('DELETE')
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Category</h5>
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete Enquiry</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

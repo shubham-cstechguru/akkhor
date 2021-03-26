@@ -42,21 +42,22 @@
                                     <input type="text" name="blog_title" class="form-control" id="blogTitle" aria-describedby="blogTitleHelp" placeholder="Enter Blog Name" value="{{ isset($blog) ? $blog->blog_title : '' }}">
                                 </div>
                                 @if(isset($blog))
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3" id="root">
                                     <label for="blogImage">Blog Image</label>
                                     <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="{{ asset("/storage/blog/".$blog->blog_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset('/storage/blog/'.$blog->blog_image) }}" alt="" width="100">
                                 </div>
                                 @else
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3" id="root">
                                     <label for="blogImage">Blog Image</label>
                                     <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="#" alt="upload image to view" width="100" />
+                                    <img id="blah" src="{{ asset('images/download(2).png') }}" alt="" width="100">
                                 </div>
+                        
                                 @endif
                                 <div class="form-group col-md-6">
                                     <label for="blogCategory">Blog Category</label>
@@ -135,20 +136,57 @@
 </script>
 
 <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    const MAX_WIDTH = 320;
+    const MAX_HEIGHT = 180;
+    const MIME_TYPE = "image/jpeg";
+    const QUALITY = 0.7;
 
-            reader.onload = function(e) {
-                $('#blah').attr('src', e.target.result);
+    const input = document.getElementById("blogImage");
+    input.onchange = function(ev) {
+        const file = ev.target.files[0]; // get the file
+        const blobURL = URL.createObjectURL(file);
+        const img = new Image();
+        img.src = blobURL;
+        img.onerror = function() {
+            URL.revokeObjectURL(this.src);
+            // Handle the failure properly
+            console.log("Cannot load image");
+        };
+        img.onload = function() {
+            URL.revokeObjectURL(this.src);
+            const [newWidth, newHeight] = calculateSize(img, MAX_WIDTH, MAX_HEIGHT);
+            const canvas = document.createElement("canvas");
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, newWidth, newHeight);
+            canvas.toBlob(
+                (blob) => {
+                },
+                MIME_TYPE,
+                QUALITY
+            );
+            document.getElementById("root").append(canvas);
+        };
+    };
+
+    function calculateSize(img, maxWidth, maxHeight) {
+        let width = img.width;
+        let height = img.height;
+
+        // calculate the width and height, constraining the proportions
+        if (width > height) {
+            if (width > maxWidth) {
+                height = Math.round((height * maxWidth) / width);
+                width = maxWidth;
             }
-
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        } else {
+            if (height > maxHeight) {
+                width = Math.round((width * maxHeight) / height);
+                height = maxHeight;
+            }
         }
+        return [width, height];
     }
-
-    $("#blogImage").change(function() {
-        readURL(this);
-    });
 </script>
 @endsection

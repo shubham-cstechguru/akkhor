@@ -61,13 +61,13 @@
                                 @method('DELETE')
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Page</h5>
+                                        <h5 class="modal-title" id="deleteModalLabel">Delete Testimonial</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are you sure to want to Delete This Page ?
+                                        Are you sure to want to Delete This Testimonial ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Confirm Delete</button>
