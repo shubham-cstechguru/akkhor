@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -30,23 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach($blogtag as $tags)
-                            <tr>
-                                <td>{{ $i++ }}.</td>
-                                <td>{{ $tags->tags_title }}</td>
-                                <td>
-                                    <a type="button" name="button" class="btn btn-info" href="{{ route('admin.blogtags.edit', $tags->id) }}">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $tags->id }})">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
+                           
                         </tbody>
                     </table>
 
@@ -88,5 +72,33 @@
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }
+</script>
+<script type="text/javascript">
+    $(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.blogtags.list') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'tags_title',
+                    name: 'tags_title'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ]
+        });
+
+    });
 </script>
 @endsection

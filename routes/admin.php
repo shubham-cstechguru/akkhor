@@ -24,6 +24,15 @@ Route::group(['namespace' => 'Admin'], function () {
         Route::group(['middleware' => 'adminauth'], function () {
             Route::get('/', 'AdminController@dashboard')->name('dashboard');
 
+            Route::get('blog/list', 'BlogController@getBlogs')->name('blog.list');
+            Route::get('blogcategory/list', 'BlogCategoryController@getBlogCategories')->name('blogcategory.list');
+            Route::get('blogtags/list', 'BlogTagsController@getBlogTags')->name('blogtags.list');
+            Route::get('pricing/list', 'PricingController@getPricings')->name('pricing.list');
+            Route::get('pages/list', 'PagesController@getPages')->name('pages.list');
+            Route::get('services/list', 'ServiceController@getServices')->name('services.list');
+            Route::get('testimonial/list', 'TestimonialController@getTestimonials')->name('testimonial.list');
+
+
             Route::resources([
                 'blog' => 'BlogController',
                 'blogcategory' => 'BlogCategoryController',
@@ -43,10 +52,12 @@ Route::group(['namespace' => 'Admin'], function () {
             });
             Route::group(['prefix' => 'request'], function () {
                 Route::get('/', 'DemoController@index')->name('request');
+                Route::get('/list', 'DemoController@getDemos')->name('request.list');
                 Route::delete('/remove/{id}', 'DemoController@remove')->name('request.remove');
             });
             Route::group(['prefix' => 'contact'], function () {
                 Route::get('/', 'ContactController@index')->name('contact');
+                Route::get('/list', 'ContactController@getContacts')->name('contact.list');
                 Route::delete('/remove/{id}', 'ContactController@remove')->name('contact.remove');
             });
         });

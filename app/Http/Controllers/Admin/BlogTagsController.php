@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogTags;
 use App\Http\Requests\BlogTagsRequest;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class BlogTagsController extends Controller
 {
@@ -16,8 +17,22 @@ class BlogTagsController extends Controller
      */
     public function index()
     {
-        $blogtag = BlogTags::get();
-        return view('backend.inc.blog.tags.index', compact('blogtag'));
+        // $blogtag = BlogTags::get();
+        return view('backend.inc.blog.tags.index');
+    }
+    public function getPricings(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = BlogTags::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a type="button" name="button" class="btn btn-info" href="'.route('admin.blogtags.edit', $row->id).'"> <i class="fas fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete('.$row->id.')"><i class="fas fa-trash"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 
     /**

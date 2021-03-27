@@ -24,9 +24,9 @@ class PricingRequest extends FormRequest
     public function rules()
     {
         return [
-            'pricing_title' => 'required|unique:pricings',
+            'name' => 'required|unique:sch_plans',
             'pricing_description' => 'required|max:250',
-            'price' => 'required|numeric',
+            'cost' => 'required|numeric',
             'pricing_points' => 'required|array',
         ];
     }

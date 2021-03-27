@@ -55,7 +55,7 @@
                                     <input type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="#" alt="upload image to view" width="100" />
+                                    <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100" />
                                 </div>
                                 @endif
 

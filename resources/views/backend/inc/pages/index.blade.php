@@ -15,7 +15,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -25,21 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach($page as $p)
-                            <tr>
-                                <td>{{ $i++ }}.</td>
-                                <td>{{ $p->page_title }}</td>
-                                <td><img src="{{ asset("/storage/pages/".$p->page_image) }}" alt="" width="100"></td>
-                                <td>
-                                    <a type="button" name="button" class="btn btn-info" href="{{ route('admin.pages.edit', $p->id) }}">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -51,4 +37,38 @@
 @endsection('content')
 
 @section('scripts')
+<script type="text/javascript">
+    $(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.pages.list') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'page_title',
+                    name: 'page_title'
+                },
+                {
+                    data: 'page_image',
+                    name: 'page_image',                    
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ]
+        });
+
+    });
+</script>
 @endsection

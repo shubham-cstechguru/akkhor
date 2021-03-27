@@ -14,10 +14,10 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Number</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile No.</th>
@@ -28,46 +28,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach($req as $r)
-                            <tr>
-                                <td>{{ $i++ }}.</td>
-                                <td>{{ $r->name }}</td>
-                                <td>{{ $r->email }}</td>
-                                <td>{{ $r->phoneno }}</td>
-                                <td>
-                                    <ol>
-                                        @if($r->company!='')
-                                        <li>{{ $r->company }}</li>
-                                        @else
-                                        @endif
-                                        @if($r->designation!='')
-                                        <li>{{ $r->designation }}</li>
-                                        @else
-                                        @endif
-                                        @if($r->requestedUrl!='')
-                                        <li>{{ $r->requestedUrl }}</li>
-                                        @else
-                                        @endif
-                                    </ol>
-                                </td>
-                                <td>{{ $r->message }}</td>
-                                <td>
-                                    <ol>
-                                        <li>{{ $r->test }}</li>
-                                        <li>{{ $r->daysToFinalize }}</li>
-                                    </ol>
-                                </td>
-                                <td>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $r->id }})">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-
-                            @endforeach
                         </tbody>
                     </table>
                     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -110,5 +70,53 @@
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }
+</script>
+<script type="text/javascript">
+    $(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.request.list') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'email',
+                    name: 'email'
+                },
+                {
+                    data: 'phoneno',
+                    name: 'phoneno'
+                },
+                {
+                    data: 'company',
+                    name: 'company'
+                },
+                {
+                    data: 'message',
+                    name: 'message'
+                },
+                {
+                    data: 'demo',
+                    name: 'demo'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ]
+        });
+
+    });
 </script>
 @endsection

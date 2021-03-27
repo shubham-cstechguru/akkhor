@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - Dosser Box</title>
@@ -25,8 +26,7 @@
             @yield('content')
         </div>
     </div>
-    
-    {{ Html::script('Admin/js/jquery-3.5.1.slim.min.js') }}
+    {{ Html::script('Admin/js/jquery-3.5.1.js') }}
     {{ Html::script('Admin/js/bootstrap.bundle.min.js') }}
     {{ Html::script('Admin/js/scripts.js') }}
 

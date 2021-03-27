@@ -56,7 +56,7 @@
                                     <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->image : '' }}">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="#" alt="upload image to view" width="100"/>
+                                    <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100"/>
                                 </div>
                                 @endif
 

@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use App\Http\Requests\BlogCategoryRequest;
 use App\Http\Requests\UpdateBlogCategoryRequest;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class BlogCategoryController extends Controller
 {
@@ -17,8 +18,23 @@ class BlogCategoryController extends Controller
      */
     public function index()
     {
-        $blogcategory = BlogCategory::get();
-        return view('backend.inc.blog.category.index', compact('blogcategory'));
+        // $blogcategory = BlogCategory::get();
+        return view('backend.inc.blog.category.index');
+    }
+
+    public function getBlogCategories(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = BlogCategory::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a type="button" name="button" class="btn btn-info" href="'.route('admin.blogcategory.edit', $row->id).'"> <i class="fas fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete('.$row->id.')"><i class="fas fa-trash"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 
     /**

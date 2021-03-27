@@ -21,7 +21,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>Number</th>
@@ -31,8 +31,8 @@
               </tr>
             </thead>
             <tbody>
-              @php
-                $i = 1;
+             {{-- @php
+              $i = 1;
               @endphp
               @foreach($pricing as $key => $p)
               <tr>
@@ -48,7 +48,7 @@
                   </a>
                 </td>
               </tr>
-              @endforeach
+              @endforeach--}}
             </tbody>
           </table>
 
@@ -90,5 +90,37 @@
     console.log('deleting', form)
     $('#deleteModal').modal('show')
   }
+</script>
+<script type="text/javascript">
+  $(function() {
+
+    var table = $('.yajra-datatable').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('admin.pricing.list') }}",
+      columns: [{
+          data: 'DT_RowIndex',
+          name: 'DT_RowIndex',
+          orderable: false,
+          searchable: false
+        },
+        {
+          data: 'name',
+          name: 'name'
+        },
+        {
+          data: 'cost',
+          name: 'cost'
+        },
+        {
+          data: 'action',
+          name: 'action',
+          orderable: false,
+          searchable: false
+        },
+      ]
+    });
+
+  });
 </script>
 @endsection

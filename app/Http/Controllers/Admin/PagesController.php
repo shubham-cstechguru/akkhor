@@ -9,7 +9,7 @@ use App\Http\Requests\UpdatePageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-
+use Yajra\DataTables\DataTables;
 
 class PagesController extends Controller
 {
@@ -20,10 +20,28 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $page = Pages::get();
-        return view('backend.inc.pages.index', compact('page'));
+        // $page = Pages::get();
+        return view('backend.inc.pages.index');
     }
 
+    public function getPages(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Pages::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('page_image', function($row) {
+                    $image = '<img src="'. asset("/storage/pages/".$row->page_image).'" alt="" width="100">';
+                    return $image;
+                })
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a type="button" name="button" class="btn btn-info" href="'.route('admin.pages.edit', $row->id).'"> <i class="fas fa-edit"></i> </a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action','page_image'])
+                ->make(true);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

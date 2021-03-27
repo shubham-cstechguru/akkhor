@@ -14,10 +14,10 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Number</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile No.</th>
@@ -26,23 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach($contact as $c)
-                            <tr>
-                                <td>{{ $i++ }}.</td>
-                                <td>{{ $c->name }}</td>
-                                <td>{{ $c->email }}</td>
-                                <td>{{ $c->phoneno }}</td>
-                                <td>{{ $c->message }}</td>
-                                <td>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $c->id }})">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
+                            
                         </tbody>
                     </table>
                     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -85,5 +69,45 @@
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }
+</script>
+<script type="text/javascript">
+    $(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.contact.list') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',                    
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'email',
+                    name: 'email'
+                },
+                {
+                    data: 'phoneno',
+                    name: 'phoneno'
+                },
+                {
+                    data: 'message',
+                    name: 'message'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ]
+        });
+
+    });
 </script>
 @endsection
