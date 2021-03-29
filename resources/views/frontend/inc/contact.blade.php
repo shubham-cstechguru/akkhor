@@ -108,26 +108,26 @@
                     <span class="contacticon contact-email"></span>
                     <div class='contact_cntnt'>
                         <span class='cntctinrhdng'>WRITE TO US</span>
-                        <span class="cntctinrinfo info-links"><a href="mailto:{{$setting->email}}">{{ $setting->email }}</a></span>
+                        <span class="cntctinrinfo info-links"><a href="mailto:{{$setting->email ?? ''}}">{{ $setting->email ?? '' }}</a></span>
                     </div>
                 </li>
                 <li>
                     <span class="contacticon contact-mobile"></span>
                     <div class='contact_cntnt'>
                         <span class='cntctinrhdng'>TALK TO AN EXPERT</span>
-                        <span class="cntctinrinfo"><a href="tel:{{$setting->mobile}}">{{ $setting->mobile }}</a></span>
+                        <span class="cntctinrinfo"><a href="tel:{{$setting->mobile ?? ''}}">{{ $setting->mobile ?? '' }}</a></span>
                     </div>
                 </li>
                 <li>
                     <span class="contacticon contact-address"></span>
                     <div class='contact_cntnt'>
                         <span class='cntctinrhdng'>REACH US AT</span>
-                        <span class="cntctinrinfo">{{ $setting->address }}</span>
+                        <span class="cntctinrinfo">{{ $setting->address ?? '' }}</span>
                     </div>
                 </li>
             </ul>
             <div class="contact-map">
-                {!! $setting->google_maps !!}
+                {!! $setting->google_maps ?? '' !!}
             </div>
         </article>
         <div class="clear_fix"></div>

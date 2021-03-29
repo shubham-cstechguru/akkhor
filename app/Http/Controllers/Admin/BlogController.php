@@ -8,8 +8,9 @@ use App\Models\BlogCategory;
 use App\Models\BlogTags;
 use App\Http\Requests\BlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
 {
@@ -20,10 +21,36 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog = Blog::get();
-        return view('backend.inc.blog.index', compact('blog'));
+        // $blog = Blog::get();
+        return view('backend.inc.blog.index');
     }
 
+    public function getBlogs(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Blog::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('blog_image', function ($row) {
+                    $image = '<img src="' . asset("/storage/blog/" . $row->blog_image) . '" alt="" width="100">';
+                    return $image;
+                })
+                ->addColumn('blog_category', function ($row) {
+                    $cat = implode(", ", $row->blog_categories);
+                    return $cat;
+                })
+                ->addColumn('blog_tags', function ($row) {
+                    $t = implode(", ", $row->tags);
+                    return $t;
+                })
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a type="button" name="button" class="btn-sm btn-info" href="' . route('admin.blog.edit', $row->id) . '"> <i class="fas fa-edit"></i> </a> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete('.$row->id.')"><i class="fas fa-trash"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action', 'blog_image', 'blog_category', 'blog_tags'])
+                ->make(true);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -126,6 +153,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return redirect(route('admin.blog.index'));
     }
 }

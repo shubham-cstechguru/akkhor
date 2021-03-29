@@ -20,14 +20,14 @@ class BlogTagsController extends Controller
         // $blogtag = BlogTags::get();
         return view('backend.inc.blog.tags.index');
     }
-    public function getPricings(Request $request)
+    public function getBlogTags(Request $request)
     {
         if ($request->ajax()) {
             $data = BlogTags::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a type="button" name="button" class="btn btn-info" href="'.route('admin.blogtags.edit', $row->id).'"> <i class="fas fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete('.$row->id.')"><i class="fas fa-trash"></i></a>';
+                    $actionBtn = '<a type="button" name="button" class="btn-sm btn-info" href="'.route('admin.blogtags.edit', $row->id).'"> <i class="fas fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete('.$row->id.')"><i class="fas fa-trash"></i></a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

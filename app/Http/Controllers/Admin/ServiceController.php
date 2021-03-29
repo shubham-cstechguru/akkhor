@@ -7,7 +7,7 @@ use App\Models\Service;
 use App\Http\Requests\ServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use Yajra\DataTables\DataTables;
 
 class ServiceController extends Controller
 {
@@ -18,8 +18,27 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $service = Service::get();
-        return view('backend.inc.services.index', compact('service'));
+        // $service = Service::get();
+        return view('backend.inc.services.index');
+    }
+
+    public function getServices(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Service::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('service_image', function ($row) {
+                    $image = '<img src="' . asset("/storage/services/" . $row->service_image) . '" alt="" width="100">';
+                    return $image;
+                })
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a type="button" name="button" class="btn-sm btn-info" href="' . route('admin.services.edit', $row->id) . '"> <i class="fas fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete(' . $row->id . ')"><i class="fas fa-trash"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action', 'service_image'])
+                ->make(true);
+        }
     }
 
     /**

@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -31,24 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach($service as $s)
-                            <tr>
-                                <td>{{ $i++ }}.</td>
-                                <td>{{ $s->service_title }}</td>
-                                <td><img src="{{ asset("/storage/services/".$s->service_image) }}" alt="" width="100"></td>
-                                <td>
-                                    <a type="button" name="button" class="btn btn-info" href="{{ route('admin.services.edit', $s->id) }}">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $s->id }})">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
+                           
                         </tbody>
                     </table>
 
@@ -90,5 +73,39 @@
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }
+</script>
+<script type="text/javascript">
+    $(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.services.list') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'service_title',
+                    name: 'service_title'
+                },
+                {
+                    data: 'service_image',
+                    name: 'service_image',                    
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ]
+        });
+
+    });
 </script>
 @endsection

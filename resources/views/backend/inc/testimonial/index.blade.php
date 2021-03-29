@@ -21,7 +21,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Number</th>
@@ -32,25 +32,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                            $i = 1;
-                            @endphp
-                            @foreach($testimonial as $t)
-                            <tr>
-                                <td>{{ $i++ }}.</td>
-                                <td>{{ $t->t_name }}</td>
-                                <td>{!! $t->t_testimonial !!}</td>
-                                <td><img src="{{ asset("/storage/testimonial/".$t->t_image) }}" alt="" width="100"></td>
-                                <td>
-                                    <a type="button" name="button" class="btn btn-info" href="{{ route('admin.testimonial.edit', $t->id) }}">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a type="button" name="button" class="btn btn-danger" onclick="handleDelete({{ $t->id }})">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
                         </tbody>
                     </table>
 
@@ -88,9 +69,48 @@
 <script>
     function handleDelete(id) {
         var form = document.getElementById('deleteFormModal')
-        form.action = '/admin-control/pages/' + id
+        form.action = '/admin-control/testimonial/' + id
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }
+</script>
+<script type="text/javascript">
+    $(function() {
+
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('admin.testimonial.list') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 't_name',
+                    name: 't_name'
+                },
+                {
+                    data: 't_testimonial',
+                    name: 't_testimonial',
+                    orderable: false,
+                },
+                {
+                    data: 't_image',
+                    name: 't_image',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+            ]
+        });
+
+    });
 </script>
 @endsection

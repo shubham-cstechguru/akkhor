@@ -7,7 +7,6 @@ use App\Models\Pages;
 use App\Http\Requests\PageRequest;
 use App\Http\Requests\UpdatePageRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
@@ -30,15 +29,15 @@ class PagesController extends Controller
             $data = Pages::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('page_image', function($row) {
-                    $image = '<img src="'. asset("/storage/pages/".$row->page_image).'" alt="" width="100">';
+                ->addColumn('page_image', function ($row) {
+                    $image = '<img src="' . asset("/storage/pages/" . $row->page_image) . '" alt="" width="100">';
                     return $image;
                 })
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a type="button" name="button" class="btn btn-info" href="'.route('admin.pages.edit', $row->id).'"> <i class="fas fa-edit"></i> </a>';
+                    $actionBtn = '<a type="button" name="button" class="btn-sm btn-info" href="' . route('admin.pages.edit', $row->id) . '"> <i class="fas fa-edit"></i> </a>';
                     return $actionBtn;
                 })
-                ->rawColumns(['action','page_image'])
+                ->rawColumns(['action', 'page_image'])
                 ->make(true);
         }
     }

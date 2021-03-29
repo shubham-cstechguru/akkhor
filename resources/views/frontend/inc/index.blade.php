@@ -12,8 +12,8 @@
     <div class="wrapper-fix">
         <div class='headercopntent'>
             <div class="headerinr1">
-                <h1>{{ $home->slider_title }}</h1>
-                <h3>{{ $home->slider_description }}</h3>
+                <h1>{{ $home->slider_title ?? '' }}</h1>
+                <h3>{{ $home->slider_description ?? '' }}</h3>
                 <span class="video-link"><i><img src='images/play-button-2.svg' alt="play-button" /></i>Watch Video</span>
                 <a href='http://acc.dossierbox.com/get-started' target="_blank" class="hdrbtn">Get Started</a>
             </div>
@@ -169,21 +169,6 @@ synchronized user-interface for you, your teachers, your students and their pare
             @foreach($school as $key => $s)
             <li><img alt='{{ $s->logo }}' src='{{ asset("/storage/".$s->logo) }}'></li>
             @endforeach
-            <!-- <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/1.png'></li>
-            <li><img alt='School Management SoftwareClients' src='images/clients/2.png'></li> -->
         </ul>
 
     </div>

@@ -9,48 +9,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Setting  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Setting  $home
@@ -60,9 +18,7 @@ class HomeController extends Controller
     {
         $home     = Home::find(1);
         $editData =  $home->toArray();
-        // dd($editData);ss
         $request->replace($editData);
-        //send to view
         $request->flash();
         $data = compact('home');
 
@@ -91,16 +47,5 @@ class HomeController extends Controller
         if ($record->save()) {
             return redirect(route('admin.home'))->with('success', 'Success! Record has been edided');
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Setting  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Setting $home)
-    {
-        //
     }
 }

@@ -1,5 +1,5 @@
 <script>
-    const CONATCT_NO = "{{ $setting->mobile }}";
+    const CONATCT_NO = "{{ $setting->mobile ?? '' }}";
 </script>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +10,13 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    @if($setting->favicon ?? '' !='')
     <link rel="shortcut icon" href='{{ asset("/storage/favicon/".$setting->favicon) }}' />
+    @else
+    <link rel="shortcut icon" href='{{ asset("/images/favicon.png") }}' />
+    @endif
     <meta name="format-detection" content="telephone=no">
-    <title>{{ $setting->title }} | @yield('title')</title>
+    <title>{{ $setting->title ?? 'Dossier Box' }} | @yield('title')</title>
 
 
 
@@ -207,7 +211,7 @@
 
     <div class="home-page-popup-wrapper">
         <div class="home-page-popup-container">
-            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/{{ $setting->youtube }}?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
+            <iframe id="video" width="100%" height="100%" src="https://www.youtube.com/embed/{{ $setting->youtube ?? '' }}?rel=0&amp;enablejsapi=1&amp;version=3&amp;playerapiid=ytplayer&amp;cc_load_policy=1&amp;controls=0&amp;fs=0&amp;rel=0&amp;showinfo=0&amp;color=white" allowscriptaccess="always" frameborder="0" allowfullscreen></iframe>
             <p class="popupCancel"><span class="close thick"></span></p>
         </div>
     </div>

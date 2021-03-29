@@ -3,8 +3,13 @@
         <div class='wrapper-fix logowrapper'>
             <div class="top-header">
                 <a class="logo" href="{{ route('home.index') }}" title="School Management Software it's that easy as thinking">
+                @if($setting->logo ?? '' !='')
                     <img src='{{ asset("/storage/logo/".$setting->logo) }}' title="Onine School ERP" alt="School Management Software" class='logowhite' />
                     <img src='{{ asset("/storage/logo/".$setting->logo) }}' title="Onine School ERP" alt="School Management Software" class='logoblue' />
+                    @else
+                    <img src='{{ asset("/images/logo.png") }}' title="Onine School ERP" alt="School Management Software" class='logowhite' />
+                    <img src='{{ asset("/images/logo.png") }}' title="Onine School ERP" alt="School Management Software" class='logoblue' />
+                    @endif
                 </a>
                 <nav class="top_nav">
                     <a class="toggleMenu" href="#">

@@ -7,6 +7,7 @@ use App\Models\Testimonial;
 use App\Http\Requests\TestimonialRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class TestimonialController extends Controller
 {
@@ -17,8 +18,26 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonial = Testimonial::get();
-        return view('backend.inc.testimonial.index', compact('testimonial'));
+        // $testimonial = Testimonial::get();
+        return view('backend.inc.testimonial.index');
+    }
+    public function getTestimonials(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Testimonial::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('t_image', function ($row) {
+                    $image = '<img src="' . asset("/storage/testimonial/" . $row->t_image) . '" alt="" width="100">';
+                    return $image;
+                })
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a type="button" name="button" class="btn-sm btn-info" href="' . route('admin.testimonial.edit', $row->id) . '"> <i class="fas fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="handleDelete(' . $row->id . ')"><i class="fas fa-trash"></i></a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action', 't_image'])
+                ->make(true);
+        }
     }
 
     /**
@@ -102,6 +121,7 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        $testimonial->delete();
+        return redirect(route('admin.testimonial.index'));
     }
 }
