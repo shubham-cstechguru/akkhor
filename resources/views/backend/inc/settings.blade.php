@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', 'Setting Page')
 
 @section('css')
 @endsection
@@ -34,38 +34,38 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="siteTitle">Site Name</label>
-                                    <input type="text" name="title" class="form-control" id="siteTitle" aria-describedby="siteTitleHelp" placeholder="Enter Site Name" value="{{ $setting['title'] }}">
+                                    <input required type="text" name="title" class="form-control" id="siteTitle" aria-describedby="siteTitleHelp" placeholder="Enter Site Name" value="{{ $setting['title'] }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="siteTagline">Site TagLine</label>
-                                    <input type="text" name="tagline" class="form-control" id="siteTagline" aria-describedby="siteTaglineHelp" placeholder="Enter Site Tagline" value="{{ $setting['tagline'] }}">
+                                    <input required type="text" name="tagline" class="form-control" id="siteTagline" aria-describedby="siteTaglineHelp" placeholder="Enter Site Tagline" value="{{ $setting['tagline'] }}">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="siteLogo">Site Logo</label>
-                                    <input type="file" name="logo" class="form-control-file" id="siteLogo">
+                                    <input required type="file" name="logo" class="form-control-file" id="siteLogo" accept="image/png">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="{{ asset("/storage/logo/".$setting['logo']) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset('/storage/logo/'.$setting['logo']) }}" alt="" width="100">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="siteFavicon">Site Favicon</label>
-                                    <input type="file" name="favicon" class="form-control-file" id="siteFavicon">
+                                    <input required type="file" name="favicon" class="form-control-file" id="siteFavicon" accept="image/png">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blahsiteFavicon" src="{{ asset("/storage/favicon/".$setting['favicon']) }}" alt="" width="100">
+                                    <img id="blahsiteFavicon" src="{{ asset('/storage/favicon/'.$setting['favicon']) }}" alt="" width="100">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="sitemobile">Site Mobile No.</label>
-                                    <input type="number" name="mobile" class="form-control" id="sitemobile" aria-describedby="sitemobileHelp" placeholder="Enter Mobile No." value="{{ $setting['mobile'] }}">
+                                    <input required type="number" name="mobile" class="form-control" id="sitemobile" aria-describedby="sitemobileHelp" placeholder="Enter Mobile No." value="{{ $setting['mobile'] }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="siteemail">Site Email</label>
-                                    <input type="text" name="email" class="form-control" id="siteemail" aria-describedby="siteemailHelp" placeholder="Enter Email Id" value="{{ $setting['email'] }}">
+                                    <input required type="text" name="email" class="form-control" id="siteemail" aria-describedby="siteemailHelp" placeholder="Enter Email Id" value="{{ $setting['email'] }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="siteaddress">Site Address</label>
-                                    <input type="text" name="address" class="form-control" id="siteaddress" aria-describedby="siteaddressHelp" placeholder="Enter Address" value="{{ $setting['address'] }}">
+                                    <input required type="text" name="address" class="form-control" id="siteaddress" aria-describedby="siteaddressHelp" placeholder="Enter Address" value="{{ $setting['address'] }}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="sitegoogle_maps">Site Google Maps</label>
@@ -107,7 +107,7 @@
 {{ Html::script('Admin/js/trix.js') }}
 
 <script>
-    function readURL(input) {
+    function readURL2(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
@@ -120,7 +120,7 @@
     }
 
     $("#siteLogo").change(function() {
-        readURL(this);
+        readURL2(this);
     });
 </script>
 <script>

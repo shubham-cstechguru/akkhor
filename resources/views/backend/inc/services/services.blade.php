@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', isset($service) ? 'Edit Service' : 'Add Service')
 
 @section('css')
 {{ Html::style('Admin/css/trix.css') }}
@@ -39,21 +39,21 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="servicesTitle">Service Title</label>
-                                    <input type="text" name="service_title" class="form-control" id="servicesTitle" aria-describedby="servicesTitleHelp" placeholder="Enter Service Name" value="{{ isset($service) ? $service->service_title : '' }}">
+                                    <input required type="text" name="service_title" class="form-control" id="servicesTitle" aria-describedby="servicesTitleHelp" placeholder="Enter Service Name" value="{{ isset($service) ? $service->service_title : '' }}">
                                 </div>
 
                                 @if(isset($service))
                                 <div class="form-group col-md-3">
                                     <label for="servicesImage">Service Image</label>
-                                    <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->service_image : '' }}">
+                                    <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->service_image : '' }}" accept="image/png,.svg">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="{{ asset("/storage/services/".$service->service_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset('/storage/services/'.$service->service_image) }}" alt="" width="100">
                                 </div>
                                 @else
                                 <div class="form-group col-md-3">
                                     <label for="servicesImage">Service Image</label>
-                                    <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->image : '' }}">
+                                    <input required type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->image : '' }}" accept="image/png,.svg">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100" />
@@ -62,7 +62,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="serviceDescription">Service Description</label>
-                                    <input id="description" type="hidden" name="service_description" value="{{ isset($service) ? $service->service_description : '' }}">
+                                    <input required id="description" type="hidden" name="service_description" value="{{ isset($service) ? $service->service_description : '' }}">
                                     <trix-editor input="description"></trix-editor>
                                 </div>
                                 <div class="form-group col-md-6">

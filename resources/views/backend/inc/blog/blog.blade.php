@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', isset($blog) ? 'Edit Blog' : 'Add Blog')
 
 @section('css')
 {{ Html::style('Admin/css/trix.css') }}
@@ -39,12 +39,12 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="blogTitle">Blog Title</label>
-                                    <input type="text" name="blog_title" class="form-control" id="blogTitle" aria-describedby="blogTitleHelp" placeholder="Enter Blog Name" value="{{ isset($blog) ? $blog->blog_title : '' }}">
+                                    <input required type="text" name="blog_title" class="form-control" id="blogTitle" aria-describedby="blogTitleHelp" placeholder="Enter Blog Name" value="{{ isset($blog) ? $blog->blog_title : '' }}">
                                 </div>
                                 @if(isset($blog))
                                 <div class="form-group col-md-3" id="root">
                                     <label for="blogImage">Blog Image</label>
-                                    <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
+                                    <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}" accept="image/x-png,image/gif,image/jpeg,image/jpg">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <img id="blah" src="{{ asset('/storage/blog/'.$blog->blog_image) }}" alt="" width="100">
@@ -52,16 +52,16 @@
                                 @else
                                 <div class="form-group col-md-3" id="root">
                                     <label for="blogImage">Blog Image</label>
-                                    <input type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}">
+                                    <input required type="file" name="blog_image" class="form-control-file" id="blogImage" value="{{ isset($blog) ? $blog->blog_image : '' }}" accept="image/x-png,image/gif,image/jpeg,image/jpg" >
                                 </div>
                                 <div class="form-group col-md-3">
                                     <img id="blah" src="{{ asset('images/download(2).png') }}" alt="" width="100">
                                 </div>
-                        
+
                                 @endif
                                 <div class="form-group col-md-6">
                                     <label for="blogCategory">Blog Category</label>
-                                    <select multiple class="form-control" name="category_id[]" id="blogCategory">
+                                    <select required multiple class="form-control" name="category_id[]" id="blogCategory">
                                         @foreach($blogcategories as $category)
 
                                         <option value="{{ $category->id }}" @if(isset($blog)) @foreach($blog->blog_category as $ct) @if($category->id == $ct->id)
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="blogCategory">Blog Tags</label>
-                                    <select multiple class="form-control" name="tags_id[]" id="blogTags">
+                                    <select required multiple class="form-control" name="tags_id[]" id="blogTags">
                                         @foreach($blogtags as $tag)
 
 
@@ -92,12 +92,13 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="blogshortdescTitle">Blog Short Description</label>
-                                    <textarea name="blog_short_description" class="form-control" id="blogshortdescTitle" rows="3">{{ isset($blog) ? $blog->blog_short_description : '' }}</textarea>
+                                    <textarea required name="blog_short_description" class="form-control" id="blogshortdescTitle" rows="3" maxlength="250">{{ isset($blog) ? $blog->blog_short_description : '' }}</textarea>
+                                    <div id="charactersRemaining" class="float-right">250 characters Remaining</div>
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="blogDescription">Blog Description</label>
-                                    <input id="description" type="hidden" name="blog_description" value="{{ isset($blog) ? $blog->blog_description : '' }}">
+                                    <input required id="description" type="hidden" name="blog_description" value="{{ isset($blog) ? $blog->blog_description : '' }}">
                                     <trix-editor input="description"></trix-editor>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -150,5 +151,23 @@
     $("#blogImage").change(function() {
         readURL(this);
     });
+</script>
+<script>
+    var el;
+
+    function countCharacters(e) {
+        // setup some variables 
+        var textEntered, countRemaining, counter;
+        // get the number of characters in the tweet box 
+        textEntered = document.getElementById('blogshortdescTitle').value;
+        // number left = number of characters - our maximum (140) 
+        counter = (250 - (textEntered.length));
+        // access the div for characters remaining 
+        countRemaining = document.getElementById('charactersRemaining');
+        // put the number of characters left into that div! 
+        countRemaining.textContent = counter;
+    }
+    el = document.getElementById('blogshortdescTitle');
+    el.addEventListener('keyup', countCharacters, false);
 </script>
 @endsection

@@ -8,6 +8,8 @@ use App\Http\Requests\ServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class ServiceController extends Controller
 {
@@ -60,12 +62,25 @@ class ServiceController extends Controller
     public function store(ServiceRequest $request)
     {
         $service = new Service();
-        $img_name = $request->service_image->getClientOriginalName();
-        $image = $request->service_image->storeAs('services', $img_name);
+        // $img_name = $request->service_image->getClientOriginalName();
+        // $image = $request->service_image->storeAs('services', $img_name);
+
+        if($request->hasFile('service_image')) {
+
+            $image       = $request->file('service_image');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(45, 45, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/services/' .$filename));
+        
+            $service->service_image = $filename;
+        }
+
         $service->service_title = $request->service_title;
         $service->service_slug = Str::slug($request->service_title, '-');
         $service->service_description = $request->service_description;
-        $service->service_image = $img_name;
         $service->service_seo_title = $request->service_seo_title;
         $service->service_seo_description = $request->service_seo_description;
         $service->service_seo_keyword = $request->service_seo_keyword;
@@ -106,9 +121,15 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         if ($request->hasFile('service_image')) {
-            $img_name = $request->service_image->getClientOriginalName();
-            $image = $request->service_image->storeAs('services', $img_name);
-            $service->service_image = $img_name;
+            $image       = $request->file('service_image');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(45, 45, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/services/' .$filename));
+            $service->service_image = $filename;
+
         }
         $service->service_title = $request->service_title;
         $service->service_slug = Str::slug($request->service_title, '-');

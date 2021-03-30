@@ -25,13 +25,21 @@ class UpdateBlogRequest extends FormRequest
     {
         return [
             'blog_title' => 'required',
+            'blog_short_description' => 'required|max:250',
             'blog_description' => 'required',
-            'blog_image' => 'nullable|max:200|mimes:jpeg,jpg,png,gif',
+            'blog_image' => 'nullable|max:2048|mimes:jpeg,jpg,png,gif',
             'category_id' => 'required',
             'tags_id' => 'required',
             'blog_seo_title' => 'nullable',
             'blog_seo_keyword' => 'nullable',
             'blog_seo_description' => 'nullable'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'category_id.required' => 'Please Select Category',
+            'tags_id.required' => 'Please select Tags'
         ];
     }
 }

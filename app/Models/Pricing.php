@@ -13,5 +13,7 @@ class Pricing extends Model
 
     protected $table = 'sch_plans';
 
+    protected $guarded = [];
+
     protected $casts = ['pricing_points' => 'array'];
 }

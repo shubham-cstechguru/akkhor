@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Blog Category') -->
+@section('title', isset($blogcategory) ? 'Edit Blog Category' : 'Add Blog Category')
 
 @section('css')
 {{ Html::style('Admin/css/trix.css') }}
@@ -39,12 +39,12 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="blogcategoryTitle">Blog Category Title</label>
-                                    <input type="text" name="category_title" class="form-control" id="blogcategoryTitle" aria-describedby="blogcategoryTitleHelp" placeholder="Enter Blog Category Name" value="{{ isset($blogcategory) ? $blogcategory->category_title : '' }}">
+                                    <input required type="text" name="category_title" class="form-control" id="blogcategoryTitle" aria-describedby="blogcategoryTitleHelp" placeholder="Enter Blog Category Name" value="{{ isset($blogcategory) ? $blogcategory->category_title : '' }}">
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="blogcategoryDescription">Blog Category Description</label>
-                                    <input id="description" type="hidden" name="category_description" value="{{ isset($blogcategory) ? $blogcategory->category_description : '' }}">
+                                    <input required id="description" type="hidden" name="category_description" value="{{ isset($blogcategory) ? $blogcategory->category_description : '' }}">
                                     <trix-editor input="description"></trix-editor>
                                 </div>
                                 <div class="form-group col-md-6">

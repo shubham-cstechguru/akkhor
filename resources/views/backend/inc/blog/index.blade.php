@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', 'View Blogs')
 
 @section('content')
 

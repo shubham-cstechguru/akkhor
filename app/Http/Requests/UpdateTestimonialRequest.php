@@ -25,7 +25,15 @@ class UpdateTestimonialRequest extends FormRequest
     {
         return [
             't_name' => 'required',
-            't_testimonial' => 'required',
+            't_testimonial' => 'required|max:250',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            't_name.required' => 'user name is required.',
+            't_testimonial.required' => 'user testimonial name is required.',
+            't_testimonial.max' => 'The user testimonial must not be greater than 250 characters.',
         ];
     }
 }

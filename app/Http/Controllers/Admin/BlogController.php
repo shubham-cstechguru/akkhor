@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateBlogRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class BlogController extends Controller
 {
@@ -73,13 +74,26 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         $blog = new Blog();
-        $img_name = $request->blog_image->getClientOriginalName();
-        $image = $request->blog_image->storeAs('blog', $img_name);
+        // $img_name = $request->blog_image->getClientOriginalName();
+        // $image = $request->blog_image->storeAs('blog', $img_name);
+
+        if($request->hasFile('blog_image')) {
+
+            $image       = $request->file('blog_image');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/blog/' .$filename));
+        
+            $blog->blog_image = $filename;
+        }
+
         $blog->blog_title = $request->blog_title;
         $blog->blog_slug = Str::slug($request->blog_title, '-');
         $blog->blog_short_description = $request->blog_short_description;
         $blog->blog_description = $request->blog_description;
-        $blog->blog_image = $img_name;
         $blog->blog_seo_title = $request->blog_seo_title;
         $blog->blog_seo_description = $request->blog_seo_description;
         $blog->blog_seo_keyword = $request->blog_seo_keyword;
@@ -126,9 +140,14 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         if ($request->hasFile('blog_image')) {
-            $img_name = $request->blog_image->getClientOriginalName();
-            $image = $request->blog_image->storeAs('blog', $img_name);
-            $blog->blog_image = $img_name;
+            $image       = $request->file('blog_image');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/blog/' .$filename));
+            $blog->blog_image = $filename;
         }
 
         $blog->blog_title = $request->blog_title;

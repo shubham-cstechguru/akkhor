@@ -26,7 +26,7 @@ class UpdateServiceRequest extends FormRequest
         return [
             'service_title' => 'required',
             'service_description' => 'required',
-            'service_image' => 'nullable|max:100|mimes:png,svg',
+            'service_image' => 'nullable|max:1048|mimes:png,svg',
             'service_seo_title' => 'nullable',
             'service_seo_description' => 'nullable',
             'service_seo_keyword' => 'nullable',

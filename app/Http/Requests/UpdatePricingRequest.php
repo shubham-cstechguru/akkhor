@@ -30,4 +30,13 @@ class UpdatePricingRequest extends FormRequest
             'pricing_points' => 'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'The pricing title is required',
+            'name.unique' => 'The pricing is unique',
+            'cost.required' => 'The pricing price is required',
+            'cost.numeric' => 'The pricing price must be number',
+        ];
+    }
 }

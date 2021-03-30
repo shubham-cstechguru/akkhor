@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', isset($testimonial) ? 'Edit Testimonial' : 'Add Testimonial')
 
 @section('css')
 @endsection
@@ -38,21 +38,21 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="testimonialTitle">Testimonial Name</label>
-                                    <input type="text" name="t_name" class="form-control" id="testimonialTitle" aria-describedby="testimonialTitleHelp" placeholder="Enter Testimonial Name" value="{{ isset($testimonial) ? $testimonial->t_name : '' }}">
+                                    <input required type="text" name="t_name" class="form-control" id="testimonialTitle" aria-describedby="testimonialTitleHelp" placeholder="Enter Testimonial Name" value="{{ isset($testimonial) ? $testimonial->t_name : '' }}">
                                 </div>
 
                                 @if(isset($testimonial))
                                 <div class="form-group col-md-3">
                                     <label for="testimonialImage">Testimonial Image</label>
-                                    <input type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}">
+                                    <input type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}" accept="image/x-png,image/jpeg,image/jpg">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="{{ asset("/storage/testimonial/".$testimonial->t_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset('/storage/testimonial/'.$testimonial->t_image) }}" alt="" width="100">
                                 </div>
                                 @else
                                 <div class="form-group col-md-3">
                                     <label for="testimonialImage">Testimonal Image</label>
-                                    <input type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}">
+                                    <input required type="file" name="t_image" class="form-control-file" id="testimonialImage" value="{{ isset($testimonial) ? $testimonial->t_image : '' }}" accept="image/x-png,image/jpeg,image/jpg">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100" />
@@ -61,7 +61,8 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="testimonialDescription">Testimonial</label>
-                                    <textarea name="t_testimonial" id="testimonialDescription" class="form-control" rows="3">{{ isset($testimonial) ? $testimonial->t_testimonial : '' }}</textarea>
+                                    <textarea required name="t_testimonial" id="testimonialDescription" class="form-control" rows="3" maxlength="250">{{ isset($testimonial) ? $testimonial->t_testimonial : '' }}</textarea>
+                                    <div id="charactersRemaining" class="float-right">250 characters Remaining</div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">{{ isset($testimonial) ? 'Update' : 'Save' }}</button>
@@ -93,5 +94,23 @@
     $("#testimonialImage").change(function() {
         readURL(this);
     });
+</script>
+<script>
+    var el;
+
+    function countCharacters(e) {
+        // setup some variables 
+        var textEntered, countRemaining, counter;
+        // get the number of characters in the tweet box 
+        textEntered = document.getElementById('testimonialDescription').value;
+        // number left = number of characters - our maximum (140) 
+        counter = (250 - (textEntered.length));
+        // access the div for characters remaining 
+        countRemaining = document.getElementById('charactersRemaining');
+        // put the number of characters left into that div! 
+        countRemaining.textContent = counter;
+    }
+    el = document.getElementById('testimonialDescription');
+    el.addEventListener('keyup', countCharacters, false);
 </script>
 @endsection

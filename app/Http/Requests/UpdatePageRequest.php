@@ -26,7 +26,7 @@ class UpdatePageRequest extends FormRequest
         return [
             'page_title' => 'required',
             'page_description' => 'required',
-            'page_image' => 'nullable|max:200|mimes:jpeg,jpg,png,gif',
+            'page_image' => 'nullable|max:2048|mimes:jpeg,jpg,png,gif',
             'page_seo_title' => 'nullable',
             'page_seo_description' => 'nullable',
             'page_seo_keyword' => 'nullable',

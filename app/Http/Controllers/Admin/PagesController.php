@@ -9,6 +9,8 @@ use App\Http\Requests\UpdatePageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class PagesController extends Controller
 {
@@ -60,10 +62,18 @@ class PagesController extends Controller
     public function store(PageRequest $request)
     {
         $page = new Pages();
-        if ($request->page_image != '') {
-            $img_name = $request->page_image->getClientOriginalName();
-            $image = $request->page_image->storeAs('pages', $img_name);
-            $page->page_image = $img_name;
+        if ($request->hasFile('page_image')) {
+            if ($request->page_image != '') {
+                $image       = $request->file('page_image');
+                $filename    = $image->getClientOriginalName();
+
+                $image_resize = Image::make($image->getRealPath());
+                $image_resize->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('storage/pages/' .$filename));
+
+                $page->page_image = $filename;
+            }
         }
         $page->page_title = $request->page_title;
         $page->page_slug = Str::slug($request->page_title, '-');
@@ -109,9 +119,15 @@ class PagesController extends Controller
     {
         if ($request->hasFile('page_image')) {
             if ($request->page_image != '') {
-                $img_name = $request->page_image->getClientOriginalName();
-                $image = $request->page_image->storeAs('pages', $img_name);
-                $page->page_image = $img_name;
+                $image       = $request->file('page_image');
+                $filename    = $image->getClientOriginalName();
+
+                $image_resize = Image::make($image->getRealPath());
+                $image_resize->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('storage/pages/' .$filename));
+                $page->page_image = $filename;
+
             }
         }
 

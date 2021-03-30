@@ -3,9 +3,9 @@
         <div class="main-footer-update">
             <div class="logo-data-new">
                 @if($setting->logo ?? '' !='')
-                <img src="{{ asset('/storage/logo/'.$setting->logo) }}" title="Onine School ERP" alt="School Management Software" class="logowhite">
+                <img src="{{ asset('/storage/logo/'.$setting->logo) }}" title="Onine School ERP" alt="School Management Software" class="logowhite" style="filter: brightness(0) invert(1);">
                 @else
-                <img src="{{ asset('/images/logo.png') }}" title="Onine School ERP" alt="School Management Software" class="logowhite">
+                <img src="{{ asset('/images/logo.png') }}" title="Onine School ERP" alt="School Management Software" class="logowhite" style="filter: brightness(0) invert(1);">
                 @endif
             </div>
             <div class="outer-part">

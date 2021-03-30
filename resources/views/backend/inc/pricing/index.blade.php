@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', 'View Pricing Page')
 
 @section('content')
 
@@ -26,7 +26,7 @@
               <tr>
                 <th>Number</th>
                 <th>Title</th>
-                <th>Price</th>
+                <th>Price (₹/yr)</th>
                 <th>Action</th>
               </tr>
             </thead>

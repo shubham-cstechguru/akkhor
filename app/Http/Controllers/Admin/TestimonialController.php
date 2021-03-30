@@ -8,6 +8,8 @@ use App\Http\Requests\TestimonialRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class TestimonialController extends Controller
 {
@@ -59,11 +61,24 @@ class TestimonialController extends Controller
     public function store(TestimonialRequest $request)
     {
         $testimonial = new Testimonial();
-        $img_name = $request->t_image->getClientOriginalName();
-        $image = $request->t_image->storeAs('testimonial', $img_name);
+        // $img_name = $request->t_image->getClientOriginalName();
+        // $image = $request->t_image->storeAs('testimonial', $img_name);
+
+        if ($request->hasFile('t_image')) {
+
+            $image       = $request->file('t_image');
+            $filename    = $image->getClientOriginalName();
+
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/testimonial/' . $filename));
+
+            $testimonial->t_image = $filename;
+        }
+
         $testimonial->t_name = $request->t_name;
         $testimonial->t_testimonial = $request->t_testimonial;
-        $testimonial->t_image = $img_name;
         $testimonial->save();
 
         return redirect(route('admin.testimonial.index'));
@@ -101,9 +116,16 @@ class TestimonialController extends Controller
     public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
     {
         if ($request->hasFile('t_image')) {
-            $img_name = $request->t_image->getClientOriginalName();
-            $image = $request->t_image->storeAs('testimonial', $img_name);
-            $testimonial->t_image = $img_name;
+
+            $image       = $request->file('t_image');
+            $filename    = $image->getClientOriginalName();
+
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/testimonial/' . $filename));
+
+            $testimonial->t_image = $filename;
         }
 
         $testimonial->t_name = $request->t_name;

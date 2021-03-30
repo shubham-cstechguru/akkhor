@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', isset($pricing) ? 'Edit Pricing' : 'Add Pricing')
 
 @section('css')
 @endsection
@@ -39,16 +39,17 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="pricingTitle">Pricing Title</label>
-                                    <input type="text" name="name" class="form-control" id="pricingTitle" aria-describedby="pricingTitleHelp" placeholder="Enter Pricing Name" value="{{ isset($pricing) ? $pricing['name'] : '' }}">
+                                    <input required type="text" name="name" class="form-control" id="pricingTitle" aria-describedby="pricingTitleHelp" placeholder="Enter Pricing Name" value="{{ isset($pricing) ? $pricing['name'] : '' }}">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="cost">Price</label>
-                                    <input type="text" name="cost" class="form-control" id="cost" aria-describedby="priceHelp" placeholder="Enter Price" value="{{ isset($pricing) ? $pricing['cost'] : '' }}">
+                                    <label for="cost">Price (₹/yr)</label>
+                                    <input required type="text" name="cost" class="form-control" id="cost" aria-describedby="priceHelp" placeholder="Enter Price" value="{{ isset($pricing) ? $pricing['cost'] : '' }}">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="pricingDescription">Pricing Description</label>
-                                    <textarea name="pricing_description" id="pricingDescription" class="form-control" rows="3">{{ isset($pricing) ? $pricing['pricing_description'] : '' }}</textarea>
+                                    <textarea required name="pricing_description" id="pricingDescription" class="form-control" rows="3" maxlength="250">{{ isset($pricing) ? $pricing['pricing_description'] : '' }}</textarea>
+                                    <div id="charactersRemaining" class="float-right">250 characters Remaining</div>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="pricingPoints">Pricing Points</label>
@@ -63,7 +64,7 @@
                                         @endforeach
                                         @else
                                         <div class="mt-2 d-flex">
-                                            <input type="text" name="pricing_points[]" class="form-control input-row col-md-8 mt-3" id="pricingPoints" aria-describedby="pricingPointsHelp" placeholder="Enter Pricing points" value="">
+                                            <input required type="text" name="pricing_points[]" class="form-control input-row col-md-8 mt-3" id="pricingPoints" aria-describedby="pricingPointsHelp" placeholder="Enter Pricing points" value="">
                                         </div>
                                         @endif
                                     </div>
@@ -93,5 +94,23 @@
         e.preventDefault();
         $(this).parent('.d-flex').remove();
     });
+</script>
+<script>
+    var el;
+
+    function countCharacters(e) {
+        // setup some variables 
+        var textEntered, countRemaining, counter;
+        // get the number of characters in the tweet box 
+        textEntered = document.getElementById('pricingDescription').value;
+        // number left = number of characters - our maximum (140) 
+        counter = (250 - (textEntered.length));
+        // access the div for characters remaining 
+        countRemaining = document.getElementById('charactersRemaining');
+        // put the number of characters left into that div! 
+        countRemaining.textContent = counter;
+    }
+    el = document.getElementById('pricingDescription');
+    el.addEventListener('keyup', countCharacters, false);
 </script>
 @endsection

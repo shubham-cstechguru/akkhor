@@ -54,7 +54,8 @@ class PricingController extends Controller
      */
     public function store(PricingRequest $request)
     {
-        $pricing = new Pricing();
+        $input  = $request->all();
+        $pricing = new Pricing($input);
         $pricing->name = $request->name;
         $pricing->pricing_description = $request->pricing_description;
         $pricing->cost = $request->cost;
@@ -98,11 +99,13 @@ class PricingController extends Controller
     {
 
         // dd($request->all());
-        $pricing->name = $request->name;
-        $pricing->pricing_description = $request->pricing_description;
-        $pricing->cost = $request->cost;
-        $pricing->pricing_points = $request->pricing_points;
-        $pricing->save();
+
+        $price_data = Pricing::findOrFail($pricing->id);
+        $price_data->name = $request->name;
+        $price_data->pricing_description = $request->pricing_description;
+        $price_data->cost = $request->cost;
+        $price_data->pricing_points = $request->pricing_points;
+        $price_data->save();
 
         return redirect(route('admin.pricing.index'));
 

@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-<!-- @section('title', 'Home Page') -->
+@section('title', isset($page) ? 'Edit Page' : 'Add Page')
 
 @section('css')
 {{ Html::style('Admin/css/trix.css') }}
@@ -39,30 +39,30 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="pagesTitle">Page Title</label>
-                                    <input type="text" name="page_title" class="form-control" id="pagesTitle" aria-describedby="pagesTitleHelp" placeholder="Enter Page Name" value="{{ isset($page) ? $page->page_title : '' }}">
+                                    <input required type="text" name="page_title" class="form-control" id="pagesTitle" aria-describedby="pagesTitleHelp" placeholder="Enter Page Name" value="{{ isset($page) ? $page->page_title : '' }}">
                                 </div>
 
                                 @if(isset($page))
                                 <div class="form-group col-md-3">
                                     <label for="pagesImage">Page Image</label>
-                                    <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->page_image : '' }}">
+                                    <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->page_image : '' }}" accept="image/x-png,image/gif,image/jpeg,image/jpg">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="{{ asset("/storage/pages/".$page->page_image) }}" alt="" width="100">
+                                    <img id="blah" src="{{ asset('/storage/pages/'.$page->page_image) }}" alt="" width="100">
                                 </div>
                                 @else
                                 <div class="form-group col-md-3">
                                     <label for="pagesImage">Page Image</label>
-                                    <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->image : '' }}">
+                                    <input type="file" name="page_image" class="form-control-file" id="pagesImage" value="{{ isset($page) ? $page->image : '' }}" accept="image/x-png,image/gif,image/jpeg,image/jpg">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100"/>
+                                    <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100" >
                                 </div>
                                 @endif
 
                                 <div class="form-group col-md-12">
                                     <label for="categoryDescription">Page Description</label>
-                                    <input id="description" type="hidden" name="page_description" value="{{ isset($page) ? $page->page_description : '' }}">
+                                    <input required id="description" type="hidden" name="page_description" value="{{ isset($page) ? $page->page_description : '' }}">
                                     <trix-editor input="description"></trix-editor>
                                 </div>
                                 <div class="form-group col-md-6">
