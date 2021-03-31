@@ -6760,7 +6760,7 @@ span.close_spn:hover {
     display: inline-block;
     float: left;
     width: 59.5%;
-    height: 35px;
+    /* height: 35px; */
     line-height: 35px;
     border-radius: 3px;
     box-sizing: border-box
@@ -8506,8 +8506,10 @@ span.descptn_txt {
     text-align: center;
     padding: 22px 10px 0 10px
 }
-.form-group {
-    margin-bottom: 20px
+.error_msgIcon{
+    color: #ff2929;
+    clear: both;
+    text-align: left;
 }
 .select-lable {
     font-size: 16px;

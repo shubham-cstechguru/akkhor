@@ -12,7 +12,7 @@
     {{ Html::style('Admin/css/styles.css') }}
     {{ Html::style('Admin/css/dataTables.bootstrap4.min.css') }}
     {{ Html::script('Admin/js/all.min.js') }}
-     @yield('css')
+    @yield('css')
 
 </head>
 
@@ -33,6 +33,14 @@
     {{ Html::script('Admin/js/jquery.dataTables.min.js') }}
     {{ Html::script('Admin/js/dataTables.bootstrap4.min.js') }}
     {{ Html::script('Admin/js/datatables-demo.js') }}
+    {{ Html::script('https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js') }}
+
+    <script>
+        tinymce.init({
+            selector: '.editor',
+            branding: false
+        });
+    </script>
 
     @yield('scripts')
 </body>

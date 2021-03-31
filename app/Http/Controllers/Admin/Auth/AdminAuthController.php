@@ -6,6 +6,9 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
+
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminAuthController extends Controller
@@ -77,5 +80,27 @@ class AdminAuthController extends Controller
         \Session::flush();
         \Session::put('success', 'You are logout successfully');
         return redirect(route('admin.login'));
+    }
+
+    public function password(Request $request)
+    {
+        $lists = Auth::guard('admin')->user();
+        $data  = compact('lists');
+
+        // return data to view
+        return view('backend.inc.changepassword', $data);
+    }
+
+    public function changepassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+        ]);
+   
+        Admin::find(auth()->guard('admin')->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+
+        return back()->with('success', 'Your password has been changed successfully.');
+        
     }
 }

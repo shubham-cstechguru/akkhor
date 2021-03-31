@@ -12,6 +12,7 @@ $(function() {
         tel     = /^\d+$/;
         mob     = /^[0-9]{10}$/;
         email   = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        web     = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
         stpas   = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
         $(this).find("input.mobile").each(function() {
             if( !mob.test( $(this).val() ) ) {
@@ -41,6 +42,11 @@ $(function() {
             if($(this).attr("type") == "email" && $(this).val() != "" && !email.test($(this).val())) {
                 $(this).addClass("is-invalid");
                 $(this).closest(input_parent).append('<div class="error_msgIcon">Please enter valid Email ID.</div>');
+                errorFlag = true;
+            }
+            if(!web.test($(this).val()) && $(this).hasClass("web") && $(this).val() != "") {
+                $(this).addClass("is-invalid");
+                $(this).closest(input_parent).append('<div class="error_msgIcon">Please Enter Valid Website url</div>');
                 errorFlag = true;
             }
         });

@@ -2,8 +2,6 @@
 
 @section('title', isset($pricing) ? 'Edit Pricing' : 'Add Pricing')
 
-@section('css')
-@endsection
 
 @section('content')
 

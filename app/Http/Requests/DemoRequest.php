@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ReCaptchaRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DemoRequest extends FormRequest
@@ -27,7 +28,7 @@ class DemoRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|max:255',
             'company' => 'nullable',
-            'phoneno' => 'required|numeric',
+            'phoneno' => 'required|numeric|min:10',
             'designation' => 'nullable',
             'test' => 'nullable',
             'daysToFinalize' => 'nullable',
@@ -41,7 +42,9 @@ class DemoRequest extends FormRequest
         return [
             'name.required' => 'Please Enter Your Name',
             'email.required' => 'Please Enter Your Email',
+            'email.email' => 'Please Enter Your Valid Email',
             'phoneno.required' => 'Please Enter Your Contact No.',
+            'phoneno.min' => 'Your Number minimum of 10 digits',
         ];
     }
 }

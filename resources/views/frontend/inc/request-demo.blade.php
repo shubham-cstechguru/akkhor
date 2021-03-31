@@ -38,8 +38,8 @@
                             <div class="left-sctn-login">
                                 <span class="txt-lgon">Your name<span style="color:red;margin-left: 5px;">*</span></span>
                             </div>
-                            <div class="admin-login">
-                                <input required type="text" autocomplete="off" onfocus='hide(this.id);' oninput="this.value = this.value.replace(/[^0-9.^A-Z. ^a-z.^\s ^\s ]/g, ''); " id="name" class="login-form-text" name="name" placeholder="Enter your full name">
+                            <div class="admin-login form-group">
+                                <input required type="text" autocomplete="off" onfocus='hide(this.id);' oninput="this.value = this.value.replace(/[^A-Z. ^a-z.^\s ^\s ]/g, '');" id="name" class="login-form-text name" name="name" placeholder="Enter your full name">
                                 @if($errors->has('name'))
                                 <div class="valid-sctn" id="name_error">
                                     <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
@@ -54,8 +54,8 @@
                             <div class="left-sctn-login">
                                 <span class="txt-lgon">Email<span style="color: red;margin-left: 5px;">*</span></span>
                             </div>
-                            <div class="admin-login">
-                                <input required type="email" autocomplete="off" onfocus='hide(this.id);' id="email" class="login-form-text" name="email" placeholder="Enter your  email">
+                            <div class="admin-login form-group">
+                                <input required type="email" autocomplete="off" onfocus='hide(this.id);' oninput="this.value = this.value.replace(/[^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$]/g, '');" id="email" class="login-form-text" name="email" placeholder="Enter your  email">
                                 @if($errors->has('email'))
                                 <div class="valid-sctn" id="name_error">
                                     <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
@@ -78,8 +78,8 @@
                             <div class="left-sctn-login">
                                 <span class="txt-lgon">Contact number<span style="color: red;margin-left: 5px;">*</span></span>
                             </div>
-                            <div class="admin-login">
-                                <input required type="text" autocomplete="off" size="24" oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="15" id="phoneno" name="phoneno" onfocus='hide(this.id)' class="mble_input login-form-text" placeholder="Enter your contact number">
+                            <div class="admin-login form-group">
+                                <input required type="tel" autocomplete="off" size="24" oninput="this.value = this.value.replace(/[^0-9.{10}]/g, '');" maxlength="15"  id="phoneno" name="phoneno" onfocus='hide(this.id)' class="mble_input login-form-text" placeholder="Enter your contact number">
                                 @if($errors->has('phoneno'))
                                 <div class="valid-sctn" id="name_error">
                                     <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
@@ -129,8 +129,8 @@
                             <div class="left-sctn-login">
                                 <span class="txt-lgon">Website URL</span>
                             </div>
-                            <div class="admin-login">
-                                <input style="width:60%" type="text" autocomplete="off" class="login-form-text" id="requestedUrl" onfocus='hide(this.id);' name="requestedUrl" placeholder="Enter your website url">
+                            <div class="admin-login form-group">
+                                <input style="width:60%" type="text" autocomplete="off" class="login-form-text web" id="requestedUrl" onfocus='hide(this.id);' oninput="this.value = this.value.replace(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi, '');" name="requestedUrl" placeholder="Enter your website url">
                             </div>
                         </div>
                         <div class="mktFormReq mktField">
@@ -165,6 +165,8 @@
 @endsection
 
 @section('script')
+
+{{ Html::script('js/validation.js') }}
 
 <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITEKEY') }}"></script>
 <script>

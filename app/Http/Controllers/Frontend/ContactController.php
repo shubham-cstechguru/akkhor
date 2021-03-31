@@ -14,6 +14,7 @@ class ContactController extends Controller
     public function create()
     {
         $setting = Setting::first();
+        // dd($_SERVER);
         return view('frontend.inc.contact', compact('setting'));
     }
     public function store(ContactRequest $request)

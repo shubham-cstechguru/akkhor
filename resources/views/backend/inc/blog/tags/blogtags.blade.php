@@ -2,9 +2,6 @@
 
 @section('title', isset($blogtag) ? 'Edit Blog Tags' : 'Add Blog Tags')
 
-@section('css')
-{{ Html::style('Admin/css/trix.css') }}
-@endsection
 
 @section('content')
 
@@ -44,8 +41,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="blogtagsDescription">Blog Category Description</label>
-                                    <input required id="description" type="hidden" name="tags_description" value="{{ isset($blogtag) ? $blogtag->tags_description : '' }}">
-                                    <trix-editor input="description"></trix-editor>
+                                    <textarea required name="tags_description" class="form-control editor" id="blogtagsDescription" rows="10">{{ isset($blogtag) ? $blogtag->tags_description : '' }}</textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="blogtagsseocategoryTitle">Blog Category SEO Title</label>
@@ -71,7 +67,3 @@
 </main>
 
 @endsection('content')
-
-@section('scripts')
-{{ Html::script('Admin/js/trix.js') }}
-@endsection

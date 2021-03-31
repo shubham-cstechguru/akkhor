@@ -2,9 +2,6 @@
 
 @section('title', isset($page) ? 'Edit Page' : 'Add Page')
 
-@section('css')
-{{ Html::style('Admin/css/trix.css') }}
-@endsection
 
 @section('content')
 
@@ -61,9 +58,8 @@
                                 @endif
 
                                 <div class="form-group col-md-12">
-                                    <label for="categoryDescription">Page Description</label>
-                                    <input required id="description" type="hidden" name="page_description" value="{{ isset($page) ? $page->page_description : '' }}">
-                                    <trix-editor input="description"></trix-editor>
+                                    <label for="pageDescription">Page Description</label>
+                                    <textarea required name="page_description" class="form-control editor" id="pageDescription" rows="10">{{ isset($page) ? $page->page_description : '' }}</textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="pagesseocategoryTitle">Page SEO Title</label>
@@ -91,7 +87,6 @@
 @endsection('content')
 
 @section('scripts')
-{{ Html::script('Admin/js/trix.js') }}
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

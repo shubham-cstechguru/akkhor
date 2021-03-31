@@ -2,10 +2,6 @@
 
 @section('title', isset($service) ? 'Edit Service' : 'Add Service')
 
-@section('css')
-{{ Html::style('Admin/css/trix.css') }}
-@endsection
-
 @section('content')
 
 <main>
@@ -62,8 +58,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="serviceDescription">Service Description</label>
-                                    <input required id="description" type="hidden" name="service_description" value="{{ isset($service) ? $service->service_description : '' }}">
-                                    <trix-editor input="description"></trix-editor>
+                                    <textarea required name="service_description" class="form-control editor" id="serviceDescription" rows="10">{{ isset($service) ? $service->service_description : '' }}</textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="servicesseocategoryTitle">Service SEO Title</label>
@@ -91,7 +86,6 @@
 @endsection('content')
 
 @section('scripts')
-{{ Html::script('Admin/js/trix.js') }}
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

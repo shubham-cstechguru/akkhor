@@ -2,9 +2,6 @@
 
 @section('title', isset($blog) ? 'Edit Blog' : 'Add Blog')
 
-@section('css')
-{{ Html::style('Admin/css/trix.css') }}
-@endsection
 
 @section('content')
 
@@ -98,8 +95,7 @@
 
                                 <div class="form-group col-md-12">
                                     <label for="blogDescription">Blog Description</label>
-                                    <input required id="description" type="hidden" name="blog_description" value="{{ isset($blog) ? $blog->blog_description : '' }}">
-                                    <trix-editor input="description"></trix-editor>
+                                    <textarea required name="blog_description" class="form-control editor" id="blogDescription" rows="10">{{ isset($blog) ? $blog->blog_description : '' }}</textarea>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="seoblogTitle">Blog SEO Title</label>
@@ -127,7 +123,6 @@
 @endsection('content')
 
 @section('scripts')
-{{ Html::script('Admin/js/trix.js') }}
 <script>
     $('option').mousedown(function(e) {
         e.preventDefault();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ReCaptchaRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ContactRequest extends FormRequest
@@ -26,9 +27,9 @@ class ContactRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|max:255',
-            'phoneno' => 'required|numeric',
+            'phoneno' => 'required|numeric|min:10',
             'message' => 'required',
-            'recaptcha_token' => 'required'
+            'recaptcha_token' => ['required', new ReCaptchaRule($this->recaptcha_token)]
         ];
     }
     public function messages()
@@ -36,8 +37,10 @@ class ContactRequest extends FormRequest
         return [
             'name.required' => 'Please Enter Your Name',
             'email.required' => 'Please Enter Your Email',
+            'email.email' => 'Please Enter Your Valid Email',
             'phoneno.required' => 'Please Enter Your Contact No.',
             'message.required' => 'Please Enter Your Message',
+            'phoneno.min' => 'Your Number minimum of 10 digits',
         ];
     }
 }

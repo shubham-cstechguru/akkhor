@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 // use App\Http\Requests;
 // use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Demo;
 
 class AdminController extends Controller
 {
@@ -16,6 +16,9 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        return view('backend.inc.index');
+        $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        $demo = Demo::get();
+        $data = compact('month');
+        return view('backend.inc.index', $data);
     }
 }
