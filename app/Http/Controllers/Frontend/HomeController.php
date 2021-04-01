@@ -16,7 +16,7 @@ class HomeController extends Controller
         $home = Home::first();
         $service = Service::get();
         $setting = Setting::first();
-        $school = School::get();
+        $school = School::whereNotNull('logo')->get();
         $data = compact('service', 'setting', 'home', 'school');
         return view('frontend.inc.index', $data);
     }

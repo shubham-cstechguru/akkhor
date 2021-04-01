@@ -170,7 +170,9 @@ synchronized user-interface for you, your teachers, your students and their pare
 
         <ul class='company-colr-logos'>
             @foreach($school as $key => $s)
-            <li><img alt='{{ $s->logo }}' src='{{ asset("/storage/".$s->logo) }}'></li>
+            <li>
+                <img alt='{{ $s->logo }}' src='{{ asset("/storage/logo/".$s->logo) }}'>
+            </li>
             @endforeach
         </ul>
 

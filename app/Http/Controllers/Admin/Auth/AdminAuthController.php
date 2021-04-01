@@ -62,10 +62,9 @@ class AdminAuthController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ], $request->remember_me)) {
-            \Session::put('success', 'You are Login successfully!!');
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard')->with('success', 'You are Login successfully!!');
         } else {
-            return back()->with('error', 'your username and password are wrong.');
+            return redirect()->back()->with('error', 'your username and password are wrong.');
         }
     }
 
@@ -97,10 +96,12 @@ class AdminAuthController extends Controller
             'current_password' => ['required', new MatchOldPassword],
             'new_password' => ['required'],
         ]);
-   
-        Admin::find(auth()->guard('admin')->user()->id)->update(['password'=> Hash::make($request->new_password)]);
 
-        return back()->with('success', 'Your password has been changed successfully.');
+        $admin = auth()->guard('admin')->user();
+   
+        $admin->update(['password'=> Hash::make($request->new_password)]);
+
+        return redirect()->back()->with('success', 'Your password has been changed successfully.');
         
     }
 }
