@@ -3,36 +3,31 @@
 @section('title', 'View Category Page')
 
 @section('content')
+<h1 class="mt-4">View Pages</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('admin.pages.index') }}">Pages</a></li>
+    <li class="breadcrumb-item active">View Category</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Page Title</th>
+                        <th>Page Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-<main>
-    <div class="container-fluid">
-        <h1 class="mt-4">View Pages</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('admin.pages.index') }}">Pages</a></li>
-            <li class="breadcrumb-item active">View Category</li>
-        </ol>
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Number</th>
-                                <th>Page Title</th>
-                                <th>Page Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
-</main>
+</div>
 
 @endsection('content')
 
@@ -56,7 +51,7 @@
                 },
                 {
                     data: 'page_image',
-                    name: 'page_image',                    
+                    name: 'page_image',
                     orderable: false,
                     searchable: false
                 },

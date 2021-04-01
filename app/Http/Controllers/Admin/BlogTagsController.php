@@ -61,7 +61,7 @@ class BlogTagsController extends Controller
         $blogtag->tags_seo_description = $request->tags_seo_description;
         $blogtag->save();
 
-        return redirect(route('admin.blogtags.index'));
+        return redirect(route('admin.blogtags.index'))->with('success','Blog Tag successfully added.');
     }
 
     /**
@@ -102,7 +102,7 @@ class BlogTagsController extends Controller
         $blogtag->tags_seo_description = $request->tags_seo_description;
         $blogtag->save();
 
-        return redirect(route('admin.blogtags.index'));
+        return redirect(route('admin.blogtags.index'))->with('success','Blog Tag successfully Update.');
     }
 
     /**
@@ -114,6 +114,6 @@ class BlogTagsController extends Controller
     public function destroy(BlogTags $blogtag)
     {
         $blogtag->delete();
-        return redirect(route('admin.blogtags.index'));
+        return redirect(route('admin.blogtags.index'))->with('success','Blog successfully Delete.');
     }
 }

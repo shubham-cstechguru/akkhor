@@ -62,7 +62,6 @@
         $(document).ready(function() {
             $(window).scroll(function() {
                 var headheight = $('.container').height();
-                console.log(headheight);
                 if ($(window).scrollTop() > headheight) {
                     $('#mainnav_bar').addClass('mainnavbar-fixed');
                 }

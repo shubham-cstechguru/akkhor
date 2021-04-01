@@ -33,6 +33,10 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('pages/list', 'PagesController@getPages')->name('pages.list');
             Route::get('services/list', 'ServiceController@getServices')->name('services.list');
             Route::get('testimonial/list', 'TestimonialController@getTestimonials')->name('testimonial.list');
+            Route::get('/pages/remove-img/{page}', 'PagesController@removeimg')->name('removeimg');
+            Route::get('/blog/remove-img/{blog}', 'BlogController@removeimg')->name('removeimgblog');
+            Route::get('/services/remove-img/{services}', 'ServiceController@removeimg')->name('removeimgservice');
+            Route::get('/testimonial/remove-img/{testimonial}', 'TestimonialController@removeimg')->name('removeimgtestimonial');
 
 
             Route::resources([

@@ -45,7 +45,7 @@ class HomeController extends Controller
         $record->client_desc      = $request->client_desc;
 
         if ($record->save()) {
-            return redirect(route('admin.home'))->with('success', 'Success! Record has been edided');
+            return redirect(route('admin.home'))->with('success', 'Success! Record has been edited');
         }
     }
 }

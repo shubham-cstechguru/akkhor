@@ -86,7 +86,7 @@ class ServiceController extends Controller
         $service->service_seo_keyword = $request->service_seo_keyword;
         $service->save();
 
-        return redirect(route('admin.services.index'));
+        return redirect(route('admin.services.index'))->with('success','Service successfully added.');
     }
 
     /**
@@ -139,7 +139,7 @@ class ServiceController extends Controller
         $service->service_seo_keyword = $request->service_seo_keyword;
         $service->save();
 
-        return redirect(route('admin.services.index'));
+        return redirect(route('admin.services.index'))->with('success','Service successfully Update.');
     }
 
     /**
@@ -151,6 +151,21 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-        return redirect(route('admin.services.index'));
+        if(file_exists(public_path('storage/services/' . $service->service_image))){
+            unlink(public_path('storage/services/' . $service->service_image));
+        }
+        return redirect(route('admin.services.index'))->with('success','Service successfully Delete.');
+    }
+
+    public function removeimg(Service $services)
+    {  
+        $img = $services->service_image;
+        if(file_exists(public_path('storage/services/' . $img))){
+            unlink(public_path('storage/services/' . $img));
+        }
+        $services->service_image = ""; 
+        $services->save();
+
+        return redirect(route('admin.services.index'))->with('success', 'Image successfully Delete.');
     }
 }

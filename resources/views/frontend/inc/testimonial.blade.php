@@ -20,7 +20,10 @@
             <figure class="snip1192">
                 <blockquote>{{ $t->t_testimonial }}</blockquote>
                 <div class="author">
+                    @if($t->t_image != '')
                     <img src="{{ asset('/storage/testimonial/'.$t->t_image) }}" alt="sq-sample1" />
+                    @else
+                    @endif
                     <h5>{{ $t->t_name }}</h5>
                 </div>
             </figure>

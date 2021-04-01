@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 // use App\Http\Requests;
 // use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Demo;
 
 class AdminController extends Controller
@@ -16,9 +17,9 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        $demo = Demo::get();
-        $data = compact('month');
+        $demo = Demo::whereMonth('created_at', '=', '4')->count();
+        $contact = Contact::whereMonth('created_at', '=', '4')->count();
+        $data = compact('demo', 'contact');
         return view('backend.inc.index', $data);
     }
 }

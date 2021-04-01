@@ -70,7 +70,7 @@ class PagesController extends Controller
                 $image_resize = Image::make($image->getRealPath());
                 $image_resize->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
-                })->save(public_path('storage/pages/' .$filename));
+                })->save(public_path('storage/pages/' . $filename));
 
                 $page->page_image = $filename;
             }
@@ -83,7 +83,7 @@ class PagesController extends Controller
         $page->page_seo_keyword = $request->page_seo_keyword;
         $page->save();
 
-        return redirect(route('admin.pages.index'));
+        return redirect(route('admin.pages.index'))->with('success', 'Page successfully added.');
     }
 
     /**
@@ -125,9 +125,8 @@ class PagesController extends Controller
                 $image_resize = Image::make($image->getRealPath());
                 $image_resize->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
-                })->save(public_path('storage/pages/' .$filename));
+                })->save(public_path('storage/pages/' . $filename));
                 $page->page_image = $filename;
-
             }
         }
 
@@ -138,7 +137,7 @@ class PagesController extends Controller
         $page->page_seo_keyword = $request->page_seo_keyword;
         $page->save();
 
-        return redirect(route('admin.pages.index'));
+        return redirect(route('admin.pages.index'))->with('success', 'Page successfully Update.');
     }
 
     /**
@@ -150,6 +149,19 @@ class PagesController extends Controller
     public function destroy(Pages $page)
     {
         $page->delete();
-        return redirect(route('admin.pages.index'));
+        return redirect(route('admin.pages.index'))->with('success', 'Page successfully Delete.');
+    }
+
+    public function removeimg(Pages $page)
+    {  
+        // dd($page);
+        $img = $page->page_image;
+        if(file_exists(public_path('storage/pages/' . $img))){
+            unlink(public_path('storage/pages/' . $img));
+        }
+        $page->page_image = "";
+        $page->save();
+
+        return redirect(route('admin.pages.index'))->with('success', 'Image successfully Delete.');
     }
 }

@@ -81,7 +81,7 @@ class TestimonialController extends Controller
         $testimonial->t_testimonial = $request->t_testimonial;
         $testimonial->save();
 
-        return redirect(route('admin.testimonial.index'));
+        return redirect(route('admin.testimonial.index'))->with('success','Testimonial successfully added.');
     }
 
     /**
@@ -132,7 +132,7 @@ class TestimonialController extends Controller
         $testimonial->t_testimonial = $request->t_testimonial;
         $testimonial->save();
 
-        return redirect(route('admin.testimonial.index'));
+        return redirect(route('admin.testimonial.index'))->with('success','Testimonial successfully Update.');
     }
 
     /**
@@ -144,6 +144,21 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect(route('admin.testimonial.index'));
+        if(file_exists(public_path('storage/testimonial/' . $testimonial->t_image))){
+            unlink(public_path('storage/testimonial/' . $testimonial->t_image));
+        }
+        return redirect(route('admin.testimonial.index'))->with('success','Testimonial successfully Delete.');
+    }
+
+    public function removeimg(Testimonial $testimonial)
+    {  
+        $img = $testimonial->t_image;
+        if(file_exists(public_path('storage/testimonial/' . $img))){
+            unlink(public_path('storage/testimonial/' . $img));
+        }
+        $testimonial->t_image = ""; 
+        $testimonial->save();
+
+        return redirect(route('admin.testimonial.index'))->with('success', 'Image successfully Delete.');
     }
 }

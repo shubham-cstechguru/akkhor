@@ -100,7 +100,7 @@
         <div class="box-main-heading wrapper-fix">
             <h3 class="normal_font font_hdng">{{ $home->service_title ?? 'A new innovation in school management' }}</h3>
             <p class="normal_font inrsmall_hdng">
-            {{ $home->service_desc ?? 'Smooth registration, swift creation of classes, sections and
+                {{ $home->service_desc ?? 'Smooth registration, swift creation of classes, sections and
 synchronized user-interface for you, your teachers, your students and their parents.' }}
             </p>
         </div>
@@ -109,8 +109,11 @@ synchronized user-interface for you, your teachers, your students and their pare
                 @foreach($service as $key => $s)
                 <article class="fchrs_area" onclick="firstfeature();">
                     <figure class="fchrs_img fchrs_img_8 featuresprite">
+                        @if($s->service_image != '')
                         <img class="featurepage_icon" src='{{ asset("/storage/services/".$s->service_image) }}' alt="School Management Software">
-                        <img class="featurepage_icon1" src='' alt="School Management Software">
+                        <img class="featurepage_icon1" src='{{ asset("/storage/services/".$s->service_image) }}' alt="School Management Software">
+                        @else
+                        @endif
                     </figure>
                     <div>
                         <h3 class="fchrs_hding fchrs_hdng_frst">{{ $s->service_title }}</h3>
@@ -159,7 +162,7 @@ synchronized user-interface for you, your teachers, your students and their pare
         <div class="box-main-heading">
             <h3 class="normal_font font_hdng client-heading">{{ $home->client_title ?? 'A few of the clients who trusted on us' }}</h3>
             <p class="normal_font inrsmall_hdng">
-            {{ $home->client_desc ?? '' }}
+                {{ $home->client_desc ?? '' }}
             </p>
         </div>
 

@@ -102,7 +102,7 @@ class BlogController extends Controller
         $blog->blog_category()->sync($request->category_id);
         $blog->blog_tags()->sync($request->tags_id);
 
-        return redirect(route('admin.blog.index'));
+        return redirect(route('admin.blog.index'))->with('success','Blog successfully added.');
     }
 
     /**
@@ -161,7 +161,7 @@ class BlogController extends Controller
         $blog->blog_category()->sync($request->category_id);
         $blog->blog_tags()->sync($request->tags_id);
 
-        return redirect(route('admin.blog.index'));
+        return redirect(route('admin.blog.index'))->with('success','Blog successfully Update.');
     }
 
     /**
@@ -173,6 +173,21 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         $blog->delete();
-        return redirect(route('admin.blog.index'));
+        if(file_exists(public_path('storage/blog/' . $blog->blog_image))){
+            unlink(public_path('storage/blog/' . $blog->blog_image));
+        }
+        return redirect(route('admin.blog.index'))->with('success','Blog successfully Delete.');
+    }
+
+    public function removeimg(Blog $blog)
+    {  
+        $img = $blog->blog_image;
+        if(file_exists(public_path('storage/blog/' . $img))){
+            unlink(public_path('storage/blog/' . $img));
+        }
+        $blog->blog_image = "";
+        $blog->save();
+
+        return redirect(route('admin.blog.index'))->with('success', 'Image successfully Delete.');
     }
 }

@@ -32,6 +32,6 @@ class ContactController extends Controller
     public function remove($id)
     {
         $del = Contact::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Contact Enquiry successfully Delete.');;
     }
 }

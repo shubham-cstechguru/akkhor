@@ -20,6 +20,14 @@
                     <div class="cntn_wrpr">
 
                         <div class="mainCntnr-txtfiled" style="width: 100%;">
+                            @if(\Session::get('status'))
+                            <div class="msgIcon" role="alert">
+                                {{ \Session::get('status') }}
+                                <button type="button" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            @endif
                             <div class="mktFormReq mktField" style="margin-top: 15px">
                                 <div class="left-sctn-login">
                                     <span class="txt-lgon">Your name<span style="color:red;margin-left: 5px;">*</span></span>

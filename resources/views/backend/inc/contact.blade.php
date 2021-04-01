@@ -4,58 +4,54 @@
 
 @section('content')
 
-<main>
-    <div class="container-fluid">
-        <h1 class="mt-4">View Contact Enquiry</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active">View Contact Enquiry</li>
-        </ol>
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Sr. No.</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Mobile No.</th>
-                                <th>Message</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <form class="" action="" method="POST" id="deleteFormModal">
-                                {!! csrf_field() !!}
-                                @method('DELETE')
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Enquiry</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure to want to Delete This Enquiry ?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
-                                    </div>
-                                </div>
-                            </form>
+<h1>View Contact Enquiry</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active">View Contact Enquiry</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered yajra-datatable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile No.</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form class="" action="" method="POST" id="deleteFormModal">
+                        {!! csrf_field() !!}
+                        @method('DELETE')
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete Enquiry</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure to want to Delete This Enquiry ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
 
 @endsection('content')
 
@@ -79,7 +75,7 @@
             ajax: "{{ route('admin.contact.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',                    
+                    name: 'DT_RowIndex',
                     orderable: false,
                     searchable: false
                 },

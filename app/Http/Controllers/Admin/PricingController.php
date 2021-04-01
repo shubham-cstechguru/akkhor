@@ -62,7 +62,7 @@ class PricingController extends Controller
         $pricing->pricing_points = $request->pricing_points;
         $pricing->save();
 
-        return redirect(route('admin.pricing.index'));
+        return redirect(route('admin.pricing.index'))->with('success','Pricing successfully added.');
     }
 
     /**
@@ -107,7 +107,7 @@ class PricingController extends Controller
         $price_data->pricing_points = $request->pricing_points;
         $price_data->save();
 
-        return redirect(route('admin.pricing.index'));
+        return redirect(route('admin.pricing.index'))->with('success','Pricing successfully update.');
 
     }
 
@@ -120,6 +120,6 @@ class PricingController extends Controller
     public function destroy(Pricing $pricing)
     {
         $pricing->delete();
-        return redirect(route('admin.pricing.index'));
+        return redirect(route('admin.pricing.index'))->with('success','Pricing successfully Delete.');
     }
 }

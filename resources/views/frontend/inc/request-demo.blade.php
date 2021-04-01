@@ -34,6 +34,14 @@
                         </span>
                     </div>
                     <div class="mainCntnr-txtfiled">
+                        @if(\Session::get('status'))
+                        <div class="msgIcon" role="alert">
+                            {{ \Session::get('status') }}
+                            <button type="button" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        @endif
                         <div class="mktFormReq mktField" style="margin-top: 15px">
                             <div class="left-sctn-login">
                                 <span class="txt-lgon">Your name<span style="color:red;margin-left: 5px;">*</span></span>
@@ -79,7 +87,7 @@
                                 <span class="txt-lgon">Contact number<span style="color: red;margin-left: 5px;">*</span></span>
                             </div>
                             <div class="admin-login form-group">
-                                <input required type="tel" autocomplete="off" size="24" oninput="this.value = this.value.replace(/[^0-9.{10}]/g, '');" maxlength="15"  id="phoneno" name="phoneno" onfocus='hide(this.id)' class="mble_input login-form-text" placeholder="Enter your contact number">
+                                <input required type="tel" autocomplete="off" size="24" oninput="this.value = this.value.replace(/[^0-9.{10}]/g, '');" maxlength="15" id="phoneno" name="phoneno" onfocus='hide(this.id)' class="mble_input login-form-text" placeholder="Enter your contact number">
                                 @if($errors->has('phoneno'))
                                 <div class="valid-sctn" id="name_error">
                                     <img src="{{ asset('images/information.png') }}" class="error_msgIcon" />
@@ -142,9 +150,9 @@
                             </div>
                         </div>
                         <input type="hidden" name="recaptcha_token" id="recaptcha_token">
-                            @if($errors->has('recaptcha_token'))
-                            {{$errors->first('recaptcha_token')}}
-                            @endif
+                        @if($errors->has('recaptcha_token'))
+                        {{$errors->first('recaptcha_token')}}
+                        @endif
                         <div class="mktFormReq mktField">
                             <span class="mndtry_filds-txt">(<span style="color: red;margin-left: 5px;">*</span>Mandatory fields )</span>
                             <button type="submit" id="send" name="send" class="popup_sbmtbtn">Submit</button>

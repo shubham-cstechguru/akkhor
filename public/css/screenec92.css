@@ -3446,7 +3446,7 @@ figure.snip1192 blockquote:after {
 }
 
 figure.snip1192 .author {
-    margin: 0;
+    margin: 11px;
     text-transform: uppercase;
     text-align: center;
     color: #212121;

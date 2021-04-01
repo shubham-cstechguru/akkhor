@@ -40,6 +40,6 @@ class DemoController extends Controller
     public function remove($id)
     {
         $del = Demo::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Demo Enquiry successfully Delete.');;
     }
 }

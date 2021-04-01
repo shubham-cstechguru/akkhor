@@ -63,7 +63,7 @@ class BlogCategoryController extends Controller
         $blogcategory->category_seo_description = $request->category_seo_description;
         $blogcategory->save();
 
-        return redirect(route('admin.blogcategory.index'));
+        return redirect(route('admin.blogcategory.index'))->with('success','Blog Category successfully added.');
     }
 
     /**
@@ -104,7 +104,7 @@ class BlogCategoryController extends Controller
         $blogcategory->category_seo_description = $request->category_seo_description;
         $blogcategory->save();
 
-        return redirect(route('admin.blogcategory.index'));
+        return redirect(route('admin.blogcategory.index'))->with('success','Blog Category successfully updated.');
     }
 
     /**
@@ -116,6 +116,6 @@ class BlogCategoryController extends Controller
     public function destroy(BlogCategory $blogcategory)
     {
         $blogcategory->delete();
-        return redirect(route('admin.blogcategory.index'));
+        return redirect(route('admin.blogcategory.index'))->with('success','Blog Category successfully Deleted.');
     }
 }

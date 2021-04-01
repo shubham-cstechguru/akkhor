@@ -34,7 +34,7 @@ class DemoRequest extends FormRequest
             'daysToFinalize' => 'nullable',
             'requestedUrl' => 'nullable',
             'message' => 'nullable',
-            'recaptcha_token' => 'required'
+            'recaptcha_token' => ['required', new ReCaptchaRule($this->recaptcha_token)]
         ];
     }
     public function messages()

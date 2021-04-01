@@ -23,26 +23,30 @@
             @include('backend.templates.sidebar')
         </div>
         <div id="layoutSidenav_content">
-            @yield('content')
+            <main>
+                <div class="container-fluid">
+                    @include('backend.templates.flash-message')
+                    @yield('content')
+                </div>
+            </main>
         </div>
-    </div>
-    {{ Html::script('Admin/js/jquery-3.5.1.js') }}
-    {{ Html::script('Admin/js/bootstrap.bundle.min.js') }}
-    {{ Html::script('Admin/js/scripts.js') }}
-    {{ Html::script('Admin/js/validation.js') }}
-    {{ Html::script('Admin/js/jquery.dataTables.min.js') }}
-    {{ Html::script('Admin/js/dataTables.bootstrap4.min.js') }}
-    {{ Html::script('Admin/js/datatables-demo.js') }}
-    {{ Html::script('https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js') }}
+        {{ Html::script('Admin/js/jquery-3.5.1.js') }}
+        {{ Html::script('Admin/js/bootstrap.bundle.min.js') }}
+        {{ Html::script('Admin/js/scripts.js') }}
+        {{ Html::script('Admin/js/validation.js') }}
+        {{ Html::script('Admin/js/jquery.dataTables.min.js') }}
+        {{ Html::script('Admin/js/dataTables.bootstrap4.min.js') }}
+        {{ Html::script('Admin/js/datatables-demo.js') }}
+        {{ Html::script('https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js') }}
 
-    <script>
-        tinymce.init({
-            selector: '.editor',
-            branding: false
-        });
-    </script>
+        <script>
+            tinymce.init({
+                selector: '.editor',
+                branding: false
+            });
+        </script>
 
-    @yield('scripts')
+        @yield('scripts')
 </body>
 
 </html>
