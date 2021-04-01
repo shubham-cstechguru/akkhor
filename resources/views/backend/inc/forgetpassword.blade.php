@@ -24,7 +24,8 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('admin.login.post') }}" method="POST">
+                                    <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
+                                    <form action="{{ route('admin.forgetpassword.post') }}" method="POST">
                                         {!! csrf_field() !!}
 
                                         @if(\Session::get('success'))
@@ -44,33 +45,19 @@
                                             </button>
                                         </div>
                                         @endif
+
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                            <input name="email" type="email" class="form-control py-4" id="inputEmailAddress" placeholder="Enter email address" />
+                                            <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" aria-describedby="emailHelp" placeholder="Enter email address" />
                                             @if ($errors->has('email'))
                                             <span class="help-block font-red-mint">
                                                 <strong>{{ $errors->first('email') }}</strong>
                                             </span>
                                             @endif
                                         </div>
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input name="password" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
-                                            @if ($errors->has('password'))
-                                            <span class="help-block font-red-mint">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input name="remember_me" value="1" class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                            </div>
-                                        </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="{{ route('admin.forgetpassword') }}">Forgot Password?</a>
-                                            <button type="submit" class="btn btn-primary">Login</button>
+                                            <a class="small" href="{{ route('admin.login') }}">Return to login</a>
+                                            <button type="submit" class="btn btn-primary" value="Login">Reset Password</button>
                                         </div>
                                     </form>
                                 </div>

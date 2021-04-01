@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="salient_title">Salient Title</label>
-                            <input required type="text" name="salient_title" class="form-control name" id="salient_title" aria-describedby="salient_titleHelp" placeholder="Enter Site Tagline" value="{{ $home['salient_title'] }}">
+                            <input required type="text" name="salient_title" class="form-control name" id="salient_title" aria-describedby="salient_titleHelp" placeholder="Enter Salient Title" value="{{ $home['salient_title'] }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="salient_desc">Salient Description</label>

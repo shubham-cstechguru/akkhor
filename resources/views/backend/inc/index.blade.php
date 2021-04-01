@@ -4,183 +4,209 @@
 
 @section('content')
 
+
+<!-- Page Heading -->
 <h1 class="mt-4">Dash Board</h1>
 <ol class="breadcrumb my-4">
     <li class="breadcrumb-item">Dashboard</li>
 </ol>
+
+<!-- Content Row -->
 <div class="row">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Pricing
-            </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
-                <p class="card-text">Add Pricing Plans.</p>
-                <a href="{{ route('admin.pricing.create') }}" class="btn btn-primary">Add</a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Blogs
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $blog }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Services
-            </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
-                <p class="card-text">Add Services</p>
-                <a href="{{ route('admin.services.create') }}" class="btn btn-primary">Add</a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Testimonials
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $testimonial }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Pages
-            </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
             <div class="card-body">
-                <p class="card-text">View Pages</p>
-                <a href="{{ route('admin.pages.index') }}" class="btn btn-primary">View</a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Pricing Plans
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pricing }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Blogs
-            </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
             <div class="card-body">
-                <p class="card-text">Add Blogs.</p>
-                <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">Add</a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Services
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $services }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Testimonials
-            </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
             <div class="card-body">
-                <p class="card-text">Add Testimonials</p>
-                <a href="{{ route('admin.testimonial.create') }}" class="btn btn-primary">Add</a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Demo Enquiry
+                        </div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $demo }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Home Page Setting
-            </div>
+
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-body">
-                <p class="card-text">Edit Home Settings.</p>
-                <a href="{{ route('admin.home') }}" class="btn btn-primary">Edit</a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Contact Enquiry
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $contact }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading"><b>Demo Enquiry</b></div>
-            <div class="panel-body">
-                <canvas id="myChart" height="280" width="600"></canvas>
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-6 mb-4">
+
+        <!-- Project Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+            </div>
+            <div class="card-body">
+                <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading"><b>Contact Enquiry</b></div>
-            <div class="panel-body">
-                <canvas id="Chart" height="280" width="600"></canvas>
+    <div class="col-lg-6 mb-4">
+
+        <!-- Illustrations -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
+                </div>
+                <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                    constantly updated collection of beautiful svg images that you can use
+                    completely free and without attribution!</p>
+                <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                    unDraw &rarr;</a>
             </div>
         </div>
+
+        <!-- Approach -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+            </div>
+            <div class="card-body">
+                <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                    CSS bloat and poor page performance. Custom CSS classes are used to create
+                    custom components and custom utility classes.</p>
+                <p class="mb-0">Before working with this theme, you should become familiar with the
+                    Bootstrap framework, especially the utility classes.</p>
+            </div>
+        </div>
+
     </div>
 </div>
+
 
 @endsection('content')
 
 @section('scripts')
-{{ Html::script('Admin/js/Chart.min.js') }}
-{{ Html::script('Admin/js/chart-area-demo.js') }}
-{{ Html::script('Admin/js/chart-bar-demo.js') }}
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-</script>
-<script>
-    var ctx = document.getElementById('Chart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-</script>
+
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -18,7 +19,6 @@ class SettingController extends Controller
     {
         $setting     = Setting::find(1);
         $editData =  $setting->toArray();
-        // dd($editData);ss
         $request->replace($editData);
         //send to view
         $request->flash();
@@ -50,20 +50,34 @@ class SettingController extends Controller
         $record->sms_api      = $request->sms_api;
 
         if ($request->hasFile('logo')) {
-            $img_name = $request->logo->getClientOriginalName();
-            $image = $request->logo->storeAs('logo', $img_name);
-            $record->logo = $img_name;
+
+            $image       = $request->file('logo');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(90, 90, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/logo/' .$filename));
+        
+            $record->logo = $filename;
         }
 
         if ($request->hasFile('favicon')) {
-            $img_name = $request->favicon->getClientOriginalName();
-            $image = $request->favicon->storeAs('favicon', $img_name);
-            $record->favicon = $img_name;
+
+            $image       = $request->file('favicon');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(10, 10, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('storage/favicon/' .$filename));
+        
+            $record->favicon = $filename;
+
         }
 
         if ($record->save()) {
             return redirect(route('admin.setting'))->with('success', 'Success! Record has been edited');
         }
     }
-
 }

@@ -20,8 +20,14 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('login', 'AdminAuthController@getLogin')->name('login');
             Route::post('login', 'AdminAuthController@postLogin')->name('login.post');
             Route::get('logout', 'AdminAuthController@logout')->name('logout');
-            Route::get('change-password', 'AdminAuthController@password')->name('password');
-            Route::post('change-password', 'AdminAuthController@changepassword')->name('change-password');
+            Route::get('/forget-password', 'AdminAuthController@getEmail')->name('forgetpassword');
+            Route::post('/forget-password', 'AdminAuthController@postEmail')->name('forgetpassword.post');
+            Route::get('/reset-password/{token}', 'AdminAuthController@getPassword')->name('resetpassword');
+            Route::post('/reset-password', 'AdminAuthController@updatePassword')->name('resetpassword.post');
+            Route::group(['middleware' => 'adminauth'], function () {
+                Route::get('change-password', 'AdminAuthController@password')->name('password');
+                Route::post('change-password', 'AdminAuthController@changepassword')->name('change-password');
+            });
         });
         Route::group(['middleware' => 'adminauth'], function () {
             Route::get('/', 'AdminController@dashboard')->name('dashboard');

@@ -40,17 +40,17 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="siteLogo">Site Logo</label>
-                            <input required type="file" name="logo" class="form-control-file" id="siteLogo" accept="image/png">
+                            <input type="file" name="logo" class="form-control-file" id="siteLogo" accept="image/png">
                         </div>
                         <div class="form-group col-md-3">
                             <img id="blah" src="{{ asset('/storage/logo/'.$setting['logo']) }}" alt="" width="100">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="siteFavicon">Site Favicon</label>
-                            <input required type="file" name="favicon" class="form-control-file" id="siteFavicon" accept="image/png">
+                            <input type="file" name="favicon" class="form-control-file" id="siteFavicon" accept="image/png">
                         </div>
                         <div class="form-group col-md-3">
-                            <img id="blahsiteFavicon" src="{{ asset('/storage/favicon/'.$setting['favicon']) }}" alt="" width="100">
+                            <img id="blahsiteFavicon" src="{{ asset('/storage/favicon/'.$setting['favicon']) }}" alt="" width="10">
                         </div>
 
                         <div class="form-group col-md-6">

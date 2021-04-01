@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Admin;
 // use App\Http\Requests;
 // use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Demo;
+use App\Models\Pricing;
+use App\Models\Service;
+use App\Models\Testimonial;
 
 class AdminController extends Controller
 {
@@ -17,9 +21,13 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        $demo = Demo::whereMonth('created_at', '=', '4')->count();
-        $contact = Contact::whereMonth('created_at', '=', '4')->count();
-        $data = compact('demo', 'contact');
+        $blog = Blog::count();
+        $demo = Demo::count();
+        $contact = Contact::count();
+        $pricing = Pricing::count();
+        $services = Service::count();
+        $testimonial = Testimonial::count();
+        $data = compact('demo', 'contact', 'blog', 'pricing', 'services', 'testimonial');
         return view('backend.inc.index', $data);
     }
 }

@@ -2638,7 +2638,7 @@
     }
     .headercopntent h1 {
         text-align: left;
-        line-height: 10px;
+        line-height: 27px;
     }
     .headercopntent h3 {
         text-align: left;
@@ -2733,7 +2733,7 @@
         max-width: 85px
     }
     .headerinr1 {
-        padding: 0 10px 5px
+        padding: 71px 10px 5px;
     }
     .halfwidthdescrptn b.inrsmallbold {
         font-size: 14px;

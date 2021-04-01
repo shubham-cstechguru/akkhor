@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Rules\MatchOldPassword;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-// use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Mail;
 
 class AdminAuthController extends Controller
 {
@@ -98,10 +100,60 @@ class AdminAuthController extends Controller
         ]);
 
         $admin = auth()->guard('admin')->user();
-   
-        $admin->update(['password'=> Hash::make($request->new_password)]);
+
+        $admin->update(['password' => Hash::make($request->new_password)]);
 
         return redirect()->back()->with('success', 'Your password has been changed successfully.');
+    }
+
+    public function getEmail()
+    {
+        return view('backend.inc.forgetpassword');
+    }
+
+    public function postEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:admins',
+        ]);
+
+        $token = Str::random(64);
+
+        $user = Admin::where('email', $request->email)->first();
         
+        $user->fill([
+            'remember_token' => $token
+        ]);
+
+        
+        Mail::send('backend.inc.email', ['token' => $token], function ($message) use ($request) {
+            $message->to($request->email);
+            $message->subject('Reset Password Notification');
+            $message->from(env('MAIL_USERNAME'));
+        });
+        
+        $user->save();
+
+        return back()->with('message', 'We have e-mailed your password reset link!');
+    }
+
+    public function getPassword($token)
+    {
+        return view('backend.inc.resetpassword', ['token' => $token]);
+    }
+
+    public function updatePassword(Request $request)
+    {
+
+        $request->validate([
+            'token' => 'required',
+            'password' => 'required|string|min:7',
+            'password_confirmation' => 'required_with:password|same:password|min:7'
+        ]);
+
+        $user = Admin::where('remember_token', $request->token)
+            ->update(['password' => Hash::make($request->password)]);
+
+        return redirect(route('account.login'))->with('message', 'Your password has been changed!');
     }
 }

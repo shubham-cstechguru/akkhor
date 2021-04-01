@@ -6841,6 +6841,12 @@ span.contact-address {
     left: 0
 }
 
+@media (min-width: 768px) {
+    .headerinr1{
+        margin-top: 32%;
+    }
+}
+
 .headerinr1 {
     position: relative;
     z-index: 9999;
