@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login Page</title>
+    <title>Reset Password</title>
     {{ Html::style('Admin/css/styles.css') }}
     {{ Html::script('Admin/js/all.min.js') }}
 </head>
@@ -44,6 +44,8 @@
                                             </button>
                                         </div>
                                         @endif
+                                        <input type="hidden" name="token" value="{{ $token }}">
+
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
                                             <input name="password" class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />

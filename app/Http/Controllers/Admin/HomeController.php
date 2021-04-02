@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function edit(Request $request)
     {
-        $home     = Home::find(1);
+        $home     = Home::findOrFail(1);
         $editData =  $home->toArray();
         $request->replace($editData);
         $request->flash();

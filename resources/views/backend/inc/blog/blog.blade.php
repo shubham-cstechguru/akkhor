@@ -34,7 +34,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="blogTitle">Blog Title</label>
-                            <input required type="text" name="blog_title" class="form-control name" id="blogTitle" aria-describedby="blogTitleHelp" placeholder="Enter Blog Name" value="{{ isset($blog) ? $blog->blog_title : '' }}">
+                            <input required type="text" name="blog_title" class="form-control" id="blogTitle" aria-describedby="blogTitleHelp" placeholder="Enter Blog Name" value="{{ isset($blog) ? $blog->blog_title : '' }}">
                         </div>
                         @if(isset($blog))
                         <div class="form-group col-md-3" id="root">

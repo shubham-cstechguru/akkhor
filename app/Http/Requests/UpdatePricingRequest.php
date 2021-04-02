@@ -24,7 +24,7 @@ class UpdatePricingRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:mysql2.sch_plans,name,'.$this->pricing->id,
             'pricing_description' => 'required',
             'cost' => 'required|numeric',
             'pricing_points' => 'required',
@@ -34,7 +34,7 @@ class UpdatePricingRequest extends FormRequest
     {
         return [
             'name.required' => 'The pricing title is required',
-            'name.unique' => 'The pricing is unique',
+            'name.unique' => 'The pricing name is unique',
             'cost.required' => 'The pricing price is required',
             'cost.numeric' => 'The pricing price must be number',
         ];

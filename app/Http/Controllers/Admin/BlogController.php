@@ -172,15 +172,18 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        $blog->delete();
-        if(file_exists(public_path('storage/blog/' . $blog->blog_image))){
-            unlink(public_path('storage/blog/' . $blog->blog_image));
+        if(!empty($blog->blog_image)){
+            if(file_exists(public_path('storage/blog/' . $blog->blog_image))){
+                unlink(public_path('storage/blog/' . $blog->blog_image));
+            }
         }
+        $blog->delete();
         return redirect(route('admin.blog.index'))->with('success','Blog successfully Delete.');
     }
 
-    public function removeimg(Blog $blog)
+    public function removeimg($blog)
     {  
+        $blog = Blog::find($blog);
         $img = $blog->blog_image;
         if(file_exists(public_path('storage/blog/' . $img))){
             unlink(public_path('storage/blog/' . $img));

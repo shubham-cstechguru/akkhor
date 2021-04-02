@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Http\Requests\ServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
@@ -118,7 +119,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
         if ($request->hasFile('service_image')) {
             $image       = $request->file('service_image');
@@ -150,21 +151,24 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        $service->delete();
-        if(file_exists(public_path('storage/services/' . $service->service_image))){
-            unlink(public_path('storage/services/' . $service->service_image));
+        if(!empty($service->service_image)){
+            if(file_exists(public_path('storage/services/' . $service->service_image))){
+                unlink(public_path('storage/services/' . $service->service_image));
+            }
         }
+        $service->delete();
         return redirect(route('admin.services.index'))->with('success','Service successfully Delete.');
     }
 
-    public function removeimg(Service $services)
+    public function removeimg($service)
     {  
-        $img = $services->service_image;
+        $service = Service::find($service);
+        $img = $service->service_image;
         if(file_exists(public_path('storage/services/' . $img))){
             unlink(public_path('storage/services/' . $img));
         }
-        $services->service_image = ""; 
-        $services->save();
+        $service->service_image = ""; 
+        $service->save();
 
         return redirect(route('admin.services.index'))->with('success', 'Image successfully Delete.');
     }

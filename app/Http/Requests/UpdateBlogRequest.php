@@ -24,7 +24,7 @@ class UpdateBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'blog_title' => 'required',
+            'blog_title' => 'required|unique:blogs,blog_title,'.$this->blog->id,
             'blog_short_description' => 'required|max:250',
             'blog_description' => 'required',
             'blog_image' => 'nullable|max:2048|mimes:jpeg,jpg,png,gif',

@@ -39,7 +39,7 @@
                         @if(isset($service))
                         <div class="form-group col-md-3">
                             <label for="servicesImage">Service Image</label>
-                            <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->service_image : '' }}" accept="image/png,.svg">
+                            <input type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->service_image : '' }}" accept="image/x-png,image/gif,image/jpeg,image/jpg">
                         </div>
                         <div class="form-group col-md-3">
                             @if($service->service_image != '')
@@ -52,7 +52,7 @@
                         @else
                         <div class="form-group col-md-3">
                             <label for="servicesImage">Service Image</label>
-                            <input required type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->image : '' }}" accept="image/png,.svg">
+                            <input required type="file" name="service_image" class="form-control-file" id="servicesImage" value="{{ isset($service) ? $service->image : '' }}" accept="image/x-png,image/gif,image/jpeg,image/jpg">
                         </div>
                         <div class="form-group col-md-3">
                             <img id="blah" src="{{ asset('images/download(2).png') }}" alt="upload image to view" width="100" />
@@ -61,7 +61,8 @@
 
                         <div class="form-group col-md-12">
                             <label for="serviceDescription">Service Description</label>
-                            <textarea required name="service_description" class="form-control editor" id="serviceDescription" rows="10">{{ isset($service) ? $service->service_description : '' }}</textarea>
+                            <textarea required name="service_description" class="form-control" id="serviceDescription" rows="3" maxlength="250">{{ isset($service) ? $service->service_description : '' }}</textarea>
+                            <div id="charactersRemaining" class="float-right">250 characters Remaining</div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="servicesseocategoryTitle">Service SEO Title</label>
@@ -103,5 +104,23 @@
     $("#servicesImage").change(function() {
         readURL(this);
     });
+</script>
+<script>
+    var el;
+
+    function countCharacters(e) {
+        // setup some variables 
+        var textEntered, countRemaining, counter;
+        // get the number of characters in the tweet box 
+        textEntered = document.getElementById('serviceDescription').value;
+        // number left = number of characters - our maximum (140) 
+        counter = (250 - (textEntered.length));
+        // access the div for characters remaining 
+        countRemaining = document.getElementById('charactersRemaining');
+        // put the number of characters left into that div! 
+        countRemaining.textContent = counter;
+    }
+    el = document.getElementById('serviceDescription');
+    el.addEventListener('keyup', countCharacters, false);
 </script>
 @endsection

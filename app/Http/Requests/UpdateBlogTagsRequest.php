@@ -24,7 +24,7 @@ class UpdateBlogTagsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tags_title' => 'required',
+            'tags_title' => 'required|unique:blog_tags,tags_title,'.$this->blogtag->id,
             'tags_description' => 'required',
             'tags_seo_title',
             'tags_seo_keyword',

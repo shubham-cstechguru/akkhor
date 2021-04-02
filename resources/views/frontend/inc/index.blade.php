@@ -14,7 +14,9 @@
             <div class="headerinr1">
                 <h1>{{ $home->slider_title ?? '' }}</h1>
                 <h3>{{ $home->slider_description ?? '' }}</h3>
+                @if(isset($setting->youtube))
                 <span class="video-link"><i><img src='images/play-button-2.svg' alt="play-button" /></i>Watch Video</span>
+                @endif
                 <a href='http://acc.dossierbox.com/get-started' target="_blank" class="hdrbtn">Get Started</a>
             </div>
         </div>

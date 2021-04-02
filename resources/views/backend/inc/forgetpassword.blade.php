@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Login Page</title>
+    <title>Forget Password</title>
     {{ Html::style('Admin/css/styles.css') }}
     {{ Html::script('Admin/js/all.min.js') }}
 </head>

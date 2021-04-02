@@ -120,21 +120,20 @@ class AdminAuthController extends Controller
         $token = Str::random(64);
 
         $user = Admin::where('email', $request->email)->first();
-        
+
         $user->fill([
             'remember_token' => $token
         ]);
 
-        
+        $user->save();
         Mail::send('backend.inc.email', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('Reset Password Notification');
             $message->from(env('MAIL_USERNAME'));
         });
-        
-        $user->save();
 
-        return back()->with('message', 'We have e-mailed your password reset link!');
+
+        return redirect(route('admin.login'))->with('success', 'We have e-mailed your password reset link!');
     }
 
     public function getPassword($token)
@@ -151,9 +150,21 @@ class AdminAuthController extends Controller
             'password_confirmation' => 'required_with:password|same:password|min:7'
         ]);
 
-        $user = Admin::where('remember_token', $request->token)
-            ->update(['password' => Hash::make($request->password)]);
+        $user = Admin::where('remember_token', $request->token)->first();
 
-        return redirect(route('account.login'))->with('message', 'Your password has been changed!');
+        if (empty($user)) {
+            return back()->with('success', 'Provided link is expired');
+        } else {
+
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+
+            $user->remember_token = "";
+
+            $user->save();
+        }
+
+        return redirect(route('admin.login'))->with('success', 'Your password has been changed!');
     }
 }

@@ -17,7 +17,7 @@ class SettingController extends Controller
      */
     public function edit(Request $request)
     {
-        $setting     = Setting::find(1);
+        $setting     = Setting::findOrFail(1);
         $editData =  $setting->toArray();
         $request->replace($editData);
         //send to view
