@@ -55,9 +55,9 @@
                         </div>
                         <div class="form-group col-md-3">
                             @if($setting['favicon'] != '')
-                            <img id="blahsiteFavicon" src="{{ asset('/storage/favicon/'.$setting['favicon']) }}" alt="" width="10">
+                            <img id="blahsiteFavicon" src="{{ asset('/storage/favicon/'.$setting['favicon']) }}" alt="" width="20">
                             @else
-                            <img id="blah" src="{{ asset('images/download(2).png') }}" alt="" width="100">
+                            <img id="blahsiteFavicon" src="{{ asset('images/download(2).png') }}" alt="" width="20">
                             @endif
                         </div>
 
