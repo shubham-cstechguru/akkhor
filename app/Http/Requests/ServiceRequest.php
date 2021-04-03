@@ -24,7 +24,7 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'service_title' => 'required|unique:services',
+            'service_title' => 'required|unique:mysql2.services',
             'service_description' => 'required',
             'service_image' => 'required|max:1048|mimes:jpeg,jpg,png',
             'service_seo_title' => 'nullable',

@@ -135,7 +135,7 @@
                 </li>
             </ul>
             <div class="contact-map">
-                {!! $setting->google_maps ?? '' !!}
+                <iframe src="{{ $setting->google_maps ?? '' }}" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </article>
         <div class="clear_fix"></div>
@@ -152,7 +152,7 @@
 <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITEKEY') }}"></script>
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('{{ env('RECAPTCHA_SITEKEY') }}').then(function(token) {
+        grecaptcha.execute('{{ env('RECAPTCHA_SITEKEY ') }}').then(function(token) {
             if (token) {
                 document.getElementById('recaptcha_token').value = token;
             }

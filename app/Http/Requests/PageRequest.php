@@ -24,7 +24,7 @@ class PageRequest extends FormRequest
     public function rules()
     {
         return [
-            'page_title' => 'required|unique:pages',
+            'page_title' => 'required|unique:mysql2.pages',
             'page_description' => 'required',
             'page_image' => 'nullable|max:2048|mimes:jpeg,jpg,png,svg,gif',
             'page_seo_title' => 'nullable',

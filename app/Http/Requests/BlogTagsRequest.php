@@ -24,7 +24,7 @@ class BlogTagsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tags_title' => 'required|unique:blog_tags',
+            'tags_title' => 'required|unique:mysql2.blog_tags',
             'tags_description' => 'required',
             'tags_seo_title',
             'tags_seo_keyword',

@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="slider_description">Slider Description</label>
-                            <textarea required name="slider_description" id="slider_description" class="form-control" rows="3">{{$home['slider_description']}}</textarea>
+                            <textarea name="slider_description" id="slider_description" class="form-control" rows="3">{{$home['slider_description']}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="salient_title">Salient Title</label>
@@ -44,23 +44,23 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="salient_desc">Salient Description</label>
-                            <textarea required name="salient_desc" id="salient_desc" class="form-control" rows="3">{{$home['salient_desc']}}</textarea>
+                            <textarea name="salient_desc" id="salient_desc" class="form-control" rows="3">{{$home['salient_desc']}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="service_title">Service Title</label>
-                            <input required type="text" name="mobile" class="form-control name" id="service_title" aria-describedby="service_titleHelp" placeholder="Enter Service Title" value="{{ $home['service_title'] }}">
+                            <input required type="text" name="service_title" class="form-control name" id="service_title" aria-describedby="service_titleHelp" placeholder="Enter Service Title" value="{{ $home['service_title'] }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="service_desc">Service Description</label>
-                            <textarea required name="service_desc" id="service_desc" class="form-control" rows="3">{{$home['service_desc']}}</textarea>
+                            <textarea name="service_desc" id="service_desc" class="form-control" rows="3">{{$home['service_desc']}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="client_title">Client Title</label>
-                            <input required type="text" name="email" class="form-control name" id="client_title" aria-describedby="client_titleHelp" placeholder="Enter Client Title" value="{{ $home['client_title'] }}">
+                            <input required type="text" name="client_title" class="form-control name" id="client_title" aria-describedby="client_titleHelp" placeholder="Enter Client Title" value="{{ $home['client_title'] }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="client_desc">Client Description</label>
-                            <textarea required name="client_desc" id="client_desc" class="form-control" rows="3">{{$home['client_desc']}}</textarea>
+                            <textarea name="client_desc" id="client_desc" class="form-control" rows="3">{{$home['client_desc']}}</textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Update</button>

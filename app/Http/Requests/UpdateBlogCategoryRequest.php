@@ -24,7 +24,7 @@ class UpdateBlogCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_title' => 'required|unique:blog_categories,category_title,'.$this->blogcategory->id,
+            'category_title' => 'required|unique:mysql2.blog_categories,category_title,'.$this->blogcategory->id,
             'category_description' => 'required',
             'category_seo_title',
             'category_seo_keyword',

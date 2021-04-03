@@ -6,6 +6,23 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Dashboard
             </a>
+            <div class="sb-sidenav-menu-heading">Master</div>
+            <a class="nav-link" href="{{ route('admin.religion.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Religion
+            </a>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Location
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLocation" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ route('admin.country.index') }}">Country</a>
+                    <a class="nav-link" href="{{ route('admin.city.index') }}">City</a>
+                    <a class="nav-link" href="{{ route('admin.state.index') }}">State</a>
+                </nav>
+            </div>
             <div class="sb-sidenav-menu-heading">Interface</div>
             <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="false" aria-controls="collapseBlogs">
                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>

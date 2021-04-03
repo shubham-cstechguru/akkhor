@@ -14,6 +14,7 @@
 
 </div>
 <div class="main-products" style="background:#f3f3f3; min-height: auto;padding-bottom:40px;padding-top:0px;">
+    @if(!empty($blog))
     <div class="wrapper-fix">
 
         <div class="main-prcing post-pricing">
@@ -51,6 +52,18 @@
         </div>
         {{ $blog->links('frontend.templates.pagination') }}
     </div>
+
+    @else
+
+    <div class="main-contenior">
+        <div class="wrapper-fix">
+            <div class="box-main-heading">
+                <h2 class="light_font wow bounceInDown"><span>No Blogs Available</span></h2>
+            </div>
+        </div>
+    </div>
+
+    @endif
 </div>
 
 @endsection

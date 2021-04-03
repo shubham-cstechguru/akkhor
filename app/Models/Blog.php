@@ -9,6 +9,18 @@ class Blog extends Model
 {
     use HasFactory;
 
+    /**
+     * use second database
+     * 
+     * 
+     */
+    
+    protected $connection = 'mysql2';
+
+    protected $table = 'blogs';
+
+    protected $guarded = [];
+
     protected $appends = ['blog_categories', 'tags'];
 
     public function getBlogCategoriesAttribute() {

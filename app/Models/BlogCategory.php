@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class BlogCategory extends Model
 {
     use HasFactory;
+
+    /**
+     * use second database
+     * 
+     * 
+     */
+    
+    protected $connection = 'mysql2';
+
+    protected $table = 'blog_categories';
+
+    protected $guarded = [];
 }

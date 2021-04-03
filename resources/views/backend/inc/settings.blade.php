@@ -32,7 +32,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="siteTitle">Site Name</label>
-                            <input required type="text" name="title" class="form-control" id="siteTitle" aria-describedby="siteTitleHelp" placeholder="Enter Site Name" value="{{ $setting['title'] }}">
+                            <input required type="text" name="title" class="form-control name" id="siteTitle" aria-describedby="siteTitleHelp" placeholder="Enter Site Name" value="{{ $setting['title'] }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="siteTagline">Site TagLine</label>
@@ -71,31 +71,31 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="siteaddress">Site Address</label>
-                            <input required type="text" name="address" class="form-control" id="siteaddress" aria-describedby="siteaddressHelp" placeholder="Enter Address" value="{{ $setting['address'] ?? '' }}">
+                            <textarea name="address" id="siteaddress" class="form-control" rows="3">{{ $setting['address'] ?? '' }}</textarea>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="sitegoogle_maps">Site Google Maps</label>
-                            <input type="text" name="google_maps" class="form-control" id="sitegoogle_maps" aria-describedby="sitegoogle_mapsHelp" placeholder="Enter Google Maps" value="{{ $setting['google_maps'] ?? '' }}">
+                            <label for="sitegooglemaps">Site Google Maps</label>
+                            <textarea name="google_maps" id="sitegooglemaps" class="form-control web" rows="3">{{ $setting['google_maps'] ?? '' }}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sitefacebook">Site Facebook Page</label>
-                            <input type="text" name="facebook" class="form-control" id="sitefacebook" aria-describedby="sitefacebookHelp" placeholder="Enter Mobile No." value="{{ $setting['facebook'] ?? '' }}">
+                            <input type="text" name="facebook" class="form-control web" id="sitefacebook" aria-describedby="sitefacebookHelp" placeholder="Enter Facebook Page Url" value="{{ $setting['facebook'] ?? '' }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sitetwitter">Site Twitter Page</label>
-                            <input type="text" name="twitter" class="form-control" id="sitetwitter" aria-describedby="sitetwitterHelp" placeholder="Enter Email Id" value="{{ $setting['twitter'] ?? '' }}">
+                            <input type="text" name="twitter" class="form-control web" id="sitetwitter" aria-describedby="sitetwitterHelp" placeholder="Enter Twitter Page Url" value="{{ $setting['twitter'] ?? '' }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="sitelinkedin">Site Linkedin Page</label>
-                            <input type="text" name="linkedin" class="form-control" id="sitelinkedin" aria-describedby="sitelinkedinHelp" placeholder="Enter Mobile No." value="{{ $setting['linkedin'] ?? '' }}">
+                            <input type="text" name="linkedin" class="form-control web" id="sitelinkedin" aria-describedby="sitelinkedinHelp" placeholder="Enter Linkedin Page Url" value="{{ $setting['linkedin'] ?? '' }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="siteyoutube">Site Youtube Video</label>
-                            <input type="text" name="youtube" class="form-control" id="siteyoutube" aria-describedby="siteyoutubelHelp" placeholder="Enter Email Id" value="{{ $setting['youtube'] ?? '' }}">
+                            <input type="text" name="youtube" class="form-control" id="siteyoutube" aria-describedby="siteyoutubelHelp" placeholder="Enter Youtube Video Id" value="{{ $setting['youtube'] ?? '' }}">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="sitesms_api">Site SMS Api</label>
-                            <input type="text" name="sms_api" class="form-control" id="sitesms_api" aria-describedby="sitesms_apilHelp" placeholder="Enter Email Id" value="{{ $setting['sms_api'] ?? '' }}">
+                            <label for="sitesmsapi">Site SMS Api</label>
+                            <input type="text" name="sms_api" class="form-control web" id="sitesmsapi" aria-describedby="sitesmsapilHelp" placeholder="Enter Sms Api Url" value="{{ $setting['sms_api'] ?? '' }}">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Update</button>

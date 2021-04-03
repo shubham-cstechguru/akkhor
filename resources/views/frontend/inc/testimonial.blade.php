@@ -14,6 +14,7 @@
 
 </div>
 <div class="main-products" style="background:#f3f3f3; min-height: auto;padding-bottom:40px;padding-top:0px;">
+    @if(!empty($testimonial))
     <div class="wrapper-fix">
         <div class="main-prcing post-pricing">
             @foreach($testimonial as $key => $t)
@@ -30,5 +31,14 @@
             @endforeach
         </div>
     </div>
+    @else
+    <div class="main-contenior">
+        <div class="wrapper-fix">
+            <div class="box-main-heading">
+                <h2 class="light_font wow bounceInDown"><span>No Testimonial Available</span></h2>
+            </div>
+        </div>
+    </div>
+    @endif
 </div>
 @endsection

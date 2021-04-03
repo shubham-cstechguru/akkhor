@@ -24,7 +24,7 @@ class PricingRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:mysql2.sch_plans',
+            'name' => 'required|unique:mysql.sch_plans',
             'pricing_description' => 'required|max:250',
             'cost' => 'required|numeric',
             'pricing_points' => 'required|array',

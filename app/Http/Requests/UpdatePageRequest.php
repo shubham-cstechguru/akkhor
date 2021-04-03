@@ -24,7 +24,7 @@ class UpdatePageRequest extends FormRequest
     public function rules()
     {
         return [
-            'page_title' => 'required|unique:pages,page_title,'.$this->page->id,
+            'page_title' => 'required|unique:mysql2.pages,page_title,'.$this->page->id,
             'page_description' => 'required',
             'page_image' => 'nullable|max:2048|mimes:jpeg,jpg,png,gif',
             'page_seo_title' => 'nullable',

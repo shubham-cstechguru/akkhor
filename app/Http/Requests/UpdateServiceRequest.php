@@ -24,7 +24,7 @@ class UpdateServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'service_title' => 'required|unique:services,service_title,'.$this->service->id,
+            'service_title' => 'required|unique:mysql2.services,service_title,'.$this->service->id,
             'service_description' => 'required',
             'service_image' => 'nullable|max:1048|mimes:png,svg',
             'service_seo_title' => 'nullable',

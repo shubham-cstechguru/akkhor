@@ -10,6 +10,18 @@ class Admin extends Authenticatable
     use Notifiable;
 
     /**
+     * use second database
+     * 
+     * 
+     */
+    
+    protected $connection = 'mysql2';
+
+    protected $table = 'admins';
+
+    protected $guarded = [];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
