@@ -1,13 +1,13 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Religion')
+@section('title', 'State')
 
 @section('content')
 
-<h1 class="mt-4">Religion</h1>
+<h1 class="mt-4">State</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Religion</li>
+    <li class="breadcrumb-item active">State</li>
 </ol>
 <div class="row">
     <div class="col-lg-5">
@@ -24,18 +24,34 @@
             </div>
             @endif
             <div class="card-body">
-                <form method="POST" action="{{ isset($religion) ? route('admin.religion.update', $religion->id) : route('admin.religion.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ isset($state) ? route('admin.state.update', $state->id) : route('admin.state.store') }}" enctype="multipart/form-data">
                     {!! csrf_field() !!}
-                    @if(isset($religion))
+                    @if(isset($state))
                     @method('PUT')
                     @endif
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="religionName">Religion Name</label>
-                            <input required type="text" name="name" class="form-control name" id="religionName" aria-describedby="religionNameHelp" placeholder="Enter Religion Name" value="{{ isset($religion) ? $religion->name : '' }}">
+                            <label for="countryName">State Name</label>
+                            <input required type="text" name="name" class="form-control" id="countryName" aria-describedby="countryNameHelp" placeholder="Enter State Name" value="{{ isset($state) ? $state->name : '' }}">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="countryCode">State Code</label>
+                            <input required type="number" name="code" class="form-control" id="countryCode" aria-describedby="countryCodeHelp" placeholder="Enter State Code" value="{{ isset($state) ? $state->code : '' }}">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="countryCode">Select Country</label>
+                            <select class="form-control" name="country" id="countryCode">
+                                @foreach($country as $c)
+                                <option value="{{ $c->id }}" @if(isset($state)) @if($c->id == $state->country)
+                                    selected
+                                    @endif
+                                    @endif
+                                    >{{ $c->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">{{ isset($religion) ? 'Update' : 'Save' }}</button>
+                    <button type="submit" class="btn btn-primary mr-2">{{ isset($state) ? 'Update' : 'Save' }}</button>
                     <button type="reset" class="btn btn-danger">Reset</button>
                 </form>
             </div>
@@ -43,11 +59,11 @@
     </div>
     <div class="col-lg-7">
         <div class="card mb-4">
-            @if(isset($religion))
+            @if(isset($state))
             <div class="card-header text-right">
-                <a type="button" name="button" class="btn btn-success" href="{{ route('admin.religion.create') }}">
+                <a type="button" name="button" class="btn btn-success" href="{{ route('admin.state.create') }}">
                     <i class="fas fa-plus mr-1"></i>
-                    Add Religion
+                    Add State
                 </a>
             </div>
             @endif
@@ -57,7 +73,9 @@
                         <thead>
                             <tr>
                                 <th>Number</th>
-                                <th>Religion name</th>
+                                <th>State name</th>
+                                <th>State code</th>
+                                <th>Country</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -79,7 +97,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are you sure to want to Delete This Page ?
+                                        Are you sure to want to Delete This State ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Confirm Delete</button>
@@ -100,7 +118,7 @@
 <script>
     function handleDelete(id) {
         var form = document.getElementById('deleteFormModal')
-        form.action = '/admin-control/religion/' + id
+        form.action = '/admin-control/state/' + id
         console.log('deleting', form)
         $('#deleteModal').modal('show')
     }
@@ -111,7 +129,7 @@
         var table = $('.yajra-datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin.religion.list') }}",
+            ajax: "{{ route('admin.state.list') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -122,7 +140,14 @@
                     data: 'name',
                     name: 'name'
                 },
-
+                {
+                    data: 'code',
+                    name: 'code'
+                },
+                {
+                    data: 'country',
+                    name: 'country'
+                },
                 {
                     data: 'action',
                     name: 'action',

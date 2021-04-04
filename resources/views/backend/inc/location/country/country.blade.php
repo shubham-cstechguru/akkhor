@@ -84,7 +84,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        Are you sure to want to Delete This Page ?
+                                        Are you sure to want to Delete This Country ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Confirm Delete</button>
