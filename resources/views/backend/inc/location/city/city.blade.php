@@ -35,7 +35,7 @@
                             <input required type="text" name="name" class="form-control" id="countryName" aria-describedby="countryNameHelp" placeholder="Enter City Name" value="{{ isset($city) ? $city->name : '' }}">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="countryCode">Select Country</label>
+                            <label for="countryCode">Select State</label>
                             <select class="form-control" name="state" id="countryCode">
                                 @foreach($state as $c)
                                 <option value="{{ $c->id }}" @if(isset($city)) @if($c->id == $city->state)

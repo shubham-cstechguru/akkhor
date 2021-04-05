@@ -62,7 +62,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-control', 'as' => 'admi
             'religion' => 'ReligionController',
             'country' => 'CountryController',
             'state' => 'StateController',
-            'city' => 'CityController'
+            'city' => 'CityController',
+            'school' => 'SchoolUserController'
         ]);
         Route::group(['prefix' => 'setting'], function () {
             Route::get('/', 'SettingController@edit')->name('setting');

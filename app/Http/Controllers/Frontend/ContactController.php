@@ -37,7 +37,7 @@ class ContactController extends Controller
 		});
 
         Mail::send('frontend.mail.enquiry_mail_admin', ['req' => $req, 's' => $setting], function ($message) use ($request, $s, $setting) {
-			$message->to($request->email);
+			$message->to($setting->email);
 			$message->subject($s);
 			$message->from(env('MAIL_USERNAME'), $setting->title);
 		});

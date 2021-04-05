@@ -109,7 +109,7 @@
                             <input type="text" name="blog_seo_keyword" class="form-control" id="seoblogKeyword" aria-describedby="seoblogKeywordHelp" placeholder="Enter Blog SEO Keyword" value="{{ isset($blog) ? $blog->blog_seo_keyword : '' }}">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="seoblogDescription">Blog Description</label>
+                            <label for="seoblogDescription">Blog SEO Description</label>
                             <textarea name="blog_seo_description" class="form-control" id="seoblogDescription" rows="3">{{ isset($blog) ? $blog->blog_seo_description : '' }}</textarea>
                         </div>
                     </div>

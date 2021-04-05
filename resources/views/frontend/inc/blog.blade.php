@@ -38,9 +38,9 @@
                                 <span>Social Share</span>
                                 <div class="tags">
                                     <ul>
-                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('home.blog.single', $b->blog_slug ) }}" target="_blank"><img src="{{asset('/images/fb.png')}}"></a></li>
-                                        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('home.blog.single', $b->blog_slug ) }}" target="_blank"><img src="{{asset('/images/link.png')}}"></a></li>
-                                        <li><a href="https://twitter.com/intent/tweet?url={{ route('home.blog.single', $b->blog_slug ) }}&text=" target="_blank"><img src="{{asset('/images/twt.png')}}"></a></li>
+                                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('home.blog.single', $b->blog_slug ) }}" target="_blank"><img src="{{asset('web/images/fb.png')}}"></a></li>
+                                        <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('home.blog.single', $b->blog_slug ) }}" target="_blank"><img src="{{asset('web/images/link.png')}}"></a></li>
+                                        <li><a href="https://twitter.com/intent/tweet?url={{ route('home.blog.single', $b->blog_slug ) }}&text=" target="_blank"><img src="{{asset('web/images/twt.png')}}"></a></li>
                                     </ul>
                                 </div>
                             </div>

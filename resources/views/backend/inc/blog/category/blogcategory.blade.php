@@ -39,7 +39,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="blogcategoryDescription">Blog Category Description</label>
-                            <textarea required name="category_description" class="form-control editor" id="blogcategoryDescription" rows="10">{{ isset($blogcategory) ? $blogcategory->category_description : '' }}</textarea>
+                            <textarea name="category_description" class="form-control editor" id="blogcategoryDescription" rows="10">{{ isset($blogcategory) ? $blogcategory->category_description : '' }}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="blogcategoryseocategoryTitle">Blog Category SEO Title</label>
@@ -50,7 +50,7 @@
                             <input type="text" name="category_seo_keyword" class="form-control" id="blogcategoryseocategoryKeyword" aria-describedby="blogcategoryseocategoryKeywordHelp" placeholder="Enter Blog Category SEO Keyword" value="{{ isset($blogcategory) ? $blogcategory->category_seo_keyword : '' }}">
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="blogcategoryseocategoryDescription">Blog Category Description</label>
+                            <label for="blogcategoryseocategoryDescription">Blog Category SEO Description</label>
                             <textarea name="category_seo_description" class="form-control" id="blogcategoryseocategoryDescription" rows="3">{{ isset($blogcategory) ? $blogcategory->category_seo_description : '' }}</textarea>
                         </div>
                     </div>

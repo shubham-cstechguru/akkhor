@@ -25,7 +25,7 @@ class PricingRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:mysql.sch_plans',
-            'pricing_description' => 'required|max:250',
+            'pricing_description' => 'max:250',
             'cost' => 'required|numeric',
             'pricing_points' => 'required|array',
         ];
@@ -35,7 +35,6 @@ class PricingRequest extends FormRequest
         return [
             'name.required' => 'The pricing title is required',
             'name.unique' => 'The pricing is unique',
-            'cost.required' => 'The pricing price is required',
             'cost.numeric' => 'The pricing price must be number',
         ];
     }

@@ -25,7 +25,6 @@ class BlogTagsRequest extends FormRequest
     {
         return [
             'tags_title' => 'required|unique:mysql2.blog_tags',
-            'tags_description' => 'required',
             'tags_seo_title',
             'tags_seo_keyword',
             'tags_seo_description'

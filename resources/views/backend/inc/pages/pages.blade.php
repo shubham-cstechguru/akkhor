@@ -62,7 +62,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="pageDescription">Page Description</label>
-                            <textarea required name="page_description" class="form-control editor" id="pageDescription" rows="10">{{ isset($page) ? $page->page_description : '' }}</textarea>
+                            <textarea name="page_description" class="form-control editor" id="pageDescription" rows="10">{{ isset($page) ? $page->page_description : '' }}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="pagesseocategoryTitle">Page SEO Title</label>

@@ -68,6 +68,17 @@
                     <a class="nav-link" href="{{ route('admin.services.index') }}">View Services</a>
                 </nav>
             </div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSchool" aria-expanded="false" aria-controls="collapseSchool">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                School
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseSchool" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ route('admin.school.create') }}">Add School</a>
+                    <a class="nav-link" href="{{ route('admin.school.index') }}">View School</a>
+                </nav>
+            </div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePricing" aria-expanded="false" aria-controls="collapsePricing">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Pricing

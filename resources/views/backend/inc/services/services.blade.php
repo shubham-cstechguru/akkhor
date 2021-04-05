@@ -61,7 +61,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="serviceDescription">Service Description</label>
-                            <textarea required name="service_description" class="form-control" id="serviceDescription" rows="3" maxlength="250">{{ isset($service) ? $service->service_description : '' }}</textarea>
+                            <textarea name="service_description" class="form-control" id="serviceDescription" rows="3" maxlength="250">{{ isset($service) ? $service->service_description : '' }}</textarea>
                             <div id="charactersRemaining" class="float-right">250 characters Remaining</div>
                         </div>
                         <div class="form-group col-md-6">

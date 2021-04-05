@@ -38,9 +38,11 @@
                     </div>
                     <div class="plan-features">
                         <ul class="list-unstyled">
+                            @if(!empty($price['pricing_points']))
                             @foreach($price['pricing_points'] as $p)
                             <li><span class="flat check color"></span>{{ $p }}</li>
                             @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div class="btn-pro">

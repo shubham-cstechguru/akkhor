@@ -15,7 +15,7 @@
                 <h1>{{ $home->slider_title ?? '' }}</h1>
                 <h3>{{ $home->slider_description ?? '' }}</h3>
                 @if(isset($setting->youtube))
-                <span class="video-link"><i><img src='images/play-button-2.svg' alt="play-button" /></i>Watch Video</span>
+                <span class="video-link"><i><img src='{{asset("web/images/play-button-2.svg")}}' alt="play-button" /></i>Watch Video</span>
                 @endif
                 <a href='http://acc.dossierbox.com/get-started' target="_blank" class="hdrbtn">Get Started</a>
             </div>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="hw_wrk_text">Student Management</div>
             </div>
-            <img src="images/arrow.png" class="wrk_nxt wow slideInLeft slideleft" alt="School Management Software" />
+            <img src="{{ asset('web/images/arrow.png') }}" class="wrk_nxt wow slideInLeft slideleft" alt="School Management Software" />
             <div class="hw_wrk wow bounceInUp bounce2">
                 <div class="circleshvr">
                     <div class="tst_dsgn sprite3">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="hw_wrk_text">Library Management</div>
             </div>
-            <img src="images/arrow.png" class="wrk_nxt wow slideInLeft slideleft1" alt="School Management Software" />
+            <img src="{{ asset('web/images/arrow.png') }}" class="wrk_nxt wow slideInLeft slideleft1" alt="School Management Software" />
             <div class="hw_wrk wow bounceInUp bounce3">
                 <div class="circleshvr">
                     <div class="tst_assgn sprite3">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="hw_wrk_text">Timetabling</div>
             </div>
-            <img src="images/arrow.png" class="wrk_nxt wow slideInLeft slideleft2" alt="School Management Software">
+            <img src="{{ asset('web/images/arrow.png') }}" class="wrk_nxt wow slideInLeft slideleft2" alt="School Management Software">
             <div class="hw_wrk wow bounceInUp bounce4">
                 <div class="circleshvr">
                     <div class="sprite3 gen_result">

@@ -13,7 +13,7 @@
     @if($setting->favicon ?? '' !='')
     <link rel="shortcut icon" href='{{ asset("/storage/favicon/".$setting->favicon) }}' />
     @else
-    <link rel="shortcut icon" href='{{ asset("/images/favicon.png") }}' />
+    <link rel="shortcut icon" href='{{ asset("web/images/favicon.png") }}' />
     @endif
     <meta name="format-detection" content="telephone=no">
     <title>{{ $setting->title ?? 'Dossier Box' }} | @yield('title')</title>
@@ -25,27 +25,27 @@
             visibility: hidden;
         }
     </style>
-    {{ Html::style('css/stylesheetec92.css?v=') }}
-    {{ Html::style('css/images_localec92.css?v=') }}
+    {{ Html::style('web/css/stylesheetec92.css?v=') }}
+    {{ Html::style('web/css/images_localec92.css?v=') }}
 
     <style>
         @font-face {
             font-family: "Flaticon";
-            src: url("fonts/flaticon.eot");
-            src: url("fonts/flaticon.eot#iefix") format("embedded-opentype"),
-                url("fonts/flaticon.woff") format("woff"),
-                url("fonts/flaticon.ttf") format("truetype"),
-                url("fonts/flaticon.svg") format("svg");
+            src: url("web/fonts/flaticon.eot");
+            src: url("web/fonts/flaticon.eot#iefix") format("embedded-opentype"),
+                url("web/fonts/flaticon.woff") format("woff"),
+                url("web/fonts/flaticon.ttf") format("truetype"),
+                url("web/fonts/flaticon.svg") format("svg");
             font-weight: normal;
             font-style: normal;
         }
     </style>
-    {{ Html::style('css/flaticonec92.css?v=') }}
-    {{ Html::style('css/styleec92.css?v=') }}
+    {{ Html::style('web/css/flaticonec92.css?v=') }}
+    {{ Html::style('web/css/styleec92.css?v=') }}
 
-    {{ Html::script('js/jquery-1.9.1.min.js') }}
+    {{ Html::script('web/js/jquery-1.9.1.min.js') }}
 
-    {{ Html::style('css/screenec92.css?v=') }}
+    {{ Html::style('web/css/screenec92.css?v=') }}
 
 </head>
 
@@ -54,7 +54,7 @@
     @yield('content')
     @include('frontend.common.footer')
 
-    {{ Html::script('js/menu_script.js') }}
+    {{ Html::script('web/js/menu_script.js') }}
 
 
 
@@ -77,12 +77,12 @@
             })
         });
     </script>
-    {{ Html::script('js/wow.min.js') }}
+    {{ Html::script('web/js/wow.min.js') }}
 
     <script>
         new WOW().init();
     </script>
-    {{ Html::script('js/jquery.flexisel.js') }}
+    {{ Html::script('web/js/jquery.flexisel.js') }}
 
     <script type="text/javascript">
         $(window).load(function() {

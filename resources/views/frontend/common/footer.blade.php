@@ -5,7 +5,7 @@
                 @if($setting->logo ?? '' !='')
                 <img src="{{ asset('/storage/logo/'.$setting->logo) }}" title="Onine School ERP" alt="School Management Software" class="logowhite" style="filter: brightness(0) invert(1);">
                 @else
-                <img src="{{ asset('/images/logo.png') }}" title="Onine School ERP" alt="School Management Software" class="logowhite" style="filter: brightness(0) invert(1);">
+                <img src="{{ asset('web//images/logo.png') }}" title="Onine School ERP" alt="School Management Software" class="logowhite" style="filter: brightness(0) invert(1);">
                 @endif
             </div>
             <div class="outer-part">
@@ -44,13 +44,13 @@
                         <li><a href="{{ route('home.pages', 'help-support') }}">Help & Support</a></li>
                         <li>Follow Us
                             <div class="social-icon">
-                                <a href="{{ $setting->facebook ?? '' }}" target="_blank"><img src="{{asset('/images/fb.png')}}">
+                                <a href="{{ $setting->facebook ?? '' }}" target="_blank"><img src="{{asset('web//images/fb.png')}}">
                                     <!--<span class="fbicn"></span>-->
                                 </a>
-                                <a href="{{ $setting->linkedin ?? '' }}" target="_blank"><img src="{{asset('/images/link.png')}}">
+                                <a href="{{ $setting->linkedin ?? '' }}" target="_blank"><img src="{{asset('web//images/link.png')}}">
                                     <!--<span class="linkedIn"></span>-->
                                 </a>
-                                <a href="{{ $setting->twitter ?? '' }}" target="_blank"><img src="{{asset('/images/twt.png')}}">
+                                <a href="{{ $setting->twitter ?? '' }}" target="_blank"><img src="{{asset('web//images/twt.png')}}">
                                     <!--<span class="twticn"></span>-->
                                 </a>
                             </div>

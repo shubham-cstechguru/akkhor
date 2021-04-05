@@ -110,7 +110,6 @@
 @endsection('content')
 
 @section('scripts')
-{{ Html::script('Admin/js/trix.js') }}
 
 <script>
     function readURL2(input) {

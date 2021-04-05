@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="pricingDescription">Pricing Description</label>
-                            <textarea required name="pricing_description" id="pricingDescription" class="form-control" rows="3" maxlength="250">{{ isset($pricing) ? $pricing['pricing_description'] : '' }}</textarea>
+                            <textarea name="pricing_description" id="pricingDescription" class="form-control" rows="3" maxlength="250">{{ isset($pricing) ? $pricing['pricing_description'] : '' }}</textarea>
                             <div id="charactersRemaining" class="float-right">250 characters Remaining</div>
                         </div>
                         <div class="form-group col-md-12">
@@ -55,9 +55,11 @@
                             </a>
                             <div id="dynamicRow">
                                 @if(isset($pricing))
+                                @if(!empty($pricing['pricing_points']))
                                 @foreach($pricing['pricing_points'] as $price_point)
                                 <div class="mt-2 d-flex"><input type="text" name="pricing_points[]" class="form-control input-row mt-3 mr-2" placeholder="Enter Pricing points" value="{{ $price_point }}"> <a type="button" name="button" class="text-danger mt-3 remove-row" href="javascript:void(0);"> <i class="fas fa-minus mr-1"></i> </a> </div>
                                 @endforeach
+                                @endif
                                 @else
                                 <div class="mt-2 d-flex">
                                     <input required type="text" name="pricing_points[]" class="form-control input-row col-md-8 mt-3" id="pricingPoints" aria-describedby="pricingPointsHelp" placeholder="Enter Pricing points" value="">

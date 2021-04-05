@@ -10,14 +10,10 @@
 
 @include('frontend.templates.banner', ['page_title' => $blog->blog_title ?? '404 Not Found'])
 
-<div class="main-products main-product_pricing" style="background:#f3f3f3;padding-top:20px;">
-
-</div>
 <div class="main-products" style="background:#f3f3f3; min-height: auto;padding-bottom:40px;padding-top:0px;">
     <div class="wrapper-fix">
         @if($blog->blog_image ?? '' !='')
         <img src="{{ asset('/storage/blog/'.$blog->blog_image) }}" alt="{{$blog->blog_image}}" style="width: 100%; margin-top: 20px;">
-        @else
         @endif
 
         <div class="blog_data">
@@ -39,9 +35,9 @@
             </div>
             <div class="blog_social">
                 <ul>
-                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('home.blog.single', $blog->blog_slug ) }}" target="_blank"><img src="{{asset('/images/fb.png')}}"></a></li>
-                    <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('home.blog.single', $blog->blog_slug ) }}" target="_blank"><img src="{{asset('/images/link.png')}}"></a></li>
-                    <li><a href="https://twitter.com/intent/tweet?url={{ route('home.blog.single', $blog->blog_slug ) }}&text=" target="_blank"><img src="{{asset('/images/twt.png')}}"></a></li>
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('home.blog.single', $blog->blog_slug ) }}" target="_blank"><img src="{{asset('web/images/fb.png')}}"></a></li>
+                    <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('home.blog.single', $blog->blog_slug ) }}" target="_blank"><img src="{{asset('web/images/link.png')}}"></a></li>
+                    <li><a href="https://twitter.com/intent/tweet?url={{ route('home.blog.single', $blog->blog_slug ) }}&text=" target="_blank"><img src="{{asset('web/images/twt.png')}}"></a></li>
                 </ul>
             </div>
         </div>

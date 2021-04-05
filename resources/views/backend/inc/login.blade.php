@@ -8,8 +8,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Login Page</title>
-    {{ Html::style('Admin/css/styles.css') }}
-    {{ Html::script('Admin/js/all.min.js') }}
+    {{ Html::style('web/Admin/css/styles.css') }}
+    {{ Html::script('web/Admin/js/all.min.js') }}
 </head>
 
 <body class="bg-primary">
@@ -82,10 +82,10 @@
         </div>
     </div>
 
-    {{ Html::script('Admin/js/jquery-3.5.1.slim.min.js') }}
-    {{ Html::script('Admin/js/bootstrap.bundle.min.js') }}
-    {{ Html::script('Admin/js/scripts.js') }}
-    {{ Html::script('Admin/js/validation.js') }}
+    {{ Html::script('web/Admin/js/jquery-3.5.1.slim.min.js') }}
+    {{ Html::script('web/Admin/js/bootstrap.bundle.min.js') }}
+    {{ Html::script('web/Admin/js/scripts.js') }}
+    {{ Html::script('web/Admin/js/validation.js') }}
 </body>
 
 </html>

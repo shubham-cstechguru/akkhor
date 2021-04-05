@@ -25,7 +25,7 @@ class BlogCategoryRequest extends FormRequest
     {
         return [
             'category_title' => 'required|unique:mysql2.blog_categories',
-            'category_description' => 'required',
+            'category_description',
             'category_seo_title',
             'category_seo_keyword',
             'category_seo_description'

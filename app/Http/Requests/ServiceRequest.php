@@ -25,7 +25,7 @@ class ServiceRequest extends FormRequest
     {
         return [
             'service_title' => 'required|unique:mysql2.services',
-            'service_description' => 'required',
+            'service_description',
             'service_image' => 'required|max:1048|mimes:jpeg,jpg,png',
             'service_seo_title' => 'nullable',
             'service_seo_description' => 'nullable',

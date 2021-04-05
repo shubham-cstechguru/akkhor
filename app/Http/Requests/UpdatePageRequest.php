@@ -25,7 +25,7 @@ class UpdatePageRequest extends FormRequest
     {
         return [
             'page_title' => 'required|unique:mysql2.pages,page_title,'.$this->page->id,
-            'page_description' => 'required',
+            'page_description',
             'page_image' => 'nullable|max:2048|mimes:jpeg,jpg,png,gif',
             'page_seo_title' => 'nullable',
             'page_seo_description' => 'nullable',
